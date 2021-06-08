@@ -2,7 +2,7 @@ import React from 'react';
 import SearchModal from './Modal/Modal';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
-import Main from '../../Pages/Main/Main';
+import Main from '../Pages/Main/Main';
 
 class Nav extends React.Component {
   constructor() {
