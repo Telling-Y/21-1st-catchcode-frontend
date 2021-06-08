@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from '../../Components/Nav/Nav';
 
 class Main extends React.Component {
   constructor(props) {
@@ -6,7 +7,11 @@ class Main extends React.Component {
     this.state = {};
   }
   render() {
-    return <>adsdasdasd</>;
+    return (
+      <>
+        <Nav />
+      </>
+    );
   }
 }
 
