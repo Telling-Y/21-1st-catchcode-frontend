@@ -1,0 +1,101 @@
+@import '../../Styles/variables.scss';
+
+.Login {
+  @include flex-center();
+  height: 100%;
+
+  .borderBox {
+    @include flex-center();
+    width: 464px;
+    padding: 50px 0 40px;
+    border: 1px solid #e4e4e4;
+  }
+
+  .loginWrap {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+
+    .title {
+      margin-bottom: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .inputBox {
+      position: relative;
+
+      .inputTitle {
+        font-size: 12px;
+        margin: 20px 0 5px;
+      }
+
+      input {
+        width: 100%;
+        height: 40px;
+        padding-left: 10px;
+        font-size: 13px;
+        border: 1px solid #e4e4e4;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .passwordView {
+        position: absolute;
+        top: 17px;
+        right: 10px;
+        width: 20px;
+        background-color: #ffffff00;
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.4;
+      }
+
+      .warning {
+        width: 100%;
+        padding-top: 8px;
+        color: #eb420b;
+        font-size: 12px;
+        border-top: 1px solid #eb420b;
+      }
+    }
+
+    button {
+      height: 44px;
+      border: 0px;
+      margin: 18px 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+
+      &.grayButton {
+        background-color: #d3d3d3;
+      }
+
+      &.blackButton {
+        background-color: black;
+
+        &:hover {
+          background-color: #444444;
+          transition: 0.1s;
+        }
+      }
+    }
+
+    .passowordForgot {
+      margin: 10px 0 40px;
+      font-size: 13px;
+      text-align: center;
+      color: black;
+    }
+
+    .context {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+  }
+}
