@@ -12,7 +12,7 @@ class Nav extends React.Component {
       dropDownValid: false,
     };
   }
-  dropDownRef = React.createRef();
+
   searchModalon = event => {
     this.setState({
       searchModalValid: !this.state.searchModalValid,
@@ -30,9 +30,6 @@ class Nav extends React.Component {
     });
   };
 
-  handleMouseOver = event => {
-    console.log(this.dropDownRef.current.contains(event.target));
-  };
   render() {
     return (
       <nav>
