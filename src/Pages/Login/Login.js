@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Sign from '../Sign/Sign';
+import CommonInput from '../../Components/CommonInput/CommonInput';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -11,6 +11,21 @@ class Login extends React.Component {
       passwordValue: '',
       isLogin: false,
       ischeckNum: false,
+      loginData: [
+        {
+          id: 1,
+          type: 'text',
+          text: '휴대폰번호',
+          placeholder: '휴대폰 번호를 입력해주세요',
+        },
+        {
+          id: 2,
+          type: 'text',
+          text: '비밀번호',
+          placeholder: '비밀번호를 입력해주세요',
+          view: false,
+        },
+      ],
     };
   }
 
@@ -20,7 +35,7 @@ class Login extends React.Component {
         [e.target.name]: e.target.value,
       },
       () => {
-        this.activeLogin();
+        return console.log(this.state.phoneValue);
       }
     );
   };
@@ -37,33 +52,39 @@ class Login extends React.Component {
   };
 
   checkNum = e => {
-    if (e.target.value >= 0 || e.target.value <= 9) {
+    const regex = /^[0-9\b ]{0,20}$/;
+    if (regex.test(e.target.value)) {
       this.setState({
-        phoneValue: Number(e.target.value),
+        phoneValue: e.target.value,
       });
     }
   };
 
+  goToSign = () => {
+    this.props.history.push('/Sign');
+  };
+
   render() {
-    const { phoneValue, passwordValue, isLogin } = this.state;
+    const { phoneValue, passwordValue, isLogin, loginData } = this.state;
     console.log(`phoneValue`, phoneValue, typeof phoneValue);
     return (
       <div className="Login">
         <article className="borderBox">
           <div className="loginWrap">
             ​<h1 className="title">로그인</h1>
-            <div className="inputBox">
-              <div className="inputTitle">휴대폰 번호</div>
-              <input
-                type="text"
-                placeholder="휴대폰 번호를 입력해주세요"
-                name="phoneValue"
-                onChange={(this.handleInput, this.checkNum)}
-                value={phoneValue}
-              />
-              {/* ​<div className="warning">휴대폰 번호가 일치하지 않습니다</div> */}
-            </div>
-            <div className="inputBox">
+            {loginData.map(data => {
+              return (
+                <CommonInput
+                  key={data.id}
+                  type={data.type}
+                  text={data.text}
+                  placeholder={data.placeholder}
+                  view={data.view}
+                  changeInput={this.handleInput}
+                />
+              );
+            })}
+            {/* <div className="inputBox">
               <div className="inputTitle">비밀번호</div>
               ​
               <input
@@ -79,9 +100,12 @@ class Login extends React.Component {
                   backgroundImage: `url("/images/view.png")`,
                 }}
               ></button>
-            </div>
+            </div> */}
             ​
-            <button className={isLogin ? 'blackButton' : 'grayButton'}>
+            <button
+              className={isLogin ? 'blackButton' : 'grayButton'}
+              // onClick={this.goToMain}
+            >
               로그인
             </button>
             <Link to="/Sign" className="passowordForgot">
@@ -91,7 +115,11 @@ class Login extends React.Component {
             <div className="context">
               30초 만에 간단한 가입! 10% 현금캐시백!
             </div>
-            ​<button className="blackButton">회원가입</button>​
+            ​
+            <button className="blackButton" onClick={this.goToSign}>
+              회원가입
+            </button>
+            ​
           </div>
         </article>
       </div>

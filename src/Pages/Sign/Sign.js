@@ -1,4 +1,5 @@
 import React from 'react';
+import CommonInput from '../../Components/CommonInput/CommonInput';
 import './Sign.scss';
 
 class Sign extends React.Component {
@@ -7,23 +8,52 @@ class Sign extends React.Component {
     this.state = {
       isGenderSelect: true,
       genderNum: 1,
+      nameValue: '',
+      phoneValue: '',
+      passwordValue: '',
+      signData: [
+        {
+          id: 'nameValue',
+          text: '이름',
+          placeholder: '이름을 입력해주세요',
+
+          noValue: false,
+        },
+        {
+          id: 'phoneValue',
+          text: '휴대폰번호',
+          placeholder: '휴대폰번호를 입력해주세요',
+        },
+        {
+          id: 'passwordValue',
+          text: '비밀번호',
+          placeholder: '비밀번호를 입력해주세요',
+          view: false,
+        },
+      ],
+      validator: {
+        nameValue: input => input.length >= 6,
+        phoneValue: input => input?.includes('@' && '.com'),
+        passwordValue: input => input.length >= 8,
+      },
     };
   }
 
   seperateGender = e => {
-    if (e.target.innerText === '남성') {
-      this.setState({
-        isGenderSelect: false,
-      });
-    } else {
-      this.setState({
-        isGenderSelect: true,
-      });
-    }
+    this.setState({
+      isGenderSelect: e.target.innerText === '남성' ? false : true,
+    });
+  };
+
+  handleInput = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
-    const { isGenderSelect } = this.state;
+    const { isGenderSelect, signData } = this.state;
     return (
       <div className="Sign">
         <article className="borderBox">
@@ -36,7 +66,6 @@ class Sign extends React.Component {
                   isGenderSelect ? 'genderButton select' : 'genderButton'
                 }
                 onClick={this.seperateGender}
-                id={1}
               >
                 여성
               </button>
@@ -45,36 +74,26 @@ class Sign extends React.Component {
                   !isGenderSelect ? 'genderButton select' : 'genderButton'
                 }
                 onClick={this.seperateGender}
-                id={2}
               >
                 남성
               </button>
             </div>
-            <div className="inputBox">
-              <div className="inputTitle">이름</div>
-              <input type="text" placeholder="이름을 입력해주세요" />​
-              {/* <div className="warning">
-                이름에 초성, 숫자, 특수문자를 사용할 수 없습니다
-              </div> */}
-            </div>
-            <div className="inputBox">
-              <div className="inputTitle">휴대폰번호</div>
-              <input type="text" placeholder="휴대폰 번호를 입력해주세요" />​
-              {/* <div className="warning">잘못된 휴대폰번호입니다</div> */}
-            </div>
-            <div className="inputBox">
-              <div className="inputTitle">비밀번호</div>
-              <input type="text" placeholder="비밀번호를 입력해주세요" />​
-              {/* <div className="warning">
-                영문 대소문자, 숫자를 이용해 5자 이상으로 설정해주세요
-              </div> */}
-              <button
-                className="passwordView"
-                style={{
-                  backgroundImage: `url("/images/view.png")`,
-                }}
-              ></button>
-            </div>
+            {signData.map((data, idx) => {
+              return (
+                <CommonInput
+                  key={idx}
+                  text={data.text}
+                  placeholder={data.placeholder}
+                  view={data.view}
+                  id={data.id}
+                  noValue={data.noValue}
+                  value={this.state[data.id]}
+                  handleInput={this.handleInput}
+                  handleValid={this.validator[data.id]}
+                />
+              );
+            })}
+
             <div className="agreeContext">
               회원가입 시
               <li>
