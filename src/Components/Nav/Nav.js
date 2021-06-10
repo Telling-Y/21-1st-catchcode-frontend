@@ -1,8 +1,9 @@
 import React from 'react';
-import SearchModal from '../Modal/Modal';
+import SearchModal from '../Modal/SearchModal/SearchModal';
 import Dropdown from '../Dropdown/Dropdown';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
+import LoginModal from '../Modal/LoginModal/LoginModal';
 
 class Nav extends React.Component {
   constructor() {
@@ -10,9 +11,14 @@ class Nav extends React.Component {
     this.state = {
       searchModalValid: false,
       dropDownValid: false,
+      loginModalValid: false,
     };
   }
-
+  loginModalon = event => {
+    this.setState({
+      loginModalValid: true,
+    });
+  };
   searchModalon = event => {
     this.setState({
       searchModalValid: !this.state.searchModalValid,
@@ -64,13 +70,22 @@ class Nav extends React.Component {
             </div>
             <div className="userItems">
               <div className="icon">
-                <i className="far fa-heart" />
+                <Link to="#">
+                  <i className="far fa-heart" />
+                </Link>
               </div>
               <div className="icon">
-                <i class="fas fa-shopping-bag" />
+                <Link to="#">
+                  <i class="fas fa-shopping-bag" />
+                </Link>
               </div>
-              <div className="icon">
-                <i class="far fa-user" />
+              <div className="icon" onMouseEnter={this.loginModalValid}>
+                <Link to="#">
+                  <i class="far fa-user" />
+                </Link>
+                {this.state.loginModalValid && (
+                  <LoginModal isCheck={this.loginModalValid} />
+                )}
               </div>
             </div>
           </div>

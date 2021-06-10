@@ -1,0 +1,17 @@
+.loginModal {
+  width: 5rem;
+  height: 7rem;
+  background-color: #eaeaea;
+  button {
+    width: 3rem;
+    height: 4rem;
+  }
+  .mvToSignin {
+    background-color: #eaeaea;
+    border: #1e1e1e solid 0.1rem;
+  }
+  .mvToSignup {
+    background-color: #1e1e1e;
+    font-style: #eaeaea;
+  }
+}

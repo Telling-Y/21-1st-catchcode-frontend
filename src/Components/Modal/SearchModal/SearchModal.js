@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './Modal.scss';
+import './SearchModal.scss';
 
 class SearchModal extends Component {
   render() {

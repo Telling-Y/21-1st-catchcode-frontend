@@ -1,5 +1,8 @@
 nav {
   height: 96px;
+  a {
+    text-decoration: none;
+  }
   .junkDiv {
     border-bottom: #eaeaea solid 0.1rem;
 
@@ -50,7 +53,6 @@ nav {
 
           a {
             display: flex;
-            text-decoration: none;
             color: #1e1e1e;
             margin: 0 0.5rem;
             padding: 2rem 0;
@@ -69,6 +71,7 @@ nav {
         i {
           font-size: 18px;
           margin: 0 5px;
+          color: black;
         }
         .icon {
           display: flex;
