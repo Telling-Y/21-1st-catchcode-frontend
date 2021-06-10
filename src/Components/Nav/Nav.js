@@ -12,8 +12,22 @@ class Nav extends React.Component {
       searchModalValid: false,
       dropDownValid: false,
       loginModalValid: false,
+      result: [],
     };
   }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/data/commentData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          result: data,
+        });
+      });
+  }
+
   loginModalOn = event => {
     this.setState({
       loginModalValid: true,
@@ -42,6 +56,7 @@ class Nav extends React.Component {
   };
 
   render() {
+    console.log(this.state.result.categories);
     return (
       <nav>
         <div className="junkDiv">
@@ -103,6 +118,7 @@ class Nav extends React.Component {
           {this.state.dropDownValid && (
             <Dropdown
               isCheck={this.dropDownValid}
+              result={this.state.result}
               removeDropDown={this.removeDropDown}
               categoriDropDown={this.categoriDropDown}
             />

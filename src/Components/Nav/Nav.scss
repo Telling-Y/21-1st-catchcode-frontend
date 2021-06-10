@@ -30,6 +30,7 @@ nav {
           align-items: center;
           padding: 1rem 2.5rem;
           margin-right: 5rem;
+          width: 10rem;
           background-color: #f9f9f9;
           button {
             border: none;
@@ -49,6 +50,9 @@ nav {
         margin-left: 0.5rem;
 
         .linkItemsWrap {
+          display: flex;
+          justify-content: flex-end;
+          width: 18rem;
           display: flex;
 
           a {
