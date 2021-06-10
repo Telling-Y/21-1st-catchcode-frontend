@@ -14,12 +14,17 @@ class Nav extends React.Component {
       loginModalValid: false,
     };
   }
-  loginModalon = event => {
+  loginModalOn = event => {
     this.setState({
       loginModalValid: true,
     });
   };
-  searchModalon = event => {
+  loginModalOff = event => {
+    this.setState({
+      loginModalValid: false,
+    });
+  };
+  searchModalOn = event => {
     this.setState({
       searchModalValid: !this.state.searchModalValid,
     });
@@ -79,7 +84,11 @@ class Nav extends React.Component {
                   <i class="fas fa-shopping-bag" />
                 </Link>
               </div>
-              <div className="icon" onMouseEnter={this.loginModalValid}>
+              <div
+                className="icon"
+                onMouseEnter={this.loginModalOn}
+                onMouseLeave={this.loginModalOff}
+              >
                 <Link to="#">
                   <i class="far fa-user" />
                 </Link>

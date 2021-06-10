@@ -1,9 +1,15 @@
 .loginModal {
-  width: 5rem;
-  height: 7rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 9rem;
+  height: 9rem;
   background-color: #eaeaea;
+  top: 2rem;
   button {
-    width: 3rem;
+    width: 7rem;
     height: 4rem;
   }
   .mvToSignin {
@@ -12,6 +18,6 @@
   }
   .mvToSignup {
     background-color: #1e1e1e;
-    font-style: #eaeaea;
+    color: #eaeaea;
   }
 }
