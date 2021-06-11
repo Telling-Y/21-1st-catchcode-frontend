@@ -13,10 +13,7 @@ class Main extends React.Component {
       <>
         <Banner></Banner>
         <main className="productArea">
-          {mainProduct.map(item => {
-            return <MainProductItem />;
-          })}
-          <div className=""></div>
+          <MainProductItem />
         </main>
       </>
     );
