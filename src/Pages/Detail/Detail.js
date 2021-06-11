@@ -6,16 +6,18 @@ class Detail extends React.Component {
     this.state = {};
   }
   render() {
-    return <div className="detailPageWrap">
-      <div className="leftPage">
-        <div className=""
-        <img src="s" alt="junk"/>
-
+    return (
+      <div className="detailPageWrap">
+        <div className="leftPage">
+          <div className="imgMap">
+            <img src="s" alt="junk" />
+          </div>
+        </div>
+        <div className="rightPage">
+          <devicePixelRatio
+        </div>
       </div>
-      <div className="rightPage">
-
-      </div>
-    </div>;
+    );
   }
 }
 
