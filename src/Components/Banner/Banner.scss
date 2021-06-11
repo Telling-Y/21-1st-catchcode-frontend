@@ -1,0 +1,13 @@
+.bannerSlideWrap {
+  display: inline;
+  width: 400vw;
+  height: 400px;
+  img {
+    width: 100vw;
+    height: 400px;
+  }
+  ul {
+    overflow: hidden;
+    display: flex;
+  }
+}
