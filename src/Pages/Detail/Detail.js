@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductLeft from '../../Components/ProductLeft/ProductLeft';
+import './Detail.scss';
 
 class Detail extends React.Component {
   constructor() {
@@ -20,17 +21,19 @@ class Detail extends React.Component {
   }
 
   render() {
+    console.log(this.state.result.products);
     return (
       <div className="detailPageWrap">
         <div className="leftPage">
-          {/* {this.state.result.products.map(result => ( */}
-          <ProductLeft
-            id={this.state.result.products.id}
-            category={this.state.result.products.category}
-            description={this.state.result.products.descripotion}
-            imageUrl={this.state.result.products.image}
-          />
-          {/* ))} */}
+          {this.state.result.products &&
+            this.state.result.products.category &&
+            this.state.result.products.map(result => (
+              <ProductLeft
+                category={result.category}
+                description={result.descripotion}
+                image={result.image}
+              />
+            ))}
         </div>
         <div className="rightPage">
           <div className=""></div>

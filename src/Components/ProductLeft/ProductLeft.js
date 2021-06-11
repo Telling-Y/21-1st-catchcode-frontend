@@ -3,10 +3,14 @@ import './ProductLeft.scss';
 
 class ProductLeft extends Component {
   render() {
+    console.log(this.props.imageUrl);
     return (
-      <>
-        <img src={this.props.imageUrl} alt=""></img>
-      </>
+      <div className="productItem">
+        <img src={this.props.imageUrl} alt="" />
+        <div className="productExplain">
+          <div className="productName">{this.props.description}</div>
+        </div>
+      </div>
     );
   }
 }
