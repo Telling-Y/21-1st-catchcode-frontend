@@ -1,11 +1,11 @@
 .dropDownWrap {
   display: flex;
+  height: 15rem;
   justify-content: stretch;
   justify-content: space-around;
   align-items: center;
   background-color: white;
   border-bottom: #eaeaea 0.1rem solid;
-  height: 15rem;
 
   img {
     width: 4rem;
@@ -20,12 +20,12 @@
     }
     .categoriItems {
       display: flex;
-      flex-direction: column;
       margin: 1rem;
+      flex-direction: column;
       .categoriName {
         display: flex;
-        justify-content: center;
         margin-top: 0.5rem;
+        justify-content: center;
         color: black;
       }
     }

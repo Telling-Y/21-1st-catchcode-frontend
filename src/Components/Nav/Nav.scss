@@ -1,16 +1,16 @@
 nav {
-  height: 96px;
+  height: 98px;
   a {
     text-decoration: none;
   }
-  .junkDiv {
+  .trickDiv {
     border-bottom: #eaeaea solid 0.1rem;
 
     .navContainer {
       display: flex;
+      padding: 0 5rem;
       justify-content: space-around;
       align-items: center;
-      padding: 0 5rem;
 
       .navLeft {
         display: flex;
@@ -19,24 +19,23 @@ nav {
 
         .logo {
           width: 8rem;
-          padding: 1rem 2rem;
           margin-right: 4rem;
+          padding: 1rem 2rem;
         }
 
         .searchWrap {
           display: flex;
           position: relative;
+          width: 10rem;
+          margin-right: 5rem;
+          padding: 1rem 2.5rem;
+          background-color: #f9f9f9;
           justify-content: center;
           align-items: center;
-          padding: 1rem 2.5rem;
-          margin-right: 5rem;
-          width: 10rem;
-          background-color: #f9f9f9;
           button {
+            margin-left: 8px;
             border: none;
             background-color: unset;
-            margin-left: 8px;
-            flex: 1 1 0%;
           }
           button:hover {
             cursor: text;
@@ -51,15 +50,14 @@ nav {
 
         .linkItemsWrap {
           display: flex;
-          justify-content: flex-end;
           width: 18rem;
-          display: flex;
+          justify-content: flex-end;
 
           a {
             display: flex;
-            color: #1e1e1e;
             margin: 0 0.5rem;
             padding: 2rem 0;
+            color: #1e1e1e;
           }
           a:hover {
             border-bottom: #1e1e1e 0.1rem solid;
@@ -68,23 +66,22 @@ nav {
         }
       }
       .userItems {
-        flex: none;
         display: flex;
         margin-left: auto;
 
         i {
-          font-size: 18px;
           margin: 0 5px;
+          font-size: 18px;
           color: black;
         }
         .icon {
           position: relative;
           display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: 5px;
           width: 2rem;
           height: 2rem;
+          margin: 5px;
+          justify-content: center;
+          align-items: center;
         }
         .icon:hover {
           height: 2rem;
@@ -94,11 +91,5 @@ nav {
         }
       }
     }
-  }
-  .printDropDown {
-    z-index: 1;
-  }
-  .printSearchModal {
-    z-index: 2;
   }
 }

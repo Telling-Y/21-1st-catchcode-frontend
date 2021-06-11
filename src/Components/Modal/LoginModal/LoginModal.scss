@@ -1,13 +1,13 @@
 .loginModal {
   position: absolute;
   display: flex;
+  width: 9rem;
+  height: 9rem;
+  top: 2rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 9rem;
-  height: 9rem;
   background-color: #eaeaea;
-  top: 2rem;
   button {
     width: 7rem;
     height: 4rem;

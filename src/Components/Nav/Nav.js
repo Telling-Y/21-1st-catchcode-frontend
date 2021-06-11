@@ -33,21 +33,25 @@ class Nav extends React.Component {
       loginModalValid: true,
     });
   };
+
   loginModalOff = () => {
     this.setState({
       loginModalValid: false,
     });
   };
+
   searchModalOn = () => {
     this.setState({
       searchModalValid: !this.state.searchModalValid,
     });
   };
+
   categoriDropDown = event => {
     this.setState({
       dropDownValid: true,
     });
   };
+
   removeDropDown = () => {
     this.setState({
       dropDownValid: false,
@@ -58,7 +62,7 @@ class Nav extends React.Component {
     return (
       this.state.result && (
         <nav>
-          <div className="junkDiv">
+          <div className="trickDiv">
             <div className="navContainer">
               <div className="navLeft">
                 <img src="/images/logo.jpg" alt="logo" className="logo" />
@@ -72,17 +76,13 @@ class Nav extends React.Component {
               <div className="linkTab">
                 <div className="linkItemsWrap">
                   <Link to="#">홈</Link>
-                  <div className="NavDropDownWrap">
-                    <Link
-                      to="#"
-                      onMouseEnter={this.categoriDropDown}
-                      onMouseLeave={this.removeDropDown}
-                    >
-                      쇼핑하기
-                    </Link>
-                    <div className="fakeElm" />
-                  </div>
-
+                  <Link
+                    to="#"
+                    onMouseEnter={this.categoriDropDown}
+                    onMouseLeave={this.removeDropDown}
+                  >
+                    쇼핑하기
+                  </Link>
                   <Link to="#">캐치태그</Link>
                   <Link to="#">이동 후 구매</Link>
                 </div>
@@ -113,23 +113,21 @@ class Nav extends React.Component {
               </div>
             </div>
           </div>
-          <div className="printDropDown">
-            {this.state.result.categories &&
-              this.state.result.categories[0].name &&
-              this.state.dropDownValid && (
-                <Dropdown
-                  isCheck={this.dropDownValid}
-                  result={this.state.result}
-                  removeDropDown={this.removeDropDown}
-                  categoriDropDown={this.categoriDropDown}
-                />
-              )}
-          </div>
-          <div className="printSearchModal">
-            {this.state.searchModalValid && (
-              <SearchModal isCheck={this.searchModalValid} />
+
+          {this.state.result.categories &&
+            this.state.result.categories[0].name &&
+            this.state.dropDownValid && (
+              <Dropdown
+                isCheck={this.dropDownValid}
+                result={this.state.result}
+                removeDropDown={this.removeDropDown}
+                categoriDropDown={this.categoriDropDown}
+              />
             )}
-          </div>
+
+          {this.state.searchModalValid && (
+            <SearchModal isCheck={this.searchModalValid} />
+          )}
         </nav>
       )
     );

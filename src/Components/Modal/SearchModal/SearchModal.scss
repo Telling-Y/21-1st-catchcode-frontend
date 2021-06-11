@@ -1,9 +1,9 @@
 .modalContainer {
-  z-index: -1;
   display: inline-block;
+  position: absolute;
   width: 20rem;
   height: 20rem;
-  background-color: #d3d3d3;
-  position: absolute;
   left: 19rem;
+  background-color: #d3d3d3;
+  z-index: -1;
 }
