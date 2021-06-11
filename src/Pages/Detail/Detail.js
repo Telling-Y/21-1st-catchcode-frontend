@@ -14,7 +14,7 @@ class Detail extends React.Component {
           </div>
         </div>
         <div className="rightPage">
-          <devicePixelRatio
+          <div className=""></div>
         </div>
       </div>
     );
