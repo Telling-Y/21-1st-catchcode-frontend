@@ -1,4 +1,5 @@
 import React from 'react';
+import MainProductItem from '../../Components/MainProductItem/MainProuctItem';
 import Banner from '../../Components/Banner/Banner';
 
 class Main extends React.Component {
@@ -11,6 +12,12 @@ class Main extends React.Component {
     return (
       <>
         <Banner></Banner>
+        <main className="productArea">
+          {mainProduct.map(item => {
+            return <MainProductItem />;
+          })}
+          <div className=""></div>
+        </main>
       </>
     );
   }
