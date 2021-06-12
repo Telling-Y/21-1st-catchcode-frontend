@@ -1,34 +1,46 @@
 {
   "result": {
-    "products": {
-      "id": 1,
-      "category": "면",
-      "name": "좋은면",
-      "description": "이건 진짜좋은 한국산 면입니다.",
-      "price": [
-        {
-          "1": "10000.00",
-          "2": "10000.00",
-          "3": "10000.00"
-        }
-      ],
-      "size": [
-        {
-          "1": 10,
-          "2": 10,
-          "3": 10
-        }
-      ],
-      "image": "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg",
-      "country": "한국",
-      "color": "red",
-      "product_substance": [
-        {
-          "면": "60.0",
-          "솜": "20.0",
-          "털": "20.0"
-        }
-      ]
-    }
+    "id": 1,
+    "categoryId": 1,
+    "categoryName": "면",
+    "name": "좋은면",
+    "description": "이건 진짜좋은 한국산 면입니다.",
+    "countryId": 1,
+    "country": "한국",
+    "color": "red",
+    "priceAndSize": [
+      {
+        "sizeId": 0,
+        "sizeName": "L",
+        "price": 10000,
+        "stock": 1
+      },
+      {
+        "sizeId": 1,
+        "sizeName": "M",
+        "price": 10000,
+        "stock": 1
+      },
+      {
+        "sizeId": 2,
+        "sizeNmae": "S",
+        "price": 10000,
+        "stock": 0
+      }
+    ],
+    "image": [
+      "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg",
+      "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg"
+    ],
+    "productContents": [
+      {
+        "name": "면",
+        "value": "60"
+      },
+      {
+        "name": "솜",
+        "value": "40"
+      }
+    ]
   }
 }

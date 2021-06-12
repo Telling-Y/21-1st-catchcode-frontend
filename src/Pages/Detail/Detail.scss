@@ -1,4 +1,13 @@
 .detailPageWrap {
   display: flex;
   justify-content: center;
+  .leftPage {
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 25rem;
+      height: 30rem;
+      padding: 2rem;
+    }
+  }
 }

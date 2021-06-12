@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductLeft from '../../Components/ProductLeft/ProductLeft';
+import SizeSelector from '../../Components/SizeSelector/SizeSelector';
 import './Detail.scss';
 
 class Detail extends React.Component {
@@ -21,22 +21,25 @@ class Detail extends React.Component {
   }
 
   render() {
-    console.log(this.state.result.products);
+    const { result } = this.state;
+
     return (
       <div className="detailPageWrap">
         <div className="leftPage">
-          {this.state.result.products &&
-            this.state.result.products.category &&
-            this.state.result.products.map(result => (
-              <ProductLeft
-                category={result.category}
-                description={result.descripotion}
-                image={result.image}
-              />
-            ))}
+          {result &&
+            result.image &&
+            result.image.map(x => {
+              return <img src={x} alt="제품 이미지" />;
+            })}
         </div>
         <div className="rightPage">
-          <div className=""></div>
+          <div className="nameSector">
+            <div className="productName">{result.name}</div>
+            <div className="productCategory">{result.category}</div>
+          </div>
+          <div className="sizeSelectorWrap">
+            <SizeSelector result={result} />
+          </div>
         </div>
       </div>
     );
