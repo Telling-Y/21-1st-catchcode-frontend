@@ -36,6 +36,7 @@
 
         .paymentArea {
           display: flex;
+
           flex-direction: column;
 
           border: 0.1rem solid #eaeaea;
@@ -44,23 +45,30 @@
             font-size: 1.2rem;
             padding: 1rem;
           }
-          .checkPayment {
-            background-color: #eaeaea;
+          .basketWrap {
             display: flex;
-          }
-          .deliv {
-            display: flex;
-
-            align-items: center;
             flex-direction: column;
-          }
-          button {
-            border: none;
-            width: 80%;
-            background-color: #1e1e1e;
-            padding: 0.5rem 2rem;
-            margin-bottom: 1rem;
-            color: #eaeaea;
+            justify-content: center;
+            .checkPayment {
+              background-color: #eaeaea;
+              display: flex;
+              justify-content: space-around;
+              .deliv {
+                display: flex;
+
+                align-items: center;
+                flex-direction: column;
+              }
+            }
+            .putBasket {
+              align-self: center;
+              border: none;
+              width: 80%;
+              background-color: #1e1e1e;
+              padding: 0.5rem 2rem;
+              margin-bottom: 1rem;
+              color: #eaeaea;
+            }
           }
         }
       }

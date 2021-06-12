@@ -49,7 +49,10 @@ class Detail extends React.Component {
           <div className="sidePage">
             <div className="stickyDiv">
               <div className="nameSector">
-                <div className="productName">{result.name}</div>
+                <div className="wishList">
+                  <div className="productName">{result.name}</div>
+                </div>
+
                 <div className="productCategory">{result.categoryName}</div>
               </div>
               <div className="sizeSelectorWrap">
@@ -57,7 +60,8 @@ class Detail extends React.Component {
               </div>
               <div className="paymentArea">
                 <div className="noticePrice">500,000원</div>
-                <div>
+
+                <div className="basketWrap">
                   <div className="checkPayment">
                     <div className="deliv">
                       <div className="itemIndex">배송 유형</div>
