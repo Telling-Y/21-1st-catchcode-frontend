@@ -1,13 +1,27 @@
 .sizeSelectorWrap {
-  li {
-    font-size: 10px;
-    display: flex;
-    padding: 10px 20px;
-    border: 1px solid black;
-    justify-content: space-between;
-    background-color: white;
+  .fixedLi {
+    font-size: 1rem;
+    padding: 1rem 8rem;
+    border: 1px solid #eaeaea;
   }
-  .forBtnSt {
-    border-right: none;
+
+  button {
+    background-color: unset;
+    border: none;
+  }
+
+  .newList {
+    z-index: 1000;
+    font-size: 1rem;
+    border: 1px solid #eaeaea;
+    border-top: none;
+    .setSizeBtn {
+      height: 3rem;
+      border-right: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
   }
 }

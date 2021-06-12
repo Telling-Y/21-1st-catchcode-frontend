@@ -1,13 +1,69 @@
 .detailPageWrap {
   display: flex;
-  justify-content: center;
-  .leftPage {
+  flex-direction: column;
+  .detailContentsWrap {
+    height: auto;
     display: flex;
-    flex-direction: column;
-    img {
-      width: 25rem;
-      height: 30rem;
-      padding: 2rem;
+    justify-content: center;
+    .contentPage {
+      display: flex;
+      flex-direction: column;
+      img {
+        width: 25rem;
+        height: 30rem;
+        padding: 2rem;
+      }
+    }
+    .sidePage {
+      height: auto;
+      .stickyDiv {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        padding-top: 2rem;
+
+        .productName {
+          padding-bottom: 1rem;
+          font-size: 2rem;
+        }
+
+        .productCategory {
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+          border-bottom: 0.1rem solid #1e1e1e;
+          font-size: 1.5rem;
+        }
+
+        .paymentArea {
+          display: flex;
+          flex-direction: column;
+
+          border: 0.1rem solid #eaeaea;
+
+          .noticePrice {
+            font-size: 1.2rem;
+            padding: 1rem;
+          }
+          .checkPayment {
+            background-color: #eaeaea;
+            display: flex;
+          }
+          .deliv {
+            display: flex;
+
+            align-items: center;
+            flex-direction: column;
+          }
+          button {
+            border: none;
+            width: 80%;
+            background-color: #1e1e1e;
+            padding: 0.5rem 2rem;
+            margin-bottom: 1rem;
+            color: #eaeaea;
+          }
+        }
+      }
     }
   }
 }

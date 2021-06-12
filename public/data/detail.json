@@ -18,17 +18,18 @@
       {
         "sizeId": 1,
         "sizeName": "M",
-        "price": 10000,
+        "price": 11000,
         "stock": 1
       },
       {
         "sizeId": 2,
-        "sizeNmae": "S",
+        "sizeName": "S",
         "price": 10000,
         "stock": 0
       }
     ],
     "image": [
+      "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg",
       "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg",
       "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg"
     ],

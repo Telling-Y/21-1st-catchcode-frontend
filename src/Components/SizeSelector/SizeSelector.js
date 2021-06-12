@@ -5,30 +5,47 @@ class SizeSelector extends Component {
   constructor() {
     super();
     this.state = {
-      dropDownValid: false,
+      listStyle: 'none',
+      setSize: '사이즈를 선택해주세요',
     };
   }
-  dropDownOn = event => {
-    this.setState({
-      dropDownValid: true,
-    });
+
+  changeListStyle = () => {
+    this.state.listStyle === 'none'
+      ? this.setState({ listStyle: '' })
+      : this.setState({ listStyle: 'none' });
   };
+
+  chgSizeText = event => {
+    console.log(event);
+    !this.state.setSize === '' &&
+      this.setState({
+        setSize: this.props.result.priceAndSize.sizeName,
+      });
+  };
+
   render() {
     return (
       <ul className="sizeSelectorWrap">
-        <li>
-          <div className="sizeSelector" onClick="dropDownOn">
-            사이즈를 선택해주세요
-          </div>
+        <li className="fixedLi">
+          <button className="sizeSelector" onClick={this.changeListStyle}>
+            {this.state.setSize}
+          </button>
         </li>
         {this.props.result.priceAndSize &&
-          this.props.result.priceAndSize.map(sizeId => {
+          this.props.result.priceAndSize.map(result => {
             return (
-              <li>
-                <div className="forBtnSt" onClick="dropDown">
-                  <div className="sizeId">{sizeId.sizeName}</div>
-                  <div className="priceData">{sizeId.price}₩</div>
-                </div>
+              <li class="newList" style={{ display: this.state.listStyle }}>
+                <button
+                  className="setSizeBtn"
+                  onClick={(this.changeListStyle, this.chgSizeText)}
+                  key={result.sizeId}
+                >
+                  <div className="propsData size">{result.sizeName}</div>
+                  <div className="propsData price">
+                    {result.stock === 0 ? 'Soldout' : result.price + '₩'}
+                  </div>
+                </button>
               </li>
             );
           })}
