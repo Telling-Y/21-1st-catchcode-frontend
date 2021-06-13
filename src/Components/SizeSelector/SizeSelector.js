@@ -7,6 +7,7 @@ class SizeSelector extends Component {
     this.state = {
       listStyle: 'none',
       setSize: '사이즈를 선택해주세요',
+      payPrice: 0,
     };
   }
 
@@ -17,10 +18,10 @@ class SizeSelector extends Component {
   };
 
   chgSizeText = event => {
-    console.log(event);
+    console.log('ok');
     !this.state.setSize === '' &&
       this.setState({
-        setSize: this.props.result.priceAndSize.sizeName,
+        setSize: event.target.key,
       });
   };
 

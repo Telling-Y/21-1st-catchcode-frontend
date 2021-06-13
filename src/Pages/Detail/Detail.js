@@ -32,14 +32,17 @@ class Detail extends React.Component {
               result.image.map(src => {
                 return <img src={src} alt="제품 이미지" />;
               })}
-            <div className="productDetail">{result && result.description}</div>
+            <div className="productDetail">
+              <div className="productDescription">상품 상세 정보</div>
+              {result && result.description}
+            </div>
             <ul className="productContents">
               {result.productContents &&
                 result.productContents.map(Content => {
                   return (
                     <li>
-                      <span>{Content.name}</span>
-                      <span>{Content.value}</span>
+                      <div className="contentName">{Content.name}</div>
+                      <div className="contentValue">{Content.value}</div>
                     </li>
                   );
                 })}
@@ -56,6 +59,10 @@ class Detail extends React.Component {
 
                 <div className="productCategory">{result.categoryName}</div>
               </div>
+              <div className="selectPayment">
+                <span className="ehtchWay">Ehtch 구매</span>
+                <span className="normarlWay">일반 구매</span>
+              </div>
               <div className="sizeSelectorWrap">
                 <SizeSelector result={result} />
               </div>
@@ -65,16 +72,24 @@ class Detail extends React.Component {
                 <div className="basketWrap">
                   <div className="checkPayment">
                     <div className="deliv">
-                      <i class="fas fa-truck-loading"></i>
-                      <div className="itemIndex">배송 유형</div>
+                      <div className="itemIndex">
+                        <i class="fas fa-truck-loading"></i>
+                        <div className="itemWord">배송 유형</div>
+                      </div>
                       <div className="delivItem">해외직배송</div>
                     </div>
                     <div className="deliv">
-                      <div className="itemIndex">배송 예정일</div>
+                      <div className="itemIndex">
+                        <i class="fas fa-parachute-box" />
+                        <div className="itemWord">배송 예정일</div>
+                      </div>
                       <div className="delivItem">2~4일</div>
                     </div>
                     <div className="deliv">
-                      <div className="itemIndex">예상 배송비</div>
+                      <div className="itemIndex">
+                        <i class="fas fa-donate" />
+                        <div className="itemWord">예상 배송비</div>
+                      </div>
                       <div className="delivItem">무료</div>
                     </div>
                   </div>
