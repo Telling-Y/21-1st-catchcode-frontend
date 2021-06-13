@@ -89,7 +89,7 @@ class Nav extends React.Component {
               </div>
               <div className="userItems">
                 <div className="icon">
-                  <Link to="#">
+                  <Link to="/detail/">
                     <i className="far fa-heart" />
                   </Link>
                 </div>
