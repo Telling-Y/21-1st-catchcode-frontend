@@ -1,13 +1,29 @@
-.bannerSlideWrap {
-  display: inline;
-  width: 400vw;
-  height: 400px;
-  img {
-    width: 100vw;
-    height: 400px;
-  }
-  ul {
-    overflow: hidden;
-    display: flex;
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  .slideWrap {
+    width: 500px;
+    height: 200px;
+    .slideBox {
+      width: 100%;
+      margin: auto;
+      overflow-x: hidden;
+      .slideList {
+        display: flex;
+        .slide {
+          width: 500px;
+          height: 200px;
+          float: left;
+          .slideItem {
+            width: 500px;
+            height: 200px;
+          }
+        }
+      }
+    }
+    .slideDot {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
