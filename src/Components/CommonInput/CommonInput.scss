@@ -16,6 +16,11 @@
     &:focus {
       outline: 1px solid black;
     }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   .passwordView {

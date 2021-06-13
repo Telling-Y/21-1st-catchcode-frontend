@@ -5,43 +5,21 @@ import './Sign.scss';
 class Sign extends React.Component {
   constructor() {
     super();
+
     this.state = {
-      isGenderSelect: true,
+      // isGenderSelect: true,
       genderNum: 1,
       nameValue: '',
       phoneValue: '',
       passwordValue: '',
-      signData: [
-        {
-          id: 'nameValue',
-          text: '이름',
-          placeholder: '이름을 입력해주세요',
-
-          noValue: false,
-        },
-        {
-          id: 'phoneValue',
-          text: '휴대폰번호',
-          placeholder: '휴대폰번호를 입력해주세요',
-        },
-        {
-          id: 'passwordValue',
-          text: '비밀번호',
-          placeholder: '비밀번호를 입력해주세요',
-          view: false,
-        },
-      ],
-      validator: {
-        nameValue: input => input.length >= 6,
-        phoneValue: input => input?.includes('@' && '.com'),
-        passwordValue: input => input.length >= 8,
-      },
+      isWarning: [false, false, false],
     };
   }
 
   seperateGender = e => {
     this.setState({
-      isGenderSelect: e.target.innerText === '남성' ? false : true,
+      // isGenderSelect: e.target.innerText === '남성' ? false : true,
+      genderNum: e.target.innerText === '남성' ? 2 : 1,
     });
   };
 
@@ -52,8 +30,29 @@ class Sign extends React.Component {
     });
   };
 
+  validator = inputName => {
+    console.log(this.state);
+  };
+
+  handleSign = () => {
+    this.validator();
+    // fetch('http://10.58.2.121:8000/users/signup', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     phone_number: this.state.phoneValue,
+    //     password: this.state.passwordValue,
+    //     name: this.state.nameValue,
+    //     sex: this.state.genderNum,
+    //     admin: 1,
+    //   }),
+    // })
+    //   .then(res => res.json())
+    //   .then(result => console.log(result));
+  };
+
   render() {
-    const { isGenderSelect, signData } = this.state;
+    const { genderNum, isWarning } = this.state;
+    const { seperateGender } = this;
     return (
       <div className="Sign">
         <article className="borderBox">
@@ -62,34 +61,26 @@ class Sign extends React.Component {
             <div className="buttonBox">
               <div className="buttonTitle">성별</div>
               <button
-                className={
-                  isGenderSelect ? 'genderButton select' : 'genderButton'
-                }
-                onClick={this.seperateGender}
+                className={`genderButton ${genderNum === 1 && 'select'}`}
+                onClick={seperateGender}
               >
                 여성
               </button>
               <button
-                className={
-                  !isGenderSelect ? 'genderButton select' : 'genderButton'
-                }
-                onClick={this.seperateGender}
+                className={`genderButton ${genderNum === 2 && 'select'}`}
+                onClick={seperateGender}
               >
                 남성
               </button>
             </div>
-            {signData.map((data, idx) => {
+            {SIGN_DATAS.map((data, idx) => {
               return (
                 <CommonInput
                   key={idx}
-                  text={data.text}
-                  placeholder={data.placeholder}
-                  view={data.view}
-                  id={data.id}
-                  noValue={data.noValue}
-                  value={this.state[data.id]}
+                  data={data}
+                  value={this.state[data.name]}
                   handleInput={this.handleInput}
-                  handleValid={this.validator[data.id]}
+                  isWarning={isWarning}
                 />
               );
             })}
@@ -110,7 +101,9 @@ class Sign extends React.Component {
               </li>
               수신에 동의합니다.
             </div>
-            <button className="blackButton">확인</button>
+            <button className="blackButton" onClick={this.handleSign}>
+              확인
+            </button>
           </div>
         </article>
       </div>
@@ -119,3 +112,27 @@ class Sign extends React.Component {
 }
 
 export default Sign;
+
+const SIGN_DATAS = [
+  {
+    id: 1,
+    name: 'nameValue',
+    text: '이름',
+    type: 'text',
+    placeholder: '이름을 입력해주세요',
+  },
+  {
+    id: 2,
+    name: 'phoneValue',
+    text: '휴대폰번호',
+    type: 'number',
+    placeholder: '휴대폰번호를 입력해주세요',
+  },
+  {
+    id: 3,
+    name: 'passwordValue',
+    text: '비밀번호',
+    type: 'password',
+    placeholder: '비밀번호를 입력해주세요',
+  },
+];

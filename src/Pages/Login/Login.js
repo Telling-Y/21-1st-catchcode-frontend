@@ -6,105 +6,86 @@ import './Login.scss';
 class Login extends React.Component {
   constructor() {
     super();
+
     this.state = {
       phoneValue: '',
       passwordValue: '',
       isLogin: false,
-      ischeckNum: false,
-      loginData: [
-        {
-          id: 1,
-          type: 'text',
-          text: '휴대폰번호',
-          placeholder: '휴대폰 번호를 입력해주세요',
-        },
-        {
-          id: 2,
-          type: 'text',
-          text: '비밀번호',
-          placeholder: '비밀번호를 입력해주세요',
-          view: false,
-        },
-      ],
+      isWarning: [false, false],
     };
   }
 
+  checkInputLenght = () => {
+    const { phoneValue, passwordValue } = this.state;
+    this.setState({
+      isLogin: phoneValue.length > 0 && passwordValue.length > 0 ? true : false,
+    });
+  };
+
   handleInput = e => {
+    const { name, value } = e.target;
     this.setState(
       {
-        [e.target.name]: e.target.value,
+        [name]: value,
       },
       () => {
-        return console.log(this.state.phoneValue);
+        this.checkInputLenght();
       }
     );
   };
 
-  activeLogin = () => {
-    const { phoneValue, passwordValue } = this.state;
-    this.setState({
-      isLogin: phoneValue && passwordValue ? true : false,
-    });
-  };
-
-  viewPassword = e => {
-    console.log(`e.target.previousElementSibling`, e);
-  };
-
-  checkNum = e => {
-    const regex = /^[0-9\b ]{0,20}$/;
-    if (regex.test(e.target.value)) {
-      this.setState({
-        phoneValue: e.target.value,
+  handleLogin = () => {
+    fetch('http://10.58.2.121:8000/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        phone_number: this.state.phoneValue,
+        password: this.state.passwordValue,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.result === 'SUCCESS!') {
+          this.goToMain();
+        } else if (res.result === 'INVALID USER') {
+          // console.log(this.state.isWarning);
+          this.setState({
+            isWarning: [true, false],
+          });
+        }
       });
-    }
   };
 
   goToSign = () => {
     this.props.history.push('/Sign');
   };
 
+  goToMain = () => {
+    this.props.history.push('/');
+  };
+
   render() {
-    const { phoneValue, passwordValue, isLogin, loginData } = this.state;
-    console.log(`phoneValue`, phoneValue, typeof phoneValue);
+    const { isLogin, phoneValue, isWarning } = this.state;
+    console.log(isWarning);
     return (
       <div className="Login">
         <article className="borderBox">
           <div className="loginWrap">
             ​<h1 className="title">로그인</h1>
-            {loginData.map(data => {
+            {LOGIN_DATAS.map(data => {
               return (
                 <CommonInput
                   key={data.id}
-                  type={data.type}
-                  text={data.text}
-                  placeholder={data.placeholder}
-                  view={data.view}
-                  changeInput={this.handleInput}
+                  data={data}
+                  value={this.state[data.name]}
+                  handleInput={this.handleInput}
+                  isWarning={isWarning}
                 />
               );
             })}
-            {/* <div className="inputBox">
-              <div className="inputTitle">비밀번호</div>
-              ​
-              <input
-                type="password"
-                placeholder="비밀번호를 입력해주세요"
-                name="passwordValue"
-                onChange={this.handleInput}
-              />
-              <button
-                className="passwordView"
-                onClick={this.viewPassword}
-                style={{
-                  backgroundImage: `url("/images/view.png")`,
-                }}
-              ></button>
-            </div> */}
             ​
             <button
               className={isLogin ? 'blackButton' : 'grayButton'}
-              // onClick={this.goToMain}
+              onClick={isLogin ? this.handleLogin : null}
             >
               로그인
             </button>
@@ -128,3 +109,21 @@ class Login extends React.Component {
 }
 
 export default Login;
+
+const LOGIN_DATAS = [
+  {
+    id: 1,
+    name: 'phoneValue',
+    type: 'number',
+    text: '휴대폰번호',
+    warning: '휴대폰 번호가 일치하지 않습니다',
+    placeholder: '휴대폰번호를 입력해 주세요',
+  },
+  {
+    id: 2,
+    name: 'passwordValue',
+    type: 'password',
+    text: '비밀번호',
+    placeholder: '비밀번호를 입력해 주세요',
+  },
+];
