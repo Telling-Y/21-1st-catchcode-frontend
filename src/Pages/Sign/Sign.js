@@ -54,7 +54,7 @@ class Sign extends React.Component {
     const { genderNum, isWarning } = this.state;
     const { seperateGender } = this;
     return (
-      <div className="Sign">
+      <div className="sign">
         <article className="borderBox">
           <div className="SignWrap">
             <h1 className="title">회원가입</h1>

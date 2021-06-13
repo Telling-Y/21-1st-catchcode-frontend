@@ -67,7 +67,7 @@ class Login extends React.Component {
     const { isLogin, phoneValue, isWarning } = this.state;
     console.log(isWarning);
     return (
-      <div className="Login">
+      <div className="login">
         <article className="borderBox">
           <div className="loginWrap">
             ​<h1 className="title">로그인</h1>

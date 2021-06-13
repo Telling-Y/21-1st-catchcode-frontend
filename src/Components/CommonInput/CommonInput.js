@@ -5,6 +5,7 @@ class CommonInput extends React.Component {
   render() {
     const { name, type, text, placeholder, warning } = this.props.data;
     const { value, handleInput, isWarning } = this.props;
+    console.log(isWarning);
     return (
       <div className="inputBox">
         <div className="inputTitle">{text}</div>
