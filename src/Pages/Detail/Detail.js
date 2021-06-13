@@ -51,6 +51,7 @@ class Detail extends React.Component {
               <div className="nameSector">
                 <div className="wishList">
                   <div className="productName">{result.name}</div>
+                  <i class="fas fa-heart" />
                 </div>
 
                 <div className="productCategory">{result.categoryName}</div>

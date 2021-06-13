@@ -21,10 +21,18 @@
         position: sticky;
         top: 0;
         padding-top: 2rem;
-
-        .productName {
-          padding-bottom: 1rem;
-          font-size: 2rem;
+        .wishList {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .productName {
+            padding: 0.5rem 0;
+            font-size: 2rem;
+          }
+          .putWishList {
+            -webkit-text-stroke: 1.5px #000;
+            -webkit-text-fill-color: transparent;
+          }
         }
 
         .productCategory {
