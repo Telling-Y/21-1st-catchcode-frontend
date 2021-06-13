@@ -30,6 +30,7 @@ class SizeSelector extends Component {
         <li className="fixedLi">
           <button className="sizeSelector" onClick={this.changeListStyle}>
             {this.state.setSize}
+            <i class="fas fa-arrow-down"></i>
           </button>
         </li>
         {this.props.result.priceAndSize &&

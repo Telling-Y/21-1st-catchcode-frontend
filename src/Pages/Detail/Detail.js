@@ -65,6 +65,7 @@ class Detail extends React.Component {
                 <div className="basketWrap">
                   <div className="checkPayment">
                     <div className="deliv">
+                      <i class="fas fa-truck-loading"></i>
                       <div className="itemIndex">배송 유형</div>
                       <div className="delivItem">해외직배송</div>
                     </div>
@@ -85,14 +86,14 @@ class Detail extends React.Component {
         </div>
         <div className="induceUSer">
           <div className="induceItems">
-            <img src="" alt="" />
+            <i class="fas fa-balance-scale-right" />
             <span>
               전세계 원단을
               <br />단 한 곳에서
             </span>
           </div>
           <div className="induceItems">
-            <img src="" alt="" />
+            <i class="fas fa-receipt"></i>
             <span>
               똑똑한 가격비교로
               <br />
@@ -100,14 +101,14 @@ class Detail extends React.Component {
             </span>
           </div>
           <div className="induceItems">
-            <img src="" alt="" />
+            <i class="fas fa-briefcase" />
             <span>
               고민없이
               <br />한 눈에 보는 최종금액
             </span>
           </div>
           <div className="induceItems">
-            <img src="" alt="" />
+            <i class="fas fa-boxes" />
             <span>
               직구도 국내쇼핑처럼
               <br />
