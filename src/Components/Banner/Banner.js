@@ -18,57 +18,38 @@ class Banner extends Component {
   }
 
   prevSlide = () => {
-    if (this.state.slideIndex === 1) {
-      this.setState({
-        slideIndex: this.state.imageSrc.length - 1,
-      });
-
-      this.timeout = setTimeout(() => {
-        this.setState({
-          slideIndex: 3,
+    this.state.slideIndex <= 1
+      ? this.setState({
+          slideIndex: this.state.slideIndex - 1,
+        })(
+          (this.timeout = setTimeout(() => {
+            this.setState({
+              slideIndex: 3,
+            });
+          }, 300))
+        )
+      : this.setState({
+          slideIndex: this.state.imageSrc.length - 1,
         });
-        this.startTime = new Date();
-      }, 400);
-      this.setState({
-        speed: 0,
-      });
-      this.setState({
-        slideIndex: this.state.slideIndex - 1,
-        speed: 300,
-      });
-    } else {
-      this.setState({
-        slideIndex: this.state.slideIndex - 1,
-      });
-    }
 
     console.log(this.state.slideIndex);
   };
 
   nextSlide = () => {
-    if (this.state.slideIndex === this.state.imageSrc.length - 2) {
-      this.setState({
-        slideIndex: this.state.imageSrc.length - 1,
-      });
-
-      this.timeout = setTimeout(() => {
-        this.setState({
-          slideIndex: 1,
+    this.state.slideIndex >= 3
+      ? this.setstate({
+          slideIndex: this.state.slideIndex + 1,
+        })(
+          (this.timeout = setTimeout(() => {
+            this.setState({
+              slideIndex: 1,
+            });
+          }, 300))
+        )
+      : this.setState({
+          slideIndex: this.state.slideIndex + 1,
+          speed: 300,
         });
-        this.startTime = new Date();
-      }, 400);
-      this.setState({
-        speed: 0,
-      });
-      this.setState({
-        slideIndex: this.state.slideIndex - 1,
-        speed: 300,
-      });
-    } else {
-      this.setState({
-        slideIndex: this.state.slideIndex - 1,
-      });
-    }
 
     console.log(this.state.slideIndex);
   };
