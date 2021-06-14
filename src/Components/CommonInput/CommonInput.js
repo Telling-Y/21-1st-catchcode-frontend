@@ -15,7 +15,14 @@ class CommonInput extends React.Component {
           placeholder={placeholder}
           onChange={handleInput}
         />
-        {isWarning.map(x => x && <div className="warning">{warning}</div>)}
+        {isWarning.map(
+          (x, idx) =>
+            x && (
+              <div className="warning" key={idx}>
+                {placeholder}
+              </div>
+            )
+        )}
         {/* {isnoValue && <div className="warning">{placeholder}</div>} */}
 
         {text === '비밀번호' && (

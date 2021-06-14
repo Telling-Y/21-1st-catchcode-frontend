@@ -32,6 +32,11 @@ class Sign extends React.Component {
 
   validator = inputName => {
     console.log(this.state);
+    if (this.state.nameValue === '') {
+      this.setState({
+        isWarning: [true, ...this.state.isWarning.slice(1)],
+      });
+    }
   };
 
   handleSign = () => {
