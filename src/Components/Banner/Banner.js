@@ -18,58 +18,47 @@ class Banner extends Component {
   }
 
   prevSlide = () => {
-    this.state.slideIndex <= 1
+    this.state.slideIndex < 1
       ? this.setState({
           slideIndex: this.state.slideIndex - 1,
-        })(
-          (this.timeout = setTimeout(() => {
-            this.setState({
-              slideIndex: 3,
-            });
-          }, 300))
-        )
+        })
       : this.setState({
-          slideIndex: this.state.imageSrc.length - 1,
+          slideIndex: 3,
         });
 
     console.log(this.state.slideIndex);
   };
 
   nextSlide = () => {
-    this.state.slideIndex >= 3
+    this.state.slideIndex > 3
       ? this.setstate({
-          slideIndex: this.state.slideIndex + 1,
-        })(
-          (this.timeout = setTimeout(() => {
-            this.setState({
-              slideIndex: 1,
-            });
-          }, 300))
-        )
+          slideIndex: 0,
+        })
       : this.setState({
           slideIndex: this.state.slideIndex + 1,
-          speed: 300,
         });
-
-    console.log(this.state.slideIndex);
   };
 
   componentDidMount() {
     setInterval(() => {
-      this.state.slideIndex > 3
-        ? setTimeout(() => {
-            this.setState({ slideIndex: 1, speed: 300 });
-          }, 2000) &&
-          this.setState({
-            speed: 0,
-            slideIndex: 1,
-          })
-        : setTimeout(() => {
-            this.setState({ slideIndex: this.state.slideIndex + 1 });
-          }, 2000);
-      console.log(this.state.slideIndex);
+      setTimeout(() => {
+        this.setState({ slideIndex: this.state.slideIndex + 1 });
+      }, 2000);
     }, 2000);
   }
+
+  // componentDidUpdate() {
+  //   if (this.state.slideIndex > 3) {
+  //     setTimeout(() => {
+  //       this.setState(
+  //         {
+  //           slideIndex: 1,
+  //         },
+  //         2000
+  //       );
+  //     });
+  //   }
+  // }
 
   render() {
     return (
