@@ -52,18 +52,20 @@
         font-size: 12px;
         margin: 6px;
       }
-      .detailWrap {
-        @include flex-center();
 
-        .detail {
-          margin: 6px 0;
-          padding: 2px 4px;
-          color: #1e1e1e;
-          font-size: 10px;
-          font-weight: bold;
-          border-radius: 1px;
-          border: 1px solid #2f2f2f33;
-        }
+      .detail {
+        margin: 6px 0;
+        padding: 2px 4px;
+        color: #1e1e1e;
+        font-size: 10px;
+        font-weight: bold;
+        border-radius: 1px;
+        border: 1px solid #2f2f2f33;
+      }
+      .soldout {
+        font-size: 12px;
+        font-weight: bold;
+        color: rgb(181, 181, 181);
       }
     }
   }

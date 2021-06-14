@@ -5,24 +5,13 @@ class FilterNav extends react.Component {
   constructor() {
     super();
     this.state = {
-      categories: [],
       isCatchSelect: 0,
       isPriceSelect: false,
       isColorSelect: false,
       arr: [false, false, false, false],
     };
   }
-  // 'http://localhost:3000/products/${className}/${id}?categoriesDatas.json'
-
-  componentDidMount() {
-    fetch('http://localhost:3000/data/categoriesDatas.json')
-      .then(res => res.json())
-      .then(data => {
-        return this.setState({
-          categories: data.result.categories,
-        });
-      });
-  }
+  // 'http://localhost:3000/products/${className}/${id}?categoriesDatas.json' RESTfull API 예시
 
   handleCatch = () => {
     this.setState({
@@ -62,8 +51,8 @@ class FilterNav extends react.Component {
   };
 
   render() {
-    const { categories, isCatchSelect, isPriceSelect, isColorSelect } =
-      this.state;
+    const { isCatchSelect, isPriceSelect, isColorSelect } = this.state;
+    const { categories } = this.props;
     return (
       <div className="filterNav">
         <div className="categoriesBox">
