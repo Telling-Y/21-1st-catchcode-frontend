@@ -8,7 +8,7 @@ class Sign extends React.Component {
 
     this.state = {
       // isGenderSelect: true,
-      genderNum: 1,
+      genderNum: 0,
       nameValue: '',
       phoneValue: '',
       passwordValue: '',
@@ -31,7 +31,7 @@ class Sign extends React.Component {
   };
 
   validator = inputName => {
-    console.log(this.state);
+    // console.log(this.state);
     if (this.state.nameValue === '') {
       this.setState({
         isWarning: [true, ...this.state.isWarning.slice(1)],
@@ -66,13 +66,13 @@ class Sign extends React.Component {
             <div className="buttonBox">
               <div className="buttonTitle">성별</div>
               <button
-                className={`genderButton ${genderNum === 1 && 'select'}`}
+                className={`genderButton ${!genderNum && 'select'}`}
                 onClick={seperateGender}
               >
                 여성
               </button>
               <button
-                className={`genderButton ${genderNum === 2 && 'select'}`}
+                className={`genderButton ${genderNum && 'select'}`}
                 onClick={seperateGender}
               >
                 남성

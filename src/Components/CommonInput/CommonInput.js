@@ -3,7 +3,7 @@ import './CommonInput.scss';
 
 class CommonInput extends React.Component {
   render() {
-    const { name, type, text, placeholder, warning } = this.props.data;
+    const { name, type, text, placeholder, vaild } = this.props.data;
     const { value, handleInput, isWarning } = this.props;
     console.log(isWarning);
     return (

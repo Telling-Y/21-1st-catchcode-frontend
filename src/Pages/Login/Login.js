@@ -35,7 +35,7 @@ class Login extends React.Component {
   };
 
   handleLogin = () => {
-    fetch('http://10.58.2.121:8000/users/signin', {
+    fetch('http://10.58.6.235:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         phone_number: this.state.phoneValue,
@@ -49,7 +49,7 @@ class Login extends React.Component {
         } else if (res.result === 'INVALID USER') {
           // console.log(this.state.isWarning);
           this.setState({
-            isWarning: [true, false],
+            isWarning: [true, ...this.state.isWarning.slice(1)],
           });
         }
       });
@@ -116,7 +116,7 @@ const LOGIN_DATAS = [
     name: 'phoneValue',
     type: 'number',
     text: '휴대폰번호',
-    warning: '휴대폰 번호가 일치하지 않습니다',
+    vaild: '휴대폰 번호가 일치하지 않습니다',
     placeholder: '휴대폰번호를 입력해 주세요',
   },
   {
