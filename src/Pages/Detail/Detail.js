@@ -21,11 +21,10 @@ class Detail extends React.Component {
       });
   }
   selectPrice = data => {
-    console.log(data);
     this.setState({
       priceData: data,
     });
-    console.log(this.state.priceData);
+    console.log(data);
   };
 
   render() {
