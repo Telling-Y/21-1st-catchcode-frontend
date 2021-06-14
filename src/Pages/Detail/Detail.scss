@@ -11,9 +11,10 @@
       img {
         width: 25rem;
         height: 30rem;
-        padding: 2rem;
+        padding: 2rem 2rem 2rem 0;
       }
       .productDetail {
+        background-color: #eaeaea;
         .productDescription {
           font-weight: bold;
         }
@@ -26,14 +27,11 @@
         position: sticky;
         top: 0;
         padding-top: 2rem;
-        .wishList {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          .productName {
-            padding: 0.5rem 0;
-            font-size: 2rem;
-          }
+
+        .productName {
+          padding: 0.5rem 0;
+          font-size: 2rem;
+
           .putWishList {
           }
         }
@@ -46,6 +44,16 @@
         }
         .selectPayment {
           display: flex;
+          justify-content: space-around;
+          padding-bottom: 0.3rem;
+          margin-bottom: 2rem;
+          button {
+            border: none;
+            border-bottom: 0.1rem solid #1e1e1e;
+            padding: 0 1.5rem;
+            font-size: 1.1rem;
+            background-color: unset;
+          }
         }
         .paymentArea {
           display: flex;
@@ -54,6 +62,7 @@
           margin-top: 2rem;
 
           .noticePrice {
+            align-self: flex-end;
             font-size: 1.2rem;
             padding: 1rem;
           }
@@ -70,6 +79,7 @@
                 display: flex;
                 align-items: center;
                 flex-direction: column;
+                padding-bottom: 1.8rem;
 
                 .itemIndex {
                   display: flex;
@@ -91,10 +101,18 @@
               border: none;
               width: 80%;
               background-color: #1e1e1e;
-              padding: 0.5rem 2rem;
-              margin: 1rem 0;
+              padding: 1rem 2rem;
+              margin: 1.5rem 0;
               color: #eaeaea;
             }
+          }
+        }
+      }
+      .induceUser {
+        display: flex;
+        .induceItems {
+          .fa-boxes {
+            font-size: 4rem;
           }
         }
       }

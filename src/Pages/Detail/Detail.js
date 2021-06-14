@@ -7,7 +7,7 @@ class Detail extends React.Component {
     super();
     this.state = {
       result: [],
-      priceData: '',
+      priceData: 0,
     };
   }
 
@@ -20,12 +20,13 @@ class Detail extends React.Component {
         });
       });
   }
-  selectPrice = data => {
-    this.setState({
-      priceData: data,
-    });
-    console.log(data);
-  };
+  componentDidUpdate() {
+    this.selectPrice = props => {
+      this.setState({
+        priceData: props,
+      });
+    };
+  }
 
   render() {
     const { result } = this.state;
@@ -59,22 +60,19 @@ class Detail extends React.Component {
           <div className="sidePage">
             <div className="stickyDiv">
               <div className="nameSector">
-                <div className="wishList">
-                  <div className="productName">{result.name}</div>
-                  <i class="fas fa-heart" />
-                </div>
+                <div className="productName">{result.name}</div>
 
                 <div className="productCategory">{result.categoryName}</div>
               </div>
               <div className="selectPayment">
-                <span className="ehtchWay">Ehtch 구매</span>
-                <span className="normarlWay">일반 구매</span>
+                <button className="ehtchWay">Ehtch 구매</button>
+                <button className="normarlWay">일반 구매</button>
               </div>
               <div className="sizeSelectorWrap">
                 <SizeSelector result={result} selectPrice={this.selectPrice} />
               </div>
               <div className="paymentArea">
-                <div className="noticePrice">{this.state.priceData}</div>
+                <div className="noticePrice">{this.state.priceData}원</div>
 
                 <div className="basketWrap">
                   <div className="checkPayment">
@@ -106,36 +104,36 @@ class Detail extends React.Component {
             </div>
           </div>
         </div>
-        <div className="induceUSer">
+        <div className="induceUser">
           <div className="induceItems">
             <i class="fas fa-balance-scale-right" />
-            <span>
+            <div>
               전세계 원단을
               <br />단 한 곳에서
-            </span>
+            </div>
           </div>
           <div className="induceItems">
             <i class="fas fa-receipt"></i>
-            <span>
-              똑똑한 가격비교로
+            <div>
+              \ 똑똑한 가격비교로
               <br />
               찾는 최저가
-            </span>
+            </div>
           </div>
           <div className="induceItems">
             <i class="fas fa-briefcase" />
-            <span>
+            <div>
               고민없이
               <br />한 눈에 보는 최종금액
-            </span>
+            </div>
           </div>
           <div className="induceItems">
             <i class="fas fa-boxes" />
-            <span>
+            <div>
               직구도 국내쇼핑처럼
               <br />
               간편한 '엣치구매'
-            </span>
+            </div>
           </div>
         </div>
       </div>

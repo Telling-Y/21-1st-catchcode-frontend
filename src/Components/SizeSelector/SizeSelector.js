@@ -21,8 +21,9 @@ class SizeSelector extends Component {
     this.setState({
       setSize: e.target.innerText.slice(0, 1),
       listStyle: '',
-      payPrice: e.target.innerText.slice(1, e.target.innerText.length - 1),
+      payPrice: e.target.innerText.slice(1, e.target.innerText.length),
     });
+    this.sendPriceToParent();
   };
 
   sendPriceToParent = () => {
@@ -44,7 +45,7 @@ class SizeSelector extends Component {
               <li class="newList" style={{ display: this.state.listStyle }}>
                 <button
                   className="setSizeBtn"
-                  onClick={(this.chgSizeText, this.sendPriceToParent)}
+                  onClick={this.chgSizeText}
                   key={result.sizeId}
                 >
                   <div className="propsData size">{result.sizeName}</div>
