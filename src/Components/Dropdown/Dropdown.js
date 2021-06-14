@@ -30,9 +30,9 @@ class Dropdown extends Component {
         <div className="countryWrap">
           <span>국가별 원단</span>
           <div className="countries">
-            {this.props.result.countries.map(result => {
+            {this.props.result.countries.map((result, i) => {
               return (
-                <Link to="#" className="countryItem">
+                <Link to="#" key={i} className="countryItem">
                   <span>{result.name}</span>
                 </Link>
               );

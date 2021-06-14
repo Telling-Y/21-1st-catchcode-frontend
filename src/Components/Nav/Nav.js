@@ -17,9 +17,7 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.121:8000/products/categories', {
-      method: 'GET',
-    })
+    fetch('http://10.58.2.121:8000/products/categories')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -27,7 +25,6 @@ class Nav extends React.Component {
         });
       });
   }
-
   loginModalOn = () => {
     this.setState({
       loginModalValid: true,
