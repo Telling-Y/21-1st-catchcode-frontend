@@ -7,6 +7,7 @@ class Detail extends React.Component {
     super();
     this.state = {
       result: [],
+      priceData: '',
     };
   }
 
@@ -19,6 +20,13 @@ class Detail extends React.Component {
         });
       });
   }
+  selectPrice = data => {
+    console.log(data);
+    this.setState({
+      priceData: data,
+    });
+    console.log(this.state.priceData);
+  };
 
   render() {
     const { result } = this.state;
@@ -64,10 +72,10 @@ class Detail extends React.Component {
                 <span className="normarlWay">일반 구매</span>
               </div>
               <div className="sizeSelectorWrap">
-                <SizeSelector result={result} />
+                <SizeSelector result={result} selectPrice={this.selectPrice} />
               </div>
               <div className="paymentArea">
-                <div className="noticePrice">500,000원</div>
+                <div className="noticePrice">{this.state.priceData}</div>
 
                 <div className="basketWrap">
                   <div className="checkPayment">
