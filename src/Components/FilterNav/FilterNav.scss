@@ -6,12 +6,21 @@
     @include flex-center(flex-start);
     box-shadow: #e4e4e4 0px -1px 0px 0px inset;
 
-    .categories {
+    .category {
       padding: 20px;
       font-size: 16px;
       font-weight: bold;
       color: #a9a9a9;
       cursor: pointer;
+
+      &.select {
+        color: #1e1e1e;
+        box-shadow: #1e1e1e 0px -1px 0px 0px inset;
+        &:hover {
+          color: #1e1e1e;
+          box-shadow: #1e1e1e 0px -1px 0px 0px inset;
+        }
+      }
 
       &:hover {
         color: #888888;
@@ -25,6 +34,7 @@
     @include flex-center(flex-start);
 
     .filterButton {
+      position: relative;
       padding: 10px 20px;
       margin: 0px 10px 30px 0;
       font-size: 14px;
@@ -32,10 +42,87 @@
       border: 1px solid #e4e4e4;
       cursor: pointer;
 
-      &.select {
+      &.black {
         color: white;
         background-color: black;
         border: 1px solid white;
+      }
+
+      .filterModal {
+        @include flex-center();
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 240px;
+        padding: 14px;
+        border: 1px solid #e4e4e4;
+        background-color: white;
+        z-index: 1;
+
+        .priceInputBox {
+          width: 100%;
+          margin: 4px 0;
+
+          .priceInput {
+            width: 100%;
+            height: 40px;
+            margin: 4px 0;
+            padding: 0 10px;
+            border: 1px solid #e4e4e4;
+            border-radius: 0;
+            text-align: right;
+
+            &:focus {
+              border: 1px solid black;
+            }
+          }
+        }
+
+        .colorBox {
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+
+          .colorCircle {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            padding: 3px;
+            border-radius: 100%;
+            background-color: aqua;
+          }
+        }
+
+        .grayLine {
+          width: 110%;
+          border-top: 1px solid #e4e4e4;
+          margin: 10px 0;
+        }
+
+        .settingBox {
+          @include flex-center(space-between);
+          width: 100%;
+
+          button {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #ffffff00;
+            border: 0;
+            cursor: pointer;
+
+            &.black {
+              color: white;
+              background-color: black;
+              border: 1px solid white;
+
+              &:hover {
+                background-color: #444444;
+              }
+            }
+          }
+        }
       }
     }
   }

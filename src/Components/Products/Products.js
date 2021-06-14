@@ -6,7 +6,6 @@ class Products extends react.Component {
     return (
       <div className="products">
         <div className="item">
-          <div className="like select">♥</div>
           <div className="image">
             <img
               alt="원단사진입니다"
@@ -23,7 +22,6 @@ class Products extends react.Component {
           </div>
         </div>
         <div className="item">
-          <div className="like">♥</div>
           <div className="image">
             <img
               alt="원단사진입니다"
@@ -40,7 +38,6 @@ class Products extends react.Component {
           </div>
         </div>
         <div className="item">
-          <div className="like">♥</div>
           <div className="image">
             <img
               alt="원단사진입니다"
@@ -58,7 +55,6 @@ class Products extends react.Component {
         </div>
         <div className="item">
           <div className="image">
-            <div className="like">♥</div>
             <img
               alt="원단사진입니다"
               src="https://image.freepik.com/free-vector/abstract-geometric-seamless-pattern_1305-1832.jpg"
@@ -74,7 +70,6 @@ class Products extends react.Component {
           </div>
         </div>
         <div className="item">
-          <div className="like">♥</div>
           <div className="image">
             <img
               alt="원단사진입니다"
