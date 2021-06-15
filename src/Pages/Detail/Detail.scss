@@ -1,13 +1,16 @@
 .detailPageWrap {
   display: flex;
   flex-direction: column;
+
   .detailContentsWrap {
-    height: auto;
     display: flex;
+    height: auto;
     justify-content: center;
+
     .contentPage {
       display: flex;
       flex-direction: column;
+
       img {
         width: 25rem;
         height: 25rem;
@@ -15,9 +18,9 @@
       }
       .productDetail {
         .productInfo {
+          padding-bottom: 0.5rem;
           font-weight: bold;
           font-size: 1.2rem;
-          padding-bottom: 0.5rem;
         }
         .productDescription {
           width: 25rem;
@@ -26,26 +29,30 @@
 
       .productContents {
         display: flex;
-        justify-content: space-between;
         width: 25rem;
         margin-top: 0.9rem;
+        justify-content: space-between;
 
         .contentName {
           font-weight: 700;
         }
       }
     }
+
     .sidePage {
       height: 80rem;
       width: 22rem;
+
       .rightDiv {
         height: 87rem;
+
         .stickyDiv {
           position: -webkit-sticky;
           position: sticky;
           top: 0;
           padding-top: 2rem;
           margin-bottom: 2rem;
+
           .productName {
             padding-bottom: 0.5rem;
             font-size: 1.3rem;
@@ -54,48 +61,40 @@
           .productCategory {
             padding-bottom: 1rem;
             margin-bottom: 1rem;
-
             font-size: 1.5rem;
           }
-          .selectPayment {
-            display: flex;
-            justify-content: space-around;
-            padding-bottom: 0.3rem;
-            margin-bottom: 2rem;
-            .catchWay {
-              width: 22rem;
-              border: none;
-              border-bottom: 0.1rem solid #1e1e1e;
 
-              font-size: 1.1rem;
-              background-color: unset;
-            }
-            .normalWay {
-              opacity: 0.3;
-            }
+          .forLine {
+            width: 22rem;
+            border-bottom: 0.1rem solid #1e1e1e;
+            font-size: 1.1rem;
           }
+
           .paymentArea {
             display: flex;
-            flex-direction: column;
             border: 0.1rem solid #eaeaea;
+            flex-direction: column;
             margin-top: 3rem;
 
             .noticePrice {
               display: flex;
-              justify-content: space-between;
               width: 20rem;
+              padding: 1rem;
+              justify-content: space-between;
               align-self: flex-end;
               font-size: 1.2rem;
-              padding: 1rem;
+
               .fixedWord {
                 align-self: flex-start;
               }
             }
+
             .basketWrap {
               display: flex;
               flex-direction: column;
               justify-content: center;
               background-color: #eaeaea;
+
               .checkPayment {
                 display: flex;
                 justify-content: space-around;
@@ -108,6 +107,7 @@
                   .itemIndex {
                     display: flex;
                     align-items: center;
+
                     .itemWord {
                       font-size: 0.5rem;
                     }
@@ -120,14 +120,15 @@
                   }
                 }
               }
+
               .putBasket {
-                align-self: center;
-                border: none;
                 width: 80%;
-                background-color: #1e1e1e;
                 padding: 1rem 2rem;
                 margin: 1.5rem 0;
                 color: #eaeaea;
+                background-color: #1e1e1e;
+                border: none;
+                align-self: center;
               }
             }
           }
@@ -143,21 +144,23 @@
   }
 }
 .induceUser {
+  display: flex;
+  width: 50rem;
   margin-top: 2rem;
+  background-color: #eaeaea;
   align-self: center;
   text-align: center;
-  display: flex;
   justify-content: space-around;
-  width: 50rem;
-  background-color: #eaeaea;
+
   .induceItems {
     .fa-boxes,
     .fa-briefcase,
     .fa-receipt,
     .fa-balance-scale-right {
-      font-size: 3.3rem;
       margin-top: 1rem;
+      font-size: 3.3rem;
     }
+
     .catchCopyright {
       margin: 1rem;
     }

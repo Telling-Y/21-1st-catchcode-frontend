@@ -1,43 +1,43 @@
 .sizeSelectorWrap {
-  .fixedLi {
-    font-size: 1rem;
-
-    border: 1px solid #eaeaea;
-    .sizeSelector {
-      display: flex;
-      align-items: center;
-      justify-content: stretch;
-      justify-content: center;
-      width: 22rem;
-      height: 3rem;
-      .setSize {
-        width: 25rem;
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-  }
-
   button {
     background-color: unset;
     border: none;
   }
 
+  .fixedLi {
+    border: 1px solid #eaeaea;
+    font-size: 1rem;
+
+    .sizeSelector {
+      display: flex;
+      width: 22rem;
+      height: 3rem;
+      align-items: center;
+      justify-content: center;
+
+      .setSize {
+        display: flex;
+        width: 25rem;
+        justify-content: space-between;
+      }
+    }
+  }
+
   .showList {
-    z-index: 1000;
     position: relative;
     font-size: 1rem;
     border-top: none;
+    z-index: 1000;
+
     .setSizeBtn {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 3rem;
       background-color: white;
       border: 1px solid #eaeaea;
-      position: absolute;
-      height: 3rem;
-
-      display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 100%;
     }
   }
 }

@@ -85,9 +85,9 @@ class Detail extends React.Component {
 
                   <div className="productCategory">{result.category}</div>
                 </div>
-                <div className="selectPayment">
-                  <button className="catchWay"></button>
-                </div>
+
+                <div className="forLine" />
+
                 <div className="sizeSelectorWrap">
                   <SizeSelector
                     result={result}
