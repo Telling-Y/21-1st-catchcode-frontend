@@ -10,13 +10,17 @@
       flex-direction: column;
       img {
         width: 25rem;
-        height: 30rem;
+        height: 25rem;
         padding: 2rem 2rem 2rem 0;
       }
       .productDetail {
-        background-color: #eaeaea;
-        .productDescription {
+        .productInfo {
           font-weight: bold;
+          font-size: 1.2rem;
+          padding-bottom: 0.5rem;
+        }
+        .productDescription {
+          width: 20rem;
         }
       }
     }
@@ -50,16 +54,19 @@
           button {
             border: none;
             border-bottom: 0.1rem solid #1e1e1e;
-            padding: 0 1.5rem;
+            padding: 0 4rem;
             font-size: 1.1rem;
             background-color: unset;
+          }
+          .normalWay {
+            opacity: 0.3;
           }
         }
         .paymentArea {
           display: flex;
           flex-direction: column;
           border: 0.1rem solid #eaeaea;
-          margin-top: 2rem;
+          margin-top: 3rem;
 
           .noticePrice {
             align-self: flex-end;
@@ -79,7 +86,6 @@
                 display: flex;
                 align-items: center;
                 flex-direction: column;
-                padding-bottom: 1.8rem;
 
                 .itemIndex {
                   display: flex;
@@ -108,14 +114,17 @@
           }
         }
       }
-      .induceUser {
-        display: flex;
-        .induceItems {
-          .fa-boxes {
-            font-size: 4rem;
-          }
-        }
-      }
+    }
+  }
+}
+.induceUser {
+  display: flex;
+  .induceItems {
+    .fa-boxes,
+    .fa-briefcase,
+    .fa-receipt,
+    .fa-balance-scale-right {
+      font-size: 4rem;
     }
   }
 }

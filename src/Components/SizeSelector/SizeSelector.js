@@ -27,36 +27,40 @@ class SizeSelector extends Component {
   };
 
   sendPriceToParent = () => {
-    this.props.selectPrice(this.state.payPrice);
+    return this.props.selectPrice(this.state.payPrice);
   };
 
   render() {
     return (
-      <ul className="sizeSelectorWrap">
-        <li className="fixedLi">
+      <div className="sizeSelectorWrap">
+        <div className="fixedLi">
           <button className="sizeSelector" onClick={this.changeListStyle}>
-            {this.state.setSize}
-            <i class="fas fa-arrow-down"></i>
+            <div className="setSize">
+              {this.state.setSize}
+              <i class="fas fa-arrow-down" />
+            </div>
           </button>
-        </li>
+        </div>
         {this.props.result.priceAndSize &&
-          this.props.result.priceAndSize.map(result => {
+          this.props.result.priceAndSize.map((result, i) => {
             return (
-              <li class="newList" style={{ display: this.state.listStyle }}>
+              <div class="showList" style={{ display: this.state.listStyle }}>
                 <button
                   className="setSizeBtn"
                   onClick={this.chgSizeText}
                   key={result.sizeId}
+                  id={'btnLength' + i}
+                  style={{ top: i * 2.8 + `rem` }}
                 >
                   <div className="propsData size">{result.sizeName}</div>
                   <div className="propsData price">
                     {result.stock === 0 ? 'Soldout' : result.price + '₩'}
                   </div>
                 </button>
-              </li>
+              </div>
             );
           })}
-      </ul>
+      </div>
     );
   }
 }

@@ -20,13 +20,12 @@ class Detail extends React.Component {
         });
       });
   }
-  componentDidUpdate() {
-    this.selectPrice = props => {
-      this.setState({
-        priceData: props,
-      });
-    };
-  }
+  selectPrice = finalPayment => {
+    console.log(this);
+    return this.setState({
+      priceData: finalPayment,
+    });
+  };
 
   render() {
     const { result } = this.state;
@@ -41,8 +40,10 @@ class Detail extends React.Component {
                 return <img src={src} alt="제품 이미지" />;
               })}
             <div className="productDetail">
-              <div className="productDescription">상품 상세 정보</div>
-              {result && result.description}
+              <div className="productInfo">상품 상세 정보</div>
+              <div className="productDescription">
+                {result && result.description}
+              </div>
             </div>
             <ul className="productContents">
               {result.productContents &&
@@ -66,13 +67,13 @@ class Detail extends React.Component {
               </div>
               <div className="selectPayment">
                 <button className="ehtchWay">Ehtch 구매</button>
-                <button className="normarlWay">일반 구매</button>
+                <button className="normalWay">일반 구매</button>
               </div>
               <div className="sizeSelectorWrap">
                 <SizeSelector result={result} selectPrice={this.selectPrice} />
               </div>
               <div className="paymentArea">
-                <div className="noticePrice">{this.state.priceData}원</div>
+                <div className="noticePrice">{this.state.priceData}</div>
 
                 <div className="basketWrap">
                   <div className="checkPayment">
@@ -102,6 +103,12 @@ class Detail extends React.Component {
                 </div>
               </div>
             </div>
+            <div className="bannerDiv">
+              <img
+                src="https://drive.google.com/file/d/12dmrUY0mEWOycoj9KbjQAAwtalS6Ts-d/view?usp=sharing"
+                alt="banner"
+              />
+            </div>
           </div>
         </div>
         <div className="induceUser">
@@ -115,7 +122,7 @@ class Detail extends React.Component {
           <div className="induceItems">
             <i class="fas fa-receipt"></i>
             <div>
-              \ 똑똑한 가격비교로
+              똑똑한 가격비교로
               <br />
               찾는 최저가
             </div>

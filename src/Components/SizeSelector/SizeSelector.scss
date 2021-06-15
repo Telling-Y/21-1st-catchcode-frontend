@@ -1,8 +1,21 @@
 .sizeSelectorWrap {
   .fixedLi {
     font-size: 1rem;
-    padding: 1rem 8rem;
+
     border: 1px solid #eaeaea;
+    .sizeSelector {
+      display: flex;
+      align-items: center;
+      justify-content: stretch;
+      justify-content: center;
+      width: 25rem;
+      height: 3rem;
+      .setSize {
+        width: 25rem;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 
   button {
@@ -10,12 +23,15 @@
     border: none;
   }
 
-  .newList {
+  .showList {
     z-index: 1000;
+    position: relative;
     font-size: 1rem;
-    border: 1px solid #eaeaea;
     border-top: none;
     .setSizeBtn {
+      background-color: white;
+      border: 1px solid #eaeaea;
+      position: absolute;
       height: 3rem;
       border-right: none;
       display: flex;
