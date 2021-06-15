@@ -22,27 +22,41 @@ nav {
         .logo {
           width: 8rem;
           margin-right: 4rem;
-          padding: 1rem 2rem;
         }
-
-        .searchWrap {
-          display: flex;
+        .inputTrickDiv {
           position: relative;
-          width: 10rem;
-          margin-right: 5rem;
-          padding: 1rem 2.5rem;
-          background-color: #f9f9f9;
-          justify-content: center;
-          align-items: center;
-
-          button {
-            margin-left: 8px;
-            border: none;
-            background-color: unset;
+          .realInput {
+            z-index: -1;
+            position: absolute;
+            .hideInput {
+              border: none;
+              width: 10rem;
+              font-size: 1rem;
+              background-color: #f9f9f9;
+              padding: 1rem 2.5rem;
+            }
+            .hideInput:focus {
+              outline: none;
+            }
           }
+          .searchWrap {
+            display: flex;
+            width: 10rem;
+            margin-right: 5rem;
+            padding: 1rem 2.5rem;
+            background-color: #f9f9f9;
+            justify-content: center;
+            align-items: center;
 
-          button:hover {
-            cursor: text;
+            button {
+              margin-left: 8px;
+              border: none;
+              background-color: unset;
+            }
+
+            button:hover {
+              cursor: text;
+            }
           }
         }
       }

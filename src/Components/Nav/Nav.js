@@ -12,6 +12,7 @@ class Nav extends React.Component {
       searchModalValid: false,
       dropDownValid: false,
       loginModalValid: false,
+      inputZIndex: -1,
       result: [],
     };
   }
@@ -41,7 +42,10 @@ class Nav extends React.Component {
     this.setState({
       searchModalValid: !this.state.searchModalValid,
     });
+    this.focusInputBox();
   };
+
+  focusInputBox = () => {};
 
   categoriDropDown = event => {
     this.setState({
@@ -63,11 +67,29 @@ class Nav extends React.Component {
             <div className="navContainer">
               <div className="navLeft">
                 <img src="/images/logo.jpg" alt="logo" className="logo" />
-                <div className="searchWrap">
-                  <i className="fas fa-search" />
-                  <button className="callSearch" onClick={this.searchModalOn}>
-                    프리미엄을 캐치하세요!
-                  </button>
+                <div className="inputTrickDiv">
+                  <div
+                    className="realInput"
+                    style={{ zIndex: this.state.inputZIndex }}
+                  >
+                    <input
+                      type="text"
+                      placeholder="프리미엄을 캐치하세요"
+                      className="hideInput"
+
+                      // style={{ display: this.state.inputControl }}
+                    />
+                  </div>
+                  <div className="searchWrap">
+                    <i className="fas fa-search" />
+                    <button className="callSearch" onClick={this.searchModalOn}>
+                      프리미엄을 캐치하세요!
+                    </button>
+
+                    {this.state.searchModalValid && (
+                      <SearchModal isCheck={this.searchModalValid} />
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="linkTab">
@@ -121,10 +143,6 @@ class Nav extends React.Component {
                 categoriDropDown={this.categoriDropDown}
               />
             )}
-
-          {this.state.searchModalValid && (
-            <SearchModal isCheck={this.searchModalValid} />
-          )}
         </nav>
       )
     );
