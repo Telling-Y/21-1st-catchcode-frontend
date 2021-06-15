@@ -20,111 +20,147 @@
           padding-bottom: 0.5rem;
         }
         .productDescription {
-          width: 20rem;
+          width: 25rem;
+        }
+      }
+
+      .productContents {
+        display: flex;
+        justify-content: space-around;
+        width: 25rem;
+        margin-top: 0.9rem;
+
+        .contentName {
+          font-weight: 700;
         }
       }
     }
     .sidePage {
-      height: auto;
-      .stickyDiv {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0;
-        padding-top: 2rem;
-
-        .productName {
-          padding: 0.5rem 0;
-          font-size: 2rem;
-
-          .putWishList {
-          }
-        }
-
-        .productCategory {
-          padding-bottom: 1rem;
-          margin-bottom: 1rem;
-
-          font-size: 1.5rem;
-        }
-        .selectPayment {
-          display: flex;
-          justify-content: space-around;
-          padding-bottom: 0.3rem;
+      height: 80rem;
+      width: 22rem;
+      .rightDiv {
+        height: 87rem;
+        .stickyDiv {
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0;
+          padding-top: 2rem;
           margin-bottom: 2rem;
-          button {
-            border: none;
-            border-bottom: 0.1rem solid #1e1e1e;
-            padding: 0 4rem;
-            font-size: 1.1rem;
-            background-color: unset;
+          .productName {
+            padding-bottom: 0.5rem;
+            font-size: 1.3rem;
           }
-          .normalWay {
-            opacity: 0.3;
-          }
-        }
-        .paymentArea {
-          display: flex;
-          flex-direction: column;
-          border: 0.1rem solid #eaeaea;
-          margin-top: 3rem;
 
-          .noticePrice {
-            align-self: flex-end;
-            font-size: 1.2rem;
-            padding: 1rem;
+          .productCategory {
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+
+            font-size: 1.5rem;
           }
-          .basketWrap {
+          .selectPayment {
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: 0.3rem;
+            margin-bottom: 2rem;
+            .catchWay,
+            .normalWay {
+              width: 11rem;
+              border: none;
+              border-bottom: 0.1rem solid #1e1e1e;
+
+              font-size: 1.1rem;
+              background-color: unset;
+            }
+            .normalWay {
+              opacity: 0.3;
+            }
+          }
+          .paymentArea {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            background-color: #eaeaea;
-            .checkPayment {
+            border: 0.1rem solid #eaeaea;
+            margin-top: 3rem;
+
+            .noticePrice {
               display: flex;
-              justify-content: space-around;
-
-              .deliv {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-
-                .itemIndex {
-                  display: flex;
-                  align-items: center;
-                  .itemWord {
-                    font-size: 0.5rem;
-                  }
-                }
-
-                .fa-truck-loading,
-                .fa-parachute-box,
-                .fa-donate {
-                  margin: 1rem 0.5rem;
-                }
+              justify-content: space-between;
+              width: 20rem;
+              align-self: flex-end;
+              font-size: 1.2rem;
+              padding: 1rem;
+              .fixedWord {
+                align-self: flex-start;
               }
             }
-            .putBasket {
-              align-self: center;
-              border: none;
-              width: 80%;
-              background-color: #1e1e1e;
-              padding: 1rem 2rem;
-              margin: 1.5rem 0;
-              color: #eaeaea;
+            .basketWrap {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              background-color: #eaeaea;
+              .checkPayment {
+                display: flex;
+                justify-content: space-around;
+
+                .deliv {
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+
+                  .itemIndex {
+                    display: flex;
+                    align-items: center;
+                    .itemWord {
+                      font-size: 0.5rem;
+                    }
+                  }
+
+                  .fa-truck-loading,
+                  .fa-parachute-box,
+                  .fa-donate {
+                    margin: 1rem 0.5rem;
+                  }
+                }
+              }
+              .putBasket {
+                align-self: center;
+                border: none;
+                width: 80%;
+                background-color: #1e1e1e;
+                padding: 1rem 2rem;
+                margin: 1.5rem 0;
+                color: #eaeaea;
+              }
             }
           }
+        }
+      }
+
+      .bannerDiv {
+        img {
+          width: 100%;
         }
       }
     }
   }
 }
 .induceUser {
+  margin-top: 2rem;
+  align-self: center;
+  text-align: center;
   display: flex;
+  justify-content: space-around;
+  width: 50rem;
+  background-color: #eaeaea;
   .induceItems {
     .fa-boxes,
     .fa-briefcase,
     .fa-receipt,
     .fa-balance-scale-right {
-      font-size: 4rem;
+      font-size: 3.3rem;
+      margin-top: 1rem;
+    }
+    .catchCopyright {
+      margin: 1rem;
     }
   }
 }

@@ -24,6 +24,7 @@ class SizeSelector extends Component {
       payPrice: e.target.innerText.slice(1, e.target.innerText.length),
     });
     this.sendPriceToParent();
+    this.changeListStyle();
   };
 
   sendPriceToParent = () => {
