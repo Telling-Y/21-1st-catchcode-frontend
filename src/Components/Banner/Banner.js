@@ -18,49 +18,59 @@ class Banner extends Component {
   }
 
   prevSlide = () => {
-    this.state.slideIndex < 1
+    this.state.slideIndex > 0
       ? this.setState({
           slideIndex: this.state.slideIndex - 1,
+          speed: 300,
         })
-      : this.setState({
-          slideIndex: 3,
-        });
-
-    console.log(this.state.slideIndex);
+      : this.setState({ slideIndex: this.state.slideIndex - 1 });
   };
 
   nextSlide = () => {
-    this.state.slideIndex > 3
-      ? this.setstate({
-          slideIndex: 0,
-        })
-      : this.setState({
+    this.state.slideIndex < 4
+      ? this.setState({
           slideIndex: this.state.slideIndex + 1,
-        });
+          speed: 300,
+        })
+      : this.setState({ slideIndex: this.state.slideIndex + 1 });
   };
 
   componentDidMount() {
     setInterval(() => {
-      setTimeout(() => {
-        this.setState({ slideIndex: this.state.slideIndex + 1 });
-      }, 2000);
+      this.state.slideIndex < 4 &&
+        setTimeout(() => {
+          this.setState({ slideIndex: this.state.slideIndex + 1, speed: 300 });
+        }, 2000);
     }, 2000);
   }
 
-  // componentDidUpdate() {
-  //   if (this.state.slideIndex > 3) {
-  //     setTimeout(() => {
-  //       this.setState(
-  //         {
-  //           slideIndex: 1,
-  //         },
-  //         2000
-  //       );
-  //     });
-  //   }
-  // }
+  nextSlideTrick = () => {
+    this.state.slideIndex === 4 &&
+      setTimeout(() => {
+        return this.setState({ speed: 0, slideIndex: 1 });
+      }, 300);
+  };
+
+  prevSlideTrick = () => {
+    this.state.slideIndex === 0 &&
+      setTimeout(() => {
+        return this.setState({ speed: 0, slideIndex: 3 });
+      }, 300);
+  };
+
+  componentDidUpdate() {
+    this.nextSlideTrick();
+    this.prevSlideTrick();
+  }
+
+  // slidesDot = event => {
+  //   this.setState({ slideIndex: event.target.id });
+  //   console.log(event.current.id);
+  // };
 
   render() {
+    const { imageSrc, speed, slideIndex } = this.state;
+
     return (
       <>
         <div className="carouselContainer">
@@ -69,17 +79,17 @@ class Banner extends Component {
               <div
                 className="slideList"
                 style={{
-                  width: this.state.imageSrc.length * 500 + 'px',
-                  transition: this.state.speed + `ms`,
+                  width: imageSrc.length * 80 + 'vw',
+                  transition: speed + `ms`,
                   transform: `translate3d(
-                    ${this.state.slideIndex * -500}px, 0px, 0px`,
+                    ${slideIndex * -80}vw, 0px, 0px`,
                 }}
               >
-                {this.state.imageSrc.map((x, index) => {
+                {imageSrc.map((source, index) => {
                   return (
                     <div className="slide">
                       <img
-                        src={x}
+                        src={source}
                         alt="슬라이드"
                         className="slideItem"
                         id={`${index}`}
@@ -90,21 +100,23 @@ class Banner extends Component {
               </div>
             </div>
             <div className="slideDot">
-              {this.state.imageSrc &&
-                this.state.imageSrc.map((length, i) => (
-                  <div id={i + 1}>
+              {imageSrc &&
+                imageSrc.slice(1, imageSrc.length - 1).map((length, i) => (
+                  <div id={i} onClick={this.slidesDot}>
                     <i class="far fa-circle" />
                   </div>
                 ))}
             </div>
           </div>
+          <div className="bannerButton">
+            <button className="prev" type="button" onClick={this.prevSlide}>
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <button className="next" type="button" onClick={this.nextSlide}>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
         </div>
-        <button className="prev" type="button" onClick={this.prevSlide}>
-          prev
-        </button>
-        <button className="next" type="button" onClick={this.nextSlide}>
-          next
-        </button>
       </>
     );
   }

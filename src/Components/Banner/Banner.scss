@@ -1,9 +1,11 @@
 .carouselContainer {
+  position: relative;
+  align-items: center;
   display: flex;
   flex-direction: column;
   .slideWrap {
-    width: 500px;
-    height: 200px;
+    width: 80vw;
+    height: 300px;
     .slideBox {
       width: 100%;
       margin: auto;
@@ -11,12 +13,12 @@
       .slideList {
         display: flex;
         .slide {
-          width: 500px;
-          height: 200px;
+          width: 80vw;
+          height: 300px;
           float: left;
           .slideItem {
-            width: 500px;
-            height: 200px;
+            width: 80vw;
+            height: 300px;
           }
         }
       }
@@ -24,6 +26,26 @@
     .slideDot {
       display: flex;
       justify-content: center;
+    }
+  }
+  .bannerButton {
+    position: absolute;
+    display: flex;
+    width: 80vw;
+    top: 40%;
+    justify-content: space-around;
+    .prev,
+    .next {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      opacity: 0.4;
+      background-color: #eaeaea;
+      border-radius: 50%;
+    }
+    .prev:hover,
+    .next:hover {
+      opacity: 0.8;
     }
   }
 }
