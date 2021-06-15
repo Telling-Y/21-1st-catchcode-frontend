@@ -8,6 +8,7 @@ class SizeSelector extends Component {
       listStyle: 'none',
       setSize: '사이즈를 선택해주세요',
       payPrice: 0,
+      btnValid: { buyBtnOpacity: 1, btnDisabledValue: true },
     };
   }
 
@@ -17,14 +18,23 @@ class SizeSelector extends Component {
       : this.setState({ listStyle: 'none' });
   };
 
-  chgSizeText = e => {
-    this.setState({
-      setSize: e.target.innerText.slice(0, 1),
-      listStyle: '',
-      payPrice: e.target.innerText.slice(1, e.target.innerText.length),
-    });
-    this.sendPriceToParent();
-    this.changeListStyle();
+  chgSizeText = result => {
+    this.setState(
+      {
+        setSize: result.sizeName,
+        listStyle: '',
+        payPrice: result.price.split('.')[0],
+      },
+      () => {
+        this.sendPriceToParent();
+        this.changeListStyle();
+        this.sendBtnValidToParent();
+      }
+    );
+  };
+
+  sendBtnValidToParent = () => {
+    return this.props.checkFinalBtnValid(this.state.btnValid);
   };
 
   sendPriceToParent = () => {
@@ -48,14 +58,16 @@ class SizeSelector extends Component {
               <div class="showList" style={{ display: this.state.listStyle }}>
                 <button
                   className="setSizeBtn"
-                  onClick={this.chgSizeText}
+                  onClick={() => this.chgSizeText(result)}
                   key={result.sizeId}
                   id={'btnLength' + i}
                   style={{ top: i * 2.8 + `rem` }}
                 >
                   <div className="propsData size">{result.sizeName}</div>
                   <div className="propsData price">
-                    {result.stock === 0 ? 'Soldout' : result.price + '₩'}
+                    {result.stock === 0
+                      ? 'Soldout'
+                      : result.price.split('.')[0] + '₩'}
                   </div>
                 </button>
               </div>

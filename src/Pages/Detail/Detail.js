@@ -7,13 +7,15 @@ class Detail extends React.Component {
     super();
     this.state = {
       result: [],
-      priceData: 0,
+      priceData: '사이즈를 선택하세요',
       prodcutName: '',
+      buyBtnOpacity: 0.3,
+      btnDisabledValue: false,
     };
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.213:8000/products/1')
+    fetch('http://10.58.2.213:8000/products/18')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -22,8 +24,6 @@ class Detail extends React.Component {
         });
       });
   }
-
-  componentDidUpdate() {}
 
   selectPrice = finalPayment => {
     return this.setState({
@@ -34,6 +34,13 @@ class Detail extends React.Component {
   replayceProductName = () => {
     return this.setState({
       prodcutName: this.state.prodcutName.split('_'),
+    });
+  };
+
+  checkFinalBtnValid = finalBtnValid => {
+    return this.setState({
+      buyBtnOpacity: finalBtnValid.buyBtnOpacity,
+      btnDisabledValue: finalBtnValid.btnDisabledValue,
     });
   };
 
@@ -72,18 +79,20 @@ class Detail extends React.Component {
             <div className="rightDiv">
               <div className="stickyDiv">
                 <div className="nameSector">
-                  <div className="productName">{result.name}</div>
+                  <div className="productName">
+                    {this.state.prodcutName.split('_')[1]}
+                  </div>
 
                   <div className="productCategory">{result.category}</div>
                 </div>
                 <div className="selectPayment">
-                  <button className="catchWay">캐치구매</button>
-                  <button className="normalWay">일반구매</button>
+                  <button className="catchWay"></button>
                 </div>
                 <div className="sizeSelectorWrap">
                   <SizeSelector
                     result={result}
                     selectPrice={this.selectPrice}
+                    checkFinalBtnValid={this.checkFinalBtnValid}
                   />
                 </div>
                 <div className="paymentArea">
@@ -116,7 +125,15 @@ class Detail extends React.Component {
                         <div className="delivItem">무료</div>
                       </div>
                     </div>
-                    <button className="putBasket">쇼핑백에 담기</button>
+                    <button
+                      className="putBasket"
+                      style={{
+                        disabled: this.state.value,
+                        opacity: this.state.buyBtnOpacity,
+                      }}
+                    >
+                      쇼핑백에 담기
+                    </button>
                   </div>
                 </div>
               </div>
@@ -148,7 +165,7 @@ class Detail extends React.Component {
           <div className="induceItems">
             <i class="fas fa-briefcase" />
             <div className="catchCopyright">
-              고민없이
+              고민 없이
               <br />한 눈에 보는 최종금액
             </div>
           </div>
@@ -157,7 +174,7 @@ class Detail extends React.Component {
             <div className="catchCopyright">
               직구도 국내쇼핑처럼
               <br />
-              간편한 '엣치구매'
+              간편한 '캐치구매'
             </div>
           </div>
         </div>

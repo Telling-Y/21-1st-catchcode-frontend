@@ -26,7 +26,7 @@
 
       .productContents {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         width: 25rem;
         margin-top: 0.9rem;
 
@@ -62,9 +62,8 @@
             justify-content: space-around;
             padding-bottom: 0.3rem;
             margin-bottom: 2rem;
-            .catchWay,
-            .normalWay {
-              width: 11rem;
+            .catchWay {
+              width: 22rem;
               border: none;
               border-bottom: 0.1rem solid #1e1e1e;
 
