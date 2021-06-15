@@ -43,9 +43,12 @@
       margin-top: 10px;
 
       .title {
+        height: 30px;
         margin: 6px 0;
         font-size: 12px;
         font-weight: bold;
+        line-height: 1.4;
+        text-align: center;
         text-transform: uppercase;
       }
       .price {
