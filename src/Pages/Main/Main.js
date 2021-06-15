@@ -13,6 +13,7 @@ class Main extends React.Component {
       <>
         <Banner />
         <main className="productArea">
+          this.state.
           <MainProductItem />
         </main>
       </>
