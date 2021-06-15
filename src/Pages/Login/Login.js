@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { GET_LOGIN_API } from '../../config';
 import CommonInput from '../../Components/CommonInput/CommonInput';
 import './Login.scss';
 
@@ -10,33 +11,20 @@ class Login extends React.Component {
     this.state = {
       phoneValue: '',
       passwordValue: '',
-      isLogin: false,
-      isWarning: [false, false],
+      phoneError: false,
     };
   }
 
-  checkInputLenght = () => {
-    const { phoneValue, passwordValue } = this.state;
+  handleInput = e => {
+    const { name, value } = e.target;
     this.setState({
-      isLogin: phoneValue.length > 0 && passwordValue.length > 0 ? true : false,
+      [name]: value,
     });
   };
 
-  handleInput = e => {
-    const { name, value } = e.target;
-    this.setState(
-      {
-        [name]: value,
-      },
-      () => {
-        this.checkInputLenght();
-      }
-    );
-  };
-
   handleLogin = () => {
-    fetch('http://10.58.6.235:8000/users/signin', {
-      method: 'POST',
+    fetch(`${GET_LOGIN_API}`, {
+      method: 'GET',
       body: JSON.stringify({
         phone_number: this.state.phoneValue,
         password: this.state.passwordValue,
@@ -45,27 +33,23 @@ class Login extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res.result === 'SUCCESS!') {
-          this.goToMain();
-        } else if (res.result === 'INVALID USER') {
-          // console.log(this.state.isWarning);
           this.setState({
-            isWarning: [true, ...this.state.isWarning.slice(1)],
+            phoneError: false,
+          });
+          this.props.history.push('/');
+        } else if (res.result === 'INVALID USER') {
+          this.setState({
+            phoneError: true,
           });
         }
       });
   };
 
-  goToSign = () => {
-    this.props.history.push('/Sign');
-  };
-
-  goToMain = () => {
-    this.props.history.push('/');
-  };
-
   render() {
-    const { isLogin, phoneValue, isWarning } = this.state;
-    console.log(isWarning);
+    const { phoneValue, passwordValue, phoneError } = this.state;
+
+    const isLogin =
+      phoneValue.length > 0 && passwordValue.length > 0 ? true : false;
     return (
       <div className="login">
         <article className="borderBox">
@@ -78,28 +62,28 @@ class Login extends React.Component {
                   data={data}
                   value={this.state[data.name]}
                   handleInput={this.handleInput}
-                  isWarning={isWarning}
+                  isWarning={phoneError}
                 />
               );
             })}
             ​
-            <button
+            <Link
               className={isLogin ? 'blackButton' : 'grayButton'}
               onClick={isLogin ? this.handleLogin : null}
             >
               로그인
-            </button>
+            </Link>
             <Link to="/Sign" className="passowordForgot">
               비밀번호를 잊으셨나요?
             </Link>
-            ​<h1 className="title">회원가입</h1>
+            ​<h2 className="title">회원가입</h2>
             <div className="context">
               30초 만에 간단한 가입! 10% 현금캐시백!
             </div>
             ​
-            <button className="blackButton" onClick={this.goToSign}>
+            <Link to="/Sign" className="blackButton">
               회원가입
-            </button>
+            </Link>
             ​
           </div>
         </article>
@@ -113,6 +97,7 @@ export default Login;
 const LOGIN_DATAS = [
   {
     id: 1,
+    category: 'login',
     name: 'phoneValue',
     type: 'number',
     text: '휴대폰번호',
@@ -121,6 +106,7 @@ const LOGIN_DATAS = [
   },
   {
     id: 2,
+    category: 'login',
     name: 'passwordValue',
     type: 'password',
     text: '비밀번호',

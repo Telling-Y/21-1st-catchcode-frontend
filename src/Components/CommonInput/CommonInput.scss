@@ -1,9 +1,11 @@
 .inputBox {
   position: relative;
+  margin: 8px 0;
 
   .inputTitle {
+    display: block;
     font-size: 12px;
-    margin: 20px 0 5px;
+    line-height: 2;
   }
 
   input {
@@ -25,14 +27,25 @@
 
   .passwordView {
     position: absolute;
-    top: 17px;
+    top: 5px;
     right: 10px;
     width: 20px;
+    height: 44px;
+    margin: 18px 0;
+    border: 0px;
     background-color: #ffffff00;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.4;
+
+    &:hover {
+      background-color: #ffffff00 !important;
+    }
+
+    &.select {
+      opacity: 1;
+    }
   }
 
   .warning {
@@ -40,6 +53,7 @@
     padding-top: 8px;
     color: #eb420b;
     font-size: 12px;
+    line-height: 1.5;
     border-top: 1px solid #eb420b;
   }
 }

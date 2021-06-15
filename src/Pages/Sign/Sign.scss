@@ -48,12 +48,13 @@
         font-size: 11px;
         color: #888888;
 
-        li {
+        span {
           list-style: none;
           display: inline-block;
           line-height: 1.7;
 
           a {
+            color: #888888;
             margin-right: 2px;
             text-decoration: underline;
           }

@@ -1,25 +1,63 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { POST_SIGN_API } from '../../config';
+import { regPassword } from '../../utils';
+import { regName } from '../../utils';
 import CommonInput from '../../Components/CommonInput/CommonInput';
 import './Sign.scss';
 
 class Sign extends React.Component {
   constructor() {
     super();
-
     this.state = {
-      // isGenderSelect: true,
       genderNum: 0,
       nameValue: '',
       phoneValue: '',
       passwordValue: '',
-      isWarning: [false, false, false],
+      signData: [
+        {
+          id: 1,
+          category: 'sign',
+          name: 'nameValue',
+          text: '이름',
+          type: 'text',
+          vaild: true,
+          vaildator: input =>
+            input.length > 1 && input.match(regName) ? true : false,
+          placeholder: '이름을 입력해주세요',
+          vaildText: '이름에 한글, 5글자 이상 입력해주세요',
+        },
+        {
+          id: 2,
+          category: 'sign',
+          name: 'phoneValue',
+          text: '휴대폰번호',
+          type: 'number',
+          vaild: true,
+          vaildator: input => {
+            return input.length >= 10 && input.length <= 11;
+          },
+          placeholder: '휴대폰번호를 입력해주세요',
+          vaildText: '-을 제외한 정확한 휴대폰번호를 입력해주세요',
+        },
+        {
+          id: 3,
+          category: 'sign',
+          name: 'passwordValue',
+          text: '비밀번호',
+          type: 'password',
+          vaild: true,
+          vaildator: input => input.match(regPassword),
+          placeholder: '비밀번호를 입력해주세요',
+          vaildText: '영문 대소문자, 숫자를 이용해 5자 이상으로 설정해주세요',
+        },
+      ],
     };
   }
 
   seperateGender = e => {
     this.setState({
-      // isGenderSelect: e.target.innerText === '남성' ? false : true,
-      genderNum: e.target.innerText === '남성' ? 2 : 1,
+      genderNum: e.target.innerText === '남성' ? 1 : 0,
     });
   };
 
@@ -30,33 +68,37 @@ class Sign extends React.Component {
     });
   };
 
-  validator = inputName => {
-    // console.log(this.state);
-    if (this.state.nameValue === '') {
-      this.setState({
-        isWarning: [true, ...this.state.isWarning.slice(1)],
-      });
-    }
-  };
-
   handleSign = () => {
-    this.validator();
-    // fetch('http://10.58.2.121:8000/users/signup', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     phone_number: this.state.phoneValue,
-    //     password: this.state.passwordValue,
-    //     name: this.state.nameValue,
-    //     sex: this.state.genderNum,
-    //     admin: 1,
-    //   }),
-    // })
-    //   .then(res => res.json())
-    //   .then(result => console.log(result));
+    this.setState(
+      {
+        signData: this.state.signData.map(ele => {
+          return { ...ele, vaild: ele.vaildator(this.state[ele.name]) };
+        }),
+      },
+      () => {
+        console.log(this.state.signData[0].vaild);
+      }
+    );
+    fetch(`${POST_SIGN_API}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        phone_number: this.state.phoneValue,
+        password: this.state.passwordValue,
+        name: this.state.nameValue,
+        sex: this.state.genderNum,
+        admin: 1,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.result === 'SUCCESS!') {
+          this.props.history.push('/Login');
+        }
+      });
   };
 
   render() {
-    const { genderNum, isWarning } = this.state;
+    const { signData, genderNum } = this.state;
     const { seperateGender } = this;
     return (
       <div className="sign">
@@ -78,32 +120,31 @@ class Sign extends React.Component {
                 남성
               </button>
             </div>
-            {SIGN_DATAS.map((data, idx) => {
+            {signData.map((data, idx) => {
               return (
                 <CommonInput
                   key={idx}
                   data={data}
-                  value={this.state[data.name]}
+                  vaild={data.vaild}
                   handleInput={this.handleInput}
-                  isWarning={isWarning}
                 />
               );
             })}
 
             <div className="agreeContext">
               회원가입 시
-              <li>
-                <a>이용약관,</a>
-              </li>
-              <li>
-                <a>개인정보 처리방침,</a>
-              </li>
-              <li>
-                <a>개인정보 활용,</a>
-              </li>
-              <li>
-                <a>마케팅</a>
-              </li>
+              <span>
+                <Link to="/">이용약관,</Link>
+              </span>
+              <span>
+                <Link to="/">개인정보 처리방침,</Link>
+              </span>
+              <span>
+                <Link to="/">개인정보 활용,</Link>
+              </span>
+              <span>
+                <Link to="/">마케팅</Link>
+              </span>
               수신에 동의합니다.
             </div>
             <button className="blackButton" onClick={this.handleSign}>
@@ -117,27 +158,3 @@ class Sign extends React.Component {
 }
 
 export default Sign;
-
-const SIGN_DATAS = [
-  {
-    id: 1,
-    name: 'nameValue',
-    text: '이름',
-    type: 'text',
-    placeholder: '이름을 입력해주세요',
-  },
-  {
-    id: 2,
-    name: 'phoneValue',
-    text: '휴대폰번호',
-    type: 'number',
-    placeholder: '휴대폰번호를 입력해주세요',
-  },
-  {
-    id: 3,
-    name: 'passwordValue',
-    text: '비밀번호',
-    type: 'password',
-    placeholder: '비밀번호를 입력해주세요',
-  },
-];

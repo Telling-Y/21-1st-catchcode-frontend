@@ -3,31 +3,29 @@ import './CommonInput.scss';
 
 class CommonInput extends React.Component {
   render() {
-    const { name, type, text, placeholder, vaild } = this.props.data;
-    const { value, handleInput, isWarning } = this.props;
-    console.log(isWarning);
+    const { id, name, category, type, text, placeholder, vaild, vaildText } =
+      this.props.data;
+    const { handleInput, isWarning } = this.props;
     return (
       <div className="inputBox">
-        <div className="inputTitle">{text}</div>
+        <label className="inputTitle">{text}</label>
         <input
           name={name}
           type={type}
           placeholder={placeholder}
           onChange={handleInput}
         />
-        {isWarning.map(
-          (x, idx) =>
-            x && (
-              <div className="warning" key={idx}>
-                {placeholder}
-              </div>
-            )
+
+        {isWarning && id === 1 && <div className="warning">{placeholder}</div>}
+
+        {!vaild && category === 'sign' && (
+          <div className="warning">{vaildText}</div>
         )}
-        {/* {isnoValue && <div className="warning">{placeholder}</div>} */}
 
         {text === '비밀번호' && (
           <button
             className="passwordView"
+            // {`passwordView ${this.state.isView && 'select'}`}
             style={{
               backgroundImage: `url("/images/view.png")`,
             }}
