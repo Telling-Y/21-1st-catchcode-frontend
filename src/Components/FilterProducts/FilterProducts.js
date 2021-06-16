@@ -12,14 +12,14 @@ class FilterProducts extends react.Component {
   };
 
   // componentDidMount() {
-  //   fetch(`http://localhost.8000/products/search/${this.props.match.params.id}`)
+  //   fetch(`http://10.58.6.177:8000/products/search`)
   //     .then(res => res.json())
   //     .then(res => console.log(res));
   // }
 
   render() {
     const { productListInfo } = this.props;
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <div className="products">
         {productListInfo.map(data => {

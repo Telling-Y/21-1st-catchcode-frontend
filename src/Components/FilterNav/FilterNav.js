@@ -61,8 +61,7 @@ class FilterNav extends react.Component {
 
   render() {
     const { isCatchSelect, isPriceSelect, isColorSelect } = this.state;
-    const { categories } = this.props;
-    console.log(this.props);
+    // const { categories } = this.props;
     return (
       <div className="filterNav">
         <div className="categoriesBox">
@@ -125,11 +124,11 @@ class FilterNav extends react.Component {
             {isColorSelect && (
               <div className="filterModal">
                 <div className="colorBox">
-                  {PRODUCTS_COLOR.map(color => {
+                  {PRODUCTS_COLOR.map(data => {
                     return (
                       <div
                         className="colorCircle"
-                        style={{ backgroundColor: { color } }}
+                        style={{ backgroundColor: [data.color] }}
                       ></div>
                     );
                   })}
