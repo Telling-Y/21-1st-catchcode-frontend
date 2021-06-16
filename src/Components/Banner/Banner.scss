@@ -5,7 +5,7 @@
   flex-direction: column;
   .slideWrap {
     width: 80vw;
-    height: 300px;
+    height: 400px;
     .slideBox {
       width: 100%;
       margin: auto;
@@ -14,11 +14,11 @@
         display: flex;
         .slide {
           width: 80vw;
-          height: 300px;
+          height: 400px;
           float: left;
           .slideItem {
             width: 80vw;
-            height: 300px;
+            height: 400px;
           }
         }
       }

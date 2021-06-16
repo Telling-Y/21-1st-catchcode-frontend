@@ -5,9 +5,10 @@ import Banner from '../../Components/Banner/Banner';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      prodcut: [],
+    };
   }
-  componentDidMount() {}
   render() {
     return (
       <>
