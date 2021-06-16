@@ -55,13 +55,14 @@ class FilterNav extends react.Component {
 
   filterCategories = idx => {
     this.props.history.push(
-      `/products/search/${this.props.categories[idx].id}`
+      `/products/search/${this.props.categories[idx - 1].id}`
     );
   };
 
   render() {
     const { isCatchSelect, isPriceSelect, isColorSelect } = this.state;
     const { categories } = this.props;
+    console.log(this.props);
     return (
       <div className="filterNav">
         <div className="categoriesBox">
@@ -73,7 +74,7 @@ class FilterNav extends react.Component {
                 className={`category ${this.state.select === idx && 'select'}`}
                 onClick={
                   (() => this.hedleFilterMenu(idx),
-                  () => this.filterCategories(idx))
+                  () => this.filterCategories(category.id))
                 }
               >
                 {category.name}
@@ -153,5 +154,3 @@ const CATEGORIES_NAME = [
   { name: '린넨', id: 3 },
   { name: '패턴', id: 4 },
 ];
-
-// '실크', '면', '린넨', '패턴'
