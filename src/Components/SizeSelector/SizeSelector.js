@@ -32,6 +32,7 @@ class SizeSelector extends Component {
       }
     );
   };
+
   sendBtnValidToParent = () => {
     return this.props.checkFinalBtnValid(this.state.btnValid);
   };
