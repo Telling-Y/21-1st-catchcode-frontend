@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import SizeSelector from '../../Components/SizeSelector/SizeSelector';
 import './Detail.scss';
 
@@ -15,7 +16,7 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.213:8000/products/:id')
+    fetch(`http://10.58.6.177:8000/products/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -183,4 +184,4 @@ class Detail extends React.Component {
   }
 }
 
-export default Detail;
+export default withRouter(Detail);

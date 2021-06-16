@@ -12,12 +12,14 @@ class SizeSelector extends Component {
     };
   }
 
+  //사이즈 드랍다운 메뉴 스타일
   changeListStyle = () => {
     this.state.listStyle === 'none'
       ? this.setState({ listStyle: '' })
       : this.setState({ listStyle: 'none' });
   };
 
+  //사이즈 선택 버튼 텍스트 변경, 선택한 가격 데이터 부모 컴포넌트로 송출
   chgSizeText = result => {
     this.setState(
       {
