@@ -10,13 +10,13 @@ class Detail extends React.Component {
       result: [],
       prodcutName: '',
       btnDisabledValue: false,
-      selectedProduct: { size: '', price: 0 },
+      selectedProduct: { size: '', price: 0, stock: 0 },
     };
   }
 
   componentDidMount() {
     // fetch(`http://10.58.6.177:8000/products/${this.props.match.params.id}`);
-    fetch('http://10.58.6.177:8000/products/1')
+    fetch('http://10.58.6.177:8000/products/3')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -32,17 +32,11 @@ class Detail extends React.Component {
         ...this.state.selectedProduct,
         size: finalResult.sizeName,
         price: finalResult.price.split('.')[0] + '₩',
+        stock: finalResult.stock,
       },
-      btnDisabledValue: true,
+      btnDisabledValue: finalResult.stock > 0 && true,
     });
   };
-
-  // checkFinalBtnValid = () => {
-  //   return this.setState({
-  //     btnDisabledValue: true,
-  //   });
-  // };
-
   render() {
     const { result, selectedProduct } = this.state;
     const induceTap = [
@@ -62,13 +56,30 @@ class Detail extends React.Component {
         value: '무료',
       },
     ];
+    const foot = [
+      {
+        class: 'fas fa-balance-scale-right',
+        word: `전세계 원단을${(<br />)}단 한 곳에서`,
+      },
+      {
+        class: 'fas fa-receipt',
+        word: `똑똑한 가격비교로${(<br />)}찾는 최저가`,
+      },
+      {
+        class: 'fas fa-briefcase',
+        word: `고민 없이${(<br />)}한 눈에 보는 최종금액`,
+      },
+      {
+        class: 'fas fa-boxes',
+        word: `직구도 국내쇼핑처럼${(<br />)}간편한 '캐치구매'`,
+      },
+    ];
 
     return (
       <div className="detailPageWrap">
         <div className="detailContentsWrap">
           <div className="contentPage">
-            {result &&
-              result.image &&
+            {result.image &&
               result.image.map((src, i) => {
                 return <img key={i} src={src} alt="제품 이미지" />;
               })}
@@ -116,7 +127,11 @@ class Detail extends React.Component {
                   <div className="noticePrice">
                     <span className="fixedWord">Price :</span>
                     <span className="priceData">
-                      {selectedProduct.price ? selectedProduct.price : ''}
+                      {selectedProduct.price
+                        ? selectedProduct.stock === 0
+                          ? 'soldout'
+                          : selectedProduct.price
+                        : ''}
                     </span>
                   </div>
 
@@ -137,8 +152,14 @@ class Detail extends React.Component {
                     <button
                       className="putBasket"
                       disabled={!this.state.btnDisabledValue}
+                      onClick={this.checkBtn}
                       style={{
-                        opacity: !this.state.btnDisabledValue ? 0.3 : 1,
+                        //soldOut 일 때 버튼 비활성화
+                        opacity: !this.state.btnDisabledValue
+                          ? 0.3
+                          : selectedProduct.stock > 0
+                          ? 1
+                          : 0.3,
                       }}
                     >
                       쇼핑백에 담기
@@ -156,36 +177,14 @@ class Detail extends React.Component {
           </div>
         </div>
         <div className="induceUser">
-          <div className="induceItems">
-            <i class="fas fa-balance-scale-right" />
-            <div className="catchCopyright">
-              전세계 원단을
-              <br />단 한 곳에서
-            </div>
-          </div>
-          <div className="induceItems">
-            <i class="fas fa-receipt"></i>
-            <div className="catchCopyright">
-              똑똑한 가격비교로
-              <br />
-              찾는 최저가
-            </div>
-          </div>
-          <div className="induceItems">
-            <i class="fas fa-briefcase" />
-            <div className="catchCopyright">
-              고민 없이
-              <br />한 눈에 보는 최종금액
-            </div>
-          </div>
-          <div className="induceItems">
-            <i class="fas fa-boxes" />
-            <div className="catchCopyright">
-              직구도 국내쇼핑처럼
-              <br />
-              간편한 '캐치구매'
-            </div>
-          </div>
+          {foot.map((result, index) => {
+            return (
+              <div className="induceItems" key={index}>
+                <i className={result.class} />
+                <div className="catchCopyright">{result.word}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
