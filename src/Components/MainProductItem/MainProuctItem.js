@@ -34,4 +34,4 @@ class MainProductItem extends Component {
   }
 }
 
-export default MainProductItem;
+export default withRouter(MainProductItem);
