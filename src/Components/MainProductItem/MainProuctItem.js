@@ -3,7 +3,7 @@ import './MainProductItem.scss';
 
 class MainProductItem extends Component {
   goToDetail = () => {
-    this.state.history.push(` `);
+    this.state.history.push(this.);
   };
   render() {
     const { product } = this.props;

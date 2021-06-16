@@ -11,7 +11,7 @@ class Main extends React.Component {
     };
   }
   componentDidMount() {
-    fetch('http://127.0.1.1:8000/Main')
+    fetch('http://10.58.3.58:8000/products')
       .then(res => res.json())
       .then(data => {
         this.setState({
