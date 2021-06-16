@@ -8,7 +8,6 @@ class Dropdown extends Component {
     this.props.history.push(`/product/FilterPage/${event}`);
   };
   render() {
-    console.log(this.props.result.categories[0].id);
     return (
       <div
         className="dropDownWrap"
