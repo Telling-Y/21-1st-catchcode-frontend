@@ -1,9 +1,14 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link, withRouter } from 'react-router-dom';
 import './Dropdown.scss';
 
 class Dropdown extends Component {
+  goToDetail = event => {
+    this.props.history.push(`/product/FilterPage/${event}`);
+  };
   render() {
+    console.log(this.props.result.categories[0].id);
     return (
       <div
         className="dropDownWrap"
@@ -15,7 +20,11 @@ class Dropdown extends Component {
             {this.props.result.categories.map(categorie => {
               return (
                 <li key={categorie.id}>
-                  <Link to="#">
+                  <Link
+                    onClick={() => {
+                      this.goToDetail(categorie.id);
+                    }}
+                  >
                     <div className="categoriItems">
                       <img src={categorie.imageUrl} alt={categorie.name} />
 
@@ -32,7 +41,7 @@ class Dropdown extends Component {
           <div className="countries">
             {this.props.result.countries.map((result, i) => {
               return (
-                <Link to="#" key={i} className="countryItem">
+                <Link to="" key={i} className="countryItem">
                   <span>{result.name}</span>
                 </Link>
               );
@@ -43,4 +52,4 @@ class Dropdown extends Component {
     );
   }
 }
-export default Dropdown;
+export default withRouter(Dropdown);

@@ -18,7 +18,7 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.121:8000/products/categories')
+    fetch('http://localhost:3000/data/mock.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -26,6 +26,7 @@ class Nav extends React.Component {
         });
       });
   }
+
   loginModalOn = () => {
     this.setState({
       loginModalValid: true,
@@ -45,7 +46,9 @@ class Nav extends React.Component {
     this.focusInputBox();
   };
 
-  focusInputBox = () => {};
+  focusInputBox = () => {
+    this.setState({ inputZIndex: 1000 });
+  };
 
   categoriDropDown = event => {
     this.setState({
@@ -56,6 +59,13 @@ class Nav extends React.Component {
   removeDropDown = () => {
     this.setState({
       dropDownValid: false,
+    });
+  };
+
+  closeSearchModal = () => {
+    this.setState({
+      searchModalOn: false,
+      inputZIndex: -1,
     });
   };
 
@@ -76,8 +86,6 @@ class Nav extends React.Component {
                       type="text"
                       placeholder="프리미엄을 캐치하세요"
                       className="hideInput"
-
-                      // style={{ display: this.state.inputControl }}
                     />
                   </div>
                   <div className="searchWrap">
