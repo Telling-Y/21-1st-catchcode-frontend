@@ -36,14 +36,13 @@ class FilterNav extends react.Component {
 
   putinValue = e => {
     const idNum = Number(e.target.id);
-    console.log(typeof Number(e.target.id));
     if (!idNum) {
       this.setState({
-        max: e.target.value,
+        min: e.target.value,
       });
     } else {
       this.setState({
-        min: e.target.value,
+        max: e.target.value,
       });
     }
   };
@@ -61,9 +60,7 @@ class FilterNav extends react.Component {
   };
 
   render() {
-    console.log(this.props.categories);
-    const { isCatchSelect, isPriceSelect, isColorSelect, min, max } =
-      this.state;
+    const { isCatchSelect, isPriceSelect, isColorSelect } = this.state;
     const { categories } = this.props;
     return (
       <div className="filterNav">

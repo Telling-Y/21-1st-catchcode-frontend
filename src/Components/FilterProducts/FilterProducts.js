@@ -19,7 +19,7 @@ class FilterProducts extends react.Component {
 
   render() {
     const { productListInfo } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="products">
         {productListInfo.map(data => {
