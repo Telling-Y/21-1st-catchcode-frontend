@@ -8,7 +8,7 @@ class FilterNav extends react.Component {
     this.state = {
       min: '',
       max: '',
-      select: -1,
+      select: 0,
       isCatchSelect: 0,
       isPriceSelect: false,
       isColorSelect: false,
@@ -65,10 +65,10 @@ class FilterNav extends react.Component {
     return (
       <div className="filterNav">
         <div className="categoriesBox">
-          {categories.map((category, idx) => {
+          {CATEGORIES_NAME.map((category, idx) => {
             return (
               <div
-                key={category.id}
+                key={category.idx}
                 id={category.id}
                 className={`category ${this.state.select === idx && 'select'}`}
                 onClick={
@@ -145,3 +145,13 @@ class FilterNav extends react.Component {
 }
 
 export default withRouter(FilterNav);
+
+const CATEGORIES_NAME = [
+  { name: '전체', id: 0 },
+  { name: '실크', id: 1 },
+  { name: '면', id: 2 },
+  { name: '린넨', id: 3 },
+  { name: '패턴', id: 4 },
+];
+
+// '실크', '면', '린넨', '패턴'
