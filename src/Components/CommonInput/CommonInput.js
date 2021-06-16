@@ -7,8 +7,8 @@ class CommonInput extends React.Component {
       this.props.data;
     const { handleInput, isWarning } = this.props;
     return (
-      <div className='inputBox'>
-        <label className='inputTitle'>{text}</label>
+      <div className="inputBox">
+        <label className="inputTitle">{text}</label>
         <input
           name={name}
           type={type}
@@ -16,15 +16,15 @@ class CommonInput extends React.Component {
           onChange={handleInput}
         />
 
-        {isWarning && id === 1 && <div className='warning'>{placeholder}</div>}
+        {isWarning && id === 1 && <div className="warning">{placeholder}</div>}
 
         {!vaild && category === 'sign' && (
-          <div className='warning'>{vaildText}</div>
+          <div className="warning">{vaildText}</div>
         )}
 
         {text === '비밀번호' && (
           <button
-            className='passwordView'
+            className="passwordView"
             // {`passwordView ${this.state.isView && 'select'}`}
             style={{
               backgroundImage: `url("/images/view.png")`,
