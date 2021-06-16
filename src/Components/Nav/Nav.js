@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SearchModal from '../Modal/SearchModal/SearchModal';
 import Dropdown from '../Dropdown/Dropdown';
 import LoginModal from '../Modal/LoginModal/LoginModal';
@@ -69,6 +69,10 @@ class Nav extends React.Component {
     });
   };
 
+  moveToFilterPage = () => {
+    this.props.history.push('/products/FilterPage');
+  };
+
   render() {
     return (
       this.state.result && (
@@ -107,7 +111,7 @@ class Nav extends React.Component {
                 <div className="linkItemsWrap">
                   <Link to="#">홈</Link>
                   <Link
-                    to="#"
+                    onClick={() => this.moveToFilterPage()}
                     onMouseEnter={this.categoriDropDown}
                     onMouseLeave={this.removeDropDown}
                   >
@@ -160,4 +164,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default { withRouter, Nav };
