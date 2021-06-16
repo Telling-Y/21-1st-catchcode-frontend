@@ -70,7 +70,7 @@ class Nav extends React.Component {
   };
 
   moveToFilterPage = () => {
-    this.props.history.push('/products/FilterPage');
+    this.props.history.push('/products/');
   };
 
   render() {
@@ -164,4 +164,4 @@ class Nav extends React.Component {
   }
 }
 
-export default { withRouter, Nav };
+export default withRouter(Nav);

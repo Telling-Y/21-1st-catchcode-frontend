@@ -1,13 +1,13 @@
 import { Component } from 'react';
-
 import { Link, withRouter } from 'react-router-dom';
 import './Dropdown.scss';
 
 class Dropdown extends Component {
   goToDetail = event => {
-    this.props.history.push(`/product/FilterPage/${event}`);
+    this.props.history.push(`/product/search/?category=${event.id}`);
   };
   render() {
+    console.log(this.props);
     return (
       <div
         className="dropDownWrap"
@@ -21,7 +21,7 @@ class Dropdown extends Component {
                 <li key={categorie.id}>
                   <Link
                     onClick={() => {
-                      this.goToDetail(categorie.id);
+                      this.goToDetail(categorie);
                     }}
                   >
                     <div className="categoriItems">
