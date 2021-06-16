@@ -70,9 +70,7 @@ class Sign extends React.Component {
 
   mappingVaild = () => {
     let vaildArr = this.state.signData.map(x => x.vaild);
-    for (let i = 0; i < vaildArr.length; i++) {
-      return vaildArr[i];
-    }
+    return vaildArr.every(x => x === true);
   };
 
   handleSign = () => {
