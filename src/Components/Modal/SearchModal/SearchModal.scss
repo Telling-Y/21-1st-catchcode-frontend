@@ -7,4 +7,13 @@
   border: #1e1e1e solid 0.1rem;
   border-top: none;
   z-index: -1;
+  .modalToggle {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1rem;
+    .notice {
+      font-size: 1.3rem;
+    }
+  }
 }

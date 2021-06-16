@@ -18,11 +18,11 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/mock.json')
+    fetch('http://10.58.6.177:8000/products/categories')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          result: data.result,
+          result: data.productCategories,
         });
       });
   }
@@ -64,7 +64,7 @@ class Nav extends React.Component {
 
   closeSearchModal = () => {
     this.setState({
-      searchModalOn: false,
+      searchModalValid: false,
       inputZIndex: -1,
     });
   };
@@ -95,7 +95,10 @@ class Nav extends React.Component {
                     </button>
 
                     {this.state.searchModalValid && (
-                      <SearchModal isCheck={this.searchModalValid} />
+                      <SearchModal
+                        isCheck={this.searchModalValid}
+                        closeSearchModal={this.closeSearchModal}
+                      />
                     )}
                   </div>
                 </div>

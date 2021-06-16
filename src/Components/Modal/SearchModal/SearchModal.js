@@ -5,8 +5,8 @@ class SearchModal extends Component {
   render() {
     return (
       <div className="modalContainer">
-        <span>최근 검색어</span>
         <div className="modalToggle">
+          <div className="notice">최근 검색어</div>
           <button
             className="closeButton"
             onClick={() => this.props.closeSearchModal()}
