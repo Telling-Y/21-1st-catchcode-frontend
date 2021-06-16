@@ -3,8 +3,11 @@ import './LoginModal.scss';
 
 class LoginModal extends Component {
   moveToLoginPage = () => {
-    // this.state.history.push('/Login');
-    console.log(this.props.history);
+    this.props.history && this.props.history.push('/Login');
+  };
+
+  moveToSignPage = () => {
+    this.props.history && this.props.history.push(`/Sign`);
   };
 
   render() {
@@ -13,7 +16,9 @@ class LoginModal extends Component {
         <button className="mvToSignIn" onClick={() => this.moveToLoginPage()}>
           로그인
         </button>
-        <button className="mvToSignup">회원가입</button>
+        <button className="mvToSignup" onClick={() => this.moveToSignPage()}>
+          회원가입
+        </button>
       </div>
     );
   }

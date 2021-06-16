@@ -3,11 +3,14 @@ import { Link, withRouter } from 'react-router-dom';
 import './Dropdown.scss';
 
 class Dropdown extends Component {
-  goToDetail = event => {
+  goToDetailCategory = event => {
     this.props.history.push(`/product/search/?category=${event.id}`);
   };
+
+  gotoDetailCountry = event => {
+    this.props.history.push(`product/search/?country=${event.id}`);
+  };
   render() {
-    console.log(this.props);
     return (
       <div
         className="dropDownWrap"
@@ -21,7 +24,7 @@ class Dropdown extends Component {
                 <li key={categorie.id}>
                   <Link
                     onClick={() => {
-                      this.goToDetail(categorie);
+                      this.goToDetailCategory(categorie);
                     }}
                   >
                     <div className="categoriItems">
@@ -40,7 +43,11 @@ class Dropdown extends Component {
           <div className="countries">
             {this.props.result.countries.map((result, i) => {
               return (
-                <Link to="" key={i} className="countryItem">
+                <Link
+                  onClick={() => this.moveToDetailCountry(result)}
+                  key={i}
+                  className="countryItem"
+                >
                   <span>{result.name}</span>
                 </Link>
               );
