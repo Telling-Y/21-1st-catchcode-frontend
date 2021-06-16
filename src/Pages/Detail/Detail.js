@@ -32,12 +32,6 @@ class Detail extends React.Component {
     });
   };
 
-  replayceProductName = () => {
-    return this.setState({
-      prodcutName: this.state.prodcutName.split('_'),
-    });
-  };
-
   checkFinalBtnValid = finalBtnValid => {
     return this.setState({
       buyBtnOpacity: finalBtnValid.buyBtnOpacity,
