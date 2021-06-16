@@ -125,11 +125,14 @@ class FilterNav extends react.Component {
             {isColorSelect && (
               <div className="filterModal">
                 <div className="colorBox">
-                  <div className="colorCircle"></div>
-                  <div className="colorCircle"></div>
-                  <div className="colorCircle"></div>
-                  <div className="colorCircle"></div>
-                  <div className="colorCircle"></div>
+                  {PRODUCTS_COLOR.map(color => {
+                    return (
+                      <div
+                        className="colorCircle"
+                        style={{ backgroundColor: { color } }}
+                      ></div>
+                    );
+                  })}
                 </div>
                 <span className="grayLine"></span>
                 <div className="settingBox">
@@ -148,9 +151,20 @@ class FilterNav extends react.Component {
 export default withRouter(FilterNav);
 
 const CATEGORIES_NAME = [
-  { name: '전체', id: 0 },
-  { name: '실크', id: 1 },
-  { name: '면', id: 2 },
-  { name: '린넨', id: 3 },
-  { name: '패턴', id: 4 },
+  { id: 0, name: '전체' },
+  { id: 1, name: '실크' },
+  { id: 2, name: '면' },
+  { id: 3, name: '린넨' },
+  { id: 4, name: '패턴' },
+];
+
+const PRODUCTS_COLOR = [
+  { id: 0, color: '#79ffdf' },
+  { id: 1, color: '#7902df' },
+  { id: 2, color: '#790216' },
+  { id: 3, color: '#0c02df' },
+  { id: 4, color: '#ff99ff' },
+  { id: 5, color: '#6666ff' },
+  { id: 6, color: '#ff6666' },
+  { id: 7, color: '#66ffff' },
 ];
