@@ -8,15 +8,14 @@ class Detail extends React.Component {
     super();
     this.state = {
       result: [],
-      priceData: '사이즈를 선택하세요',
       prodcutName: '',
-      buyBtnOpacity: 0.3,
       btnDisabledValue: false,
     };
   }
 
   componentDidMount() {
-    fetch(`http://10.58.6.177:8000/products/${this.props.match.params.id}`)
+    fetch(`http://10.58.6.177:8000/products/${this.props.match.params.id}`);
+    fetch('http://10.58.6.177:8000/products/1')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -28,7 +27,7 @@ class Detail extends React.Component {
 
   selectPrice = finalPayment => {
     return this.setState({
-      priceData: finalPayment,
+      priceData: finalPayment.price.split('.')[0] + '₩',
     });
   };
 
@@ -41,6 +40,23 @@ class Detail extends React.Component {
 
   render() {
     const { result } = this.state;
+    const induceTap = [
+      {
+        class: 'fas fa-truck-loading',
+        type: '배송유형',
+        value: '해외직배송',
+      },
+      {
+        class: 'fas fa-parachute-box',
+        type: '배송 예정일',
+        value: '2~4일',
+      },
+      {
+        class: 'fas fa-donate',
+        type: '예상 배송비',
+        value: '무료',
+      },
+    ];
 
     return (
       <div className="detailPageWrap">
@@ -48,8 +64,8 @@ class Detail extends React.Component {
           <div className="contentPage">
             {result &&
               result.image &&
-              result.image.map(src => {
-                return <img src={src} alt="제품 이미지" />;
+              result.image.map((src, i) => {
+                return <img key={i} src={src} alt="제품 이미지" />;
               })}
             <div className="productDetail">
               <div className="productInfo">상품 상세 정보</div>
@@ -59,11 +75,11 @@ class Detail extends React.Component {
             </div>
             <ul className="productContents">
               {result.productSubstance &&
-                result.productSubstance.map(Content => {
+                result.productSubstance.map((content, i) => {
                   return (
-                    <li>
-                      <div className="contentName">{Content.name}</div>
-                      <div className="contentValue">{Content.value}</div>
+                    <li key={i}>
+                      <div className="contentName">{content.name}</div>
+                      <div className="contentValue">{content.value}</div>
                     </li>
                   );
                 })}
@@ -98,33 +114,23 @@ class Detail extends React.Component {
 
                   <div className="basketWrap">
                     <div className="checkPayment">
-                      <div className="deliv">
-                        <div className="itemIndex">
-                          <i class="fas fa-truck-loading"></i>
-                          <div className="itemWord">배송 유형</div>
-                        </div>
-                        <div className="delivItem">해외직배송</div>
-                      </div>
-                      <div className="deliv">
-                        <div className="itemIndex">
-                          <i class="fas fa-parachute-box" />
-                          <div className="itemWord">배송 예정일</div>
-                        </div>
-                        <div className="delivItem">2~4일</div>
-                      </div>
-                      <div className="deliv">
-                        <div className="itemIndex">
-                          <i class="fas fa-donate" />
-                          <div className="itemWord">예상 배송비</div>
-                        </div>
-                        <div className="delivItem">무료</div>
-                      </div>
+                      {induceTap.map((result, i) => {
+                        return (
+                          <div className="deliv" key={i}>
+                            <div className="itemIndex">
+                              <i class={result.class} />
+                              <div className="itemWord">{result.type}</div>
+                            </div>
+                            <div className="delivItem">{result.value}</div>
+                          </div>
+                        );
+                      })}
                     </div>
                     <button
                       className="putBasket"
+                      disabled={!this.state.btnDisabledValue}
                       style={{
-                        disabled: this.state.value,
-                        opacity: this.state.buyBtnOpacity,
+                        opacity: !this.state.btnDisabledValue ? 0.3 : 1,
                       }}
                     >
                       쇼핑백에 담기

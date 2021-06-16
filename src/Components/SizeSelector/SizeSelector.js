@@ -23,12 +23,11 @@ class SizeSelector extends Component {
   chgSizeText = result => {
     this.setState(
       {
-        setSize: result.sizeName,
         listStyle: '',
-        payPrice: result.price.split('.')[0],
+        setSize: result.sizeName,
       },
       () => {
-        this.sendPriceToParent();
+        this.sendPriceToParent(result);
         this.changeListStyle();
         this.sendBtnValidToParent();
       }
@@ -39,11 +38,12 @@ class SizeSelector extends Component {
     return this.props.checkFinalBtnValid(this.state.btnValid);
   };
 
-  sendPriceToParent = () => {
-    return this.props.selectPrice(this.state.payPrice);
+  sendPriceToParent = result => {
+    return this.props.selectPrice(result);
   };
 
   render() {
+    const { result } = this.props;
     return (
       <div className="sizeSelectorWrap">
         <div className="fixedLi">
@@ -54,14 +54,17 @@ class SizeSelector extends Component {
             </div>
           </button>
         </div>
-        {this.props.result.priceAndSize &&
-          this.props.result.priceAndSize.map((result, i) => {
+        {result.priceAndSize &&
+          result.priceAndSize.map((result, i) => {
             return (
-              <div class="showList" style={{ display: this.state.listStyle }}>
+              <div
+                key={result.sizeId}
+                class="showList"
+                style={{ display: this.state.listStyle }}
+              >
                 <button
                   className="setSizeBtn"
                   onClick={() => this.chgSizeText(result)}
-                  key={result.sizeId}
                   id={'btnLength' + i}
                   style={{ top: i * 2.8 + `rem` }}
                 >
