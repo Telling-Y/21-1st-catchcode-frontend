@@ -1,4 +1,5 @@
 import react from 'react';
+import { withRouter } from 'react-router-dom';
 import './FilterProducts.scss';
 
 class FilterProducts extends react.Component {
@@ -12,19 +13,20 @@ class FilterProducts extends react.Component {
   };
 
   // componentDidMount() {
-  //   fetch(`http://10.58.6.177:8000/products/search`)
+  //   fetch(
+  //     `http://10.58.6.177:8000/products/search?${this.props.match.params.id}`
+  //   )
   //     .then(res => res.json())
   //     .then(res => console.log(res));
   // }
 
   render() {
     const { productListInfo } = this.props;
-    console.log(this.props);
     return (
       <div className="products">
-        {productListInfo.map(data => {
+        {productListInfo.map((data, idx) => {
           return (
-            <div className="item" key={data.id}>
+            <div className="item" key={idx}>
               <div className="image">
                 <img alt="원단사진입니다" src={data.thumbNail} />
               </div>
@@ -44,4 +46,4 @@ class FilterProducts extends react.Component {
   }
 }
 
-export default FilterProducts;
+export default withRouter(FilterProducts);

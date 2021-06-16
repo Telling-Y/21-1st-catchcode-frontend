@@ -9,17 +9,47 @@ class FilterPage extends React.Component {
     this.state = {
       categories: [],
       productListInfo: [],
+      address: '',
     };
   }
-  componentDidMount() {
-    fetch('http://localhost:3000/data/categoriesDatas.json')
+
+  handleFetch = () => {
+    fetch(`http://10.58.6.177:8000/products/search${this.state.address}`)
       .then(res => res.json())
       .then(data => {
         return this.setState({
-          categories: data.result.categories,
+          productListInfo: data.productListInfo,
         });
       });
-    fetch('http://localhost:3000/data/filterProductListData.json')
+  };
+
+  // filterCategories = e => {
+  //   console.log(e.target.id);
+  //   let numId = Number(e.target.id);
+  //   let categoryAddress = '';
+  //   let catchBuyAddress = '';
+  //   let minMaxAddress = '';
+  //   let colorAddress = '';
+
+  //   numId
+  //     ? (categoryAddress = `?category=${e.target.id}`)
+  //     : (categoryAddress = ``);
+
+  //   if (e.target.className === 'filterButton black' && e.target.id === 1) {
+  //     catchBuyAddress = `catch=${e.target.id}`;
+  //   }
+  //   console.log(catchBuyAddress);
+  // };
+
+  componentDidMount() {
+    fetch('http://10.58.6.177:8000/products/categories')
+      .then(res => res.json())
+      .then(data => {
+        return this.setState({
+          categories: data.productCategories.categories,
+        });
+      });
+    fetch('http://10.58.6.177:8000/products/search')
       .then(res => res.json())
       .then(data => {
         return this.setState({
@@ -27,11 +57,15 @@ class FilterPage extends React.Component {
         });
       });
   }
+
   render() {
     return (
       <div className="filterPage">
         <div className="filterWrap">
-          <FilterNav categories={this.state.categories} />
+          <FilterNav
+            categories={this.state.categories}
+            filterCategories={this.filterCategories}
+          />
           <FilterProducts productListInfo={this.state.productListInfo} />
         </div>
       </div>

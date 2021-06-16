@@ -21,13 +21,13 @@ class FilterNav extends react.Component {
     });
   };
 
-  hadlePrice = () => {
+  handlePrice = () => {
     this.setState({
       isColorSelect: false,
       isPriceSelect: !this.state.isPriceSelect,
     });
   };
-  hadleColor = () => {
+  handleColor = () => {
     this.setState({
       isPriceSelect: false,
       isColorSelect: !this.state.isColorSelect,
@@ -47,34 +47,32 @@ class FilterNav extends react.Component {
     }
   };
 
-  hedleFilterMenu = idx => {
+  putinColorValue = e => {
+    console.log(e);
+  };
+
+  handleFilterMenu = idx => {
     this.setState({
       select: idx,
     });
   };
 
-  filterCategories = idx => {
-    this.props.history.push(
-      `/products/search/${this.props.categories[idx - 1].id}`
-    );
-  };
-
   render() {
     const { isCatchSelect, isPriceSelect, isColorSelect } = this.state;
-    // const { categories } = this.props;
+    const { filterCategories } = this.props;
     return (
       <div className="filterNav">
         <div className="categoriesBox">
           {CATEGORIES_NAME.map((category, idx) => {
             return (
               <div
-                key={category.idx}
+                key={idx}
                 id={category.id}
                 className={`category ${this.state.select === idx && 'select'}`}
-                onClick={
-                  (() => this.hedleFilterMenu(idx),
-                  () => this.filterCategories(category.id))
-                }
+                onClick={e => {
+                  this.handleFilterMenu(idx);
+                  filterCategories(e);
+                }}
               >
                 {category.name}
               </div>
@@ -83,13 +81,17 @@ class FilterNav extends react.Component {
         </div>
         <div className="filterButtonBox">
           <div
+            id={isCatchSelect ? 0 : 1}
             className={`filterButton ${isCatchSelect && 'black'}`}
-            onClick={this.handleCatch}
+            onClick={e => {
+              this.handleCatch();
+              filterCategories(e);
+            }}
           >
             캐치구매
           </div>
           <div className="filterButton">
-            <div onClick={this.hadlePrice}>가격</div>
+            <div onClick={this.handlePrice}>가격</div>
             {isPriceSelect && (
               <div className="filterModal">
                 <div className="priceInputBox">
@@ -120,15 +122,17 @@ class FilterNav extends react.Component {
           </div>
 
           <div className="filterButton">
-            <div onClick={this.hadleColor}>색상</div>
+            <div onClick={this.handleColor}>색상</div>
             {isColorSelect && (
               <div className="filterModal">
                 <div className="colorBox">
-                  {PRODUCTS_COLOR.map(data => {
+                  {PRODUCTS_COLOR.map((data, idx) => {
                     return (
                       <div
+                        key={idx}
                         className="colorCircle"
                         style={{ backgroundColor: [data.color] }}
+                        onClick={this.putinColorValue}
                       ></div>
                     );
                   })}
@@ -151,10 +155,12 @@ export default withRouter(FilterNav);
 
 const CATEGORIES_NAME = [
   { id: 0, name: '전체' },
-  { id: 1, name: '실크' },
-  { id: 2, name: '면' },
-  { id: 3, name: '린넨' },
-  { id: 4, name: '패턴' },
+  { id: 1, name: '면' },
+  { id: 2, name: '실크' },
+  { id: 3, name: '마' },
+  { id: 4, name: '데님' },
+  { id: 5, name: '기모' },
+  { id: 6, name: '패턴' },
 ];
 
 const PRODUCTS_COLOR = [
