@@ -22,15 +22,7 @@ class CommonInput extends React.Component {
           <div className="warning">{vaildText}</div>
         )}
 
-        {text === '비밀번호' && (
-          <button
-            className="passwordView"
-            // {`passwordView ${this.state.isView && 'select'}`}
-            style={{
-              backgroundImage: `url("/images/view.png")`,
-            }}
-          />
-        )}
+        {text === '비밀번호' && <button className="passwordView" />}
       </div>
     );
   }

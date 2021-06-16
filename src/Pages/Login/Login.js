@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GET_LOGIN_API } from '../../config';
+import { POST_LOGIN_API } from '../../config';
 import CommonInput from '../../Components/CommonInput/CommonInput';
 import './Login.scss';
 
@@ -23,8 +23,8 @@ class Login extends React.Component {
   };
 
   handleLogin = () => {
-    fetch(`${GET_LOGIN_API}`, {
-      method: 'GET',
+    fetch(`${POST_LOGIN_API}`, {
+      method: 'POST',
       body: JSON.stringify({
         phone_number: this.state.phoneValue,
         password: this.state.passwordValue,
@@ -60,7 +60,6 @@ class Login extends React.Component {
                 <CommonInput
                   key={data.id}
                   data={data}
-                  value={this.state[data.name]}
                   handleInput={this.handleInput}
                   isWarning={phoneError}
                 />
@@ -70,6 +69,7 @@ class Login extends React.Component {
             <Link
               className={isLogin ? 'blackButton' : 'grayButton'}
               onClick={isLogin ? this.handleLogin : null}
+              to="/"
             >
               로그인
             </Link>

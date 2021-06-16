@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { POST_SIGN_API } from '../../config';
-import { regPassword } from '../../utils';
-import { regName } from '../../utils';
+import { regPassword, regName } from '../../utils';
 import CommonInput from '../../Components/CommonInput/CommonInput';
 import './Sign.scss';
 
@@ -14,6 +13,7 @@ class Sign extends React.Component {
       nameValue: '',
       phoneValue: '',
       passwordValue: '',
+      isVaild: false,
       signData: [
         {
           id: 1,
@@ -25,7 +25,7 @@ class Sign extends React.Component {
           vaildator: input =>
             input.length > 1 && input.match(regName) ? true : false,
           placeholder: '이름을 입력해주세요',
-          vaildText: '이름에 한글, 5글자 이상 입력해주세요',
+          vaildText: '이름에 한글, 2글자 이상 입력해주세요',
         },
         {
           id: 2,
@@ -47,7 +47,7 @@ class Sign extends React.Component {
           text: '비밀번호',
           type: 'password',
           vaild: true,
-          vaildator: input => input.match(regPassword),
+          vaildator: input => (input.match(regPassword) ? true : false),
           placeholder: '비밀번호를 입력해주세요',
           vaildText: '영문 대소문자, 숫자를 이용해 5자 이상으로 설정해주세요',
         },
@@ -68,6 +68,13 @@ class Sign extends React.Component {
     });
   };
 
+  mappingVaild = () => {
+    let vaildArr = this.state.signData.map(x => x.vaild);
+    for (let i = 0; i < vaildArr.length; i++) {
+      return vaildArr[i];
+    }
+  };
+
   handleSign = () => {
     this.setState(
       {
@@ -76,27 +83,27 @@ class Sign extends React.Component {
         }),
       },
       () => {
-        console.log(this.state.signData[0].vaild);
+        if (this.mappingVaild()) {
+          fetch(`${POST_SIGN_API}`, {
+            method: 'POST',
+            body: JSON.stringify({
+              phone_number: this.state.phoneValue,
+              password: this.state.passwordValue,
+              name: this.state.nameValue,
+              sex: this.state.genderNum,
+              admin: 1,
+            }),
+          })
+            .then(res => res.json())
+            .then(res => {
+              if (res.result === 'SUCCESS!') {
+                this.props.history.push('/Login');
+              }
+            });
+        }
       }
     );
-    fetch(`${POST_SIGN_API}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        phone_number: this.state.phoneValue,
-        password: this.state.passwordValue,
-        name: this.state.nameValue,
-        sex: this.state.genderNum,
-        admin: 1,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.result === 'SUCCESS!') {
-          this.props.history.push('/Login');
-        }
-      });
   };
-
   render() {
     const { signData, genderNum } = this.state;
     const { seperateGender } = this;
