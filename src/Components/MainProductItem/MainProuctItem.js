@@ -1,9 +1,10 @@
 import { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import './MainProductItem.scss';
 
 class MainProductItem extends Component {
-  goToDetail = () => {
-    this.state.history.push(this.);
+  goToDetail = event => {
+    this.props.history.push(`/product/Detail/${event}`);
   };
   render() {
     const { product } = this.props;
@@ -11,7 +12,11 @@ class MainProductItem extends Component {
       <div className="products">
         {product.map(data => {
           return (
-            <div className="item" key={data.id} onClick={() => this.goToDetail}>
+            <Link
+              onClick={() => this.goToDetail(data.id)}
+              className="item"
+              key={data.id}
+            >
               <div className="image">
                 <img alt="원단사진입니다" src={data.thumbNail} />
               </div>
@@ -21,7 +26,7 @@ class MainProductItem extends Component {
                 <div className="detail">캐치구매</div>
                 <div className="soldout">SOLD OUT</div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
