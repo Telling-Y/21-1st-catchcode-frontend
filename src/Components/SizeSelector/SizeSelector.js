@@ -6,7 +6,6 @@ class SizeSelector extends Component {
     super();
     this.state = {
       listStyle: 'none',
-      setSize: '사이즈를 선택해주세요',
       payPrice: 0,
       btnValid: { buyBtnOpacity: 1, btnDisabledValue: true },
     };
@@ -27,19 +26,18 @@ class SizeSelector extends Component {
         setSize: result.sizeName,
       },
       () => {
-        this.sendPriceToParent(result);
+        this.sendProductToParent(result);
         this.changeListStyle();
         this.sendBtnValidToParent();
       }
     );
   };
-
   sendBtnValidToParent = () => {
     return this.props.checkFinalBtnValid(this.state.btnValid);
   };
 
-  sendPriceToParent = result => {
-    return this.props.selectPrice(result);
+  sendProductToParent = result => {
+    return this.props.selectProductData(result);
   };
 
   render() {
@@ -49,7 +47,7 @@ class SizeSelector extends Component {
         <div className="fixedLi">
           <button className="sizeSelector" onClick={this.changeListStyle}>
             <div className="setSize">
-              {this.state.setSize}
+              {this.props.selectedProduct.size}
               <i class="fas fa-arrow-down" />
             </div>
           </button>

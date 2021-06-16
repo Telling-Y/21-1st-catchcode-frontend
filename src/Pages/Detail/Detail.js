@@ -10,11 +10,12 @@ class Detail extends React.Component {
       result: [],
       prodcutName: '',
       btnDisabledValue: false,
+      selectedProduct: { size: '', price: 0 },
     };
   }
 
   componentDidMount() {
-    fetch(`http://10.58.6.177:8000/products/${this.props.match.params.id}`);
+    // fetch(`http://10.58.6.177:8000/products/${this.props.match.params.id}`);
     fetch('http://10.58.6.177:8000/products/1')
       .then(res => res.json())
       .then(data => {
@@ -25,21 +26,25 @@ class Detail extends React.Component {
       });
   }
 
-  selectPrice = finalPayment => {
-    return this.setState({
-      priceData: finalPayment.price.split('.')[0] + '₩',
+  selectProductData = finalResult => {
+    this.setState({
+      selectedProduct: {
+        ...this.state.selectedProduct,
+        size: finalResult.sizeName,
+        price: finalResult.price.split('.')[0] + '₩',
+      },
+      btnDisabledValue: true,
     });
   };
 
-  checkFinalBtnValid = finalBtnValid => {
-    return this.setState({
-      buyBtnOpacity: finalBtnValid.buyBtnOpacity,
-      btnDisabledValue: finalBtnValid.btnDisabledValue,
-    });
-  };
+  // checkFinalBtnValid = () => {
+  //   return this.setState({
+  //     btnDisabledValue: true,
+  //   });
+  // };
 
   render() {
-    const { result } = this.state;
+    const { result, selectedProduct } = this.state;
     const induceTap = [
       {
         class: 'fas fa-truck-loading',
@@ -102,14 +107,17 @@ class Detail extends React.Component {
                 <div className="sizeSelectorWrap">
                   <SizeSelector
                     result={result}
-                    selectPrice={this.selectPrice}
+                    selectedProduct={this.state.selectedProduct}
+                    selectProductData={this.selectProductData}
                     checkFinalBtnValid={this.checkFinalBtnValid}
                   />
                 </div>
                 <div className="paymentArea">
                   <div className="noticePrice">
                     <span className="fixedWord">Price :</span>
-                    <span className="priceData"> {this.state.priceData}</span>
+                    <span className="priceData">
+                      {selectedProduct.price ? selectedProduct.price : ''}
+                    </span>
                   </div>
 
                   <div className="basketWrap">
