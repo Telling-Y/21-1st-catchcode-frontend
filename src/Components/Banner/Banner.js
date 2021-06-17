@@ -18,6 +18,7 @@ class Banner extends Component {
   }
 
   prevSlide = () => {
+    console.log('2');
     this.state.slideIndex > 0
       ? this.setState({
           slideIndex: this.state.slideIndex - 1,
@@ -36,7 +37,7 @@ class Banner extends Component {
   };
 
   componentDidMount() {
-    setInterval(() => {
+    setInterval(e => {
       this.state.slideIndex < 4 &&
         setTimeout(() => {
           this.setState({ slideIndex: this.state.slideIndex + 1, speed: 300 });
@@ -72,52 +73,42 @@ class Banner extends Component {
     const { imageSrc, speed, slideIndex } = this.state;
 
     return (
-      <>
-        <div className="carouselContainer">
-          <div className="slideWrap">
-            <div className="slideBox">
-              <div
-                className="slideList"
-                style={{
-                  width: imageSrc.length * 80 + 'vw',
-                  transition: speed + `ms`,
-                  transform: `translate3d(
+      <div className="carouselContainer">
+        <div className="slideWrap">
+          <div className="slideBox">
+            <div
+              className="slideList"
+              style={{
+                width: imageSrc.length * 80 + 'vw',
+                transition: speed + `ms`,
+                transform: `translate3d(
                     ${slideIndex * -80}vw, 0px, 0px`,
-                }}
-              >
-                {imageSrc.map((source, index) => {
-                  return (
-                    <div className="slide">
-                      <img
-                        src={source}
-                        alt="슬라이드"
-                        className="slideItem"
-                        id={`${index}`}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="slideDot">
-              {imageSrc &&
-                imageSrc.slice(1, imageSrc.length - 1).map((length, i) => (
-                  <div id={i} onClick={this.slidesDot}>
-                    <i class="far fa-circle" />
+              }}
+            >
+              {imageSrc.map((source, index) => {
+                return (
+                  <div className="slide">
+                    <img
+                      src={source}
+                      alt="슬라이드"
+                      className="slideItem"
+                      id={`${index}`}
+                    />
                   </div>
-                ))}
+                );
+              })}
             </div>
-          </div>
-          <div className="bannerButton">
-            <button className="prev" onClick={this.prevSlide}>
-              <i class="fas fa-arrow-left" />
-            </button>
-            <button className="next" onClick={this.nextSlide}>
-              <i class="fas fa-arrow-right" />
-            </button>
           </div>
         </div>
-      </>
+        <div className="bannerButton">
+          <button className="prev" onClick={this.prevSlide}>
+            <i class="fas fa-arrow-left" />
+          </button>
+          <button className="next" onClick={this.nextSlide}>
+            <i class="fas fa-arrow-right" />
+          </button>
+        </div>
+      </div>
     );
   }
 }
