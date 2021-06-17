@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SizeSelector from '../../Components/SizeSelector/SizeSelector';
+import { GET_BASE_API } from '../../config';
 import './Detail.scss';
 
 class Detail extends React.Component {
@@ -15,7 +16,7 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.2.153:8000/products/${this.props.match.params.id}`)
+    fetch(`${GET_BASE_API}${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data => {
         this.setState({

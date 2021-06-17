@@ -2,7 +2,7 @@
 
 .productArea {
   display: flex;
-  margin-top: 10rem;
+  margin-top: 5rem;
   justify-content: center;
   .pruducts {
     @include flex-center(center, flex-start);

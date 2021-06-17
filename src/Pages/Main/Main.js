@@ -1,6 +1,7 @@
 import React from 'react';
 import MainProductItem from '../../Components/MainProductItem/MainProuctItem';
 import Banner from '../../Components/Banner/Banner';
+import { GET_Base_API } from '../../config';
 import './Main.scss';
 
 class Main extends React.Component {
