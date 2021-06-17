@@ -7,13 +7,14 @@
   .fixedLi {
     border: 1px solid #eaeaea;
     font-size: 1rem;
+    padding: 0 1rem;
 
     .sizeSelector {
       display: flex;
-      width: 22rem;
-      height: 3rem;
       align-items: center;
       justify-content: center;
+      width: 100%;
+      height: 3rem;
 
       .setSize {
         display: flex;

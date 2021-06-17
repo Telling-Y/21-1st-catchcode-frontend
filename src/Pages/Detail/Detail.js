@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { GET_DETAILPAGE_API } from '../../config';
 import SizeSelector from '../../Components/SizeSelector/SizeSelector';
 import './Detail.scss';
 
@@ -15,8 +16,7 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    // fetch(`${GET_DETAILPAGE_API} + ${this.props.match.params.id}`);
-    fetch('http://10.58.2.153:8000/products/3')
+    fetch(`${GET_DETAILPAGE_API}/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -59,19 +59,19 @@ class Detail extends React.Component {
     const foot = [
       {
         class: 'fas fa-balance-scale-right',
-        word: `전세계 원단을${(<br />)}단 한 곳에서`,
+        word: `전세계 원단을 단 한 곳에서`,
       },
       {
         class: 'fas fa-receipt',
-        word: `똑똑한 가격비교로${(<br />)}찾는 최저가`,
+        word: `똑똑한 가격비교로 찾는 최저가`,
       },
       {
         class: 'fas fa-briefcase',
-        word: `고민 없이${(<br />)}한 눈에 보는 최종금액`,
+        word: `고민 없이 한 눈에 보는 최종금액`,
       },
       {
         class: 'fas fa-boxes',
-        word: `직구도 국내쇼핑처럼${(<br />)}간편한 '캐치구매'`,
+        word: `직구도 국내쇼핑처럼 간편한 '캐치구매'`,
       },
     ];
 
@@ -145,7 +145,7 @@ class Detail extends React.Component {
                         return (
                           <div className="deliv" key={i}>
                             <div className="itemIndex">
-                              <i class={result.class} />
+                              <i className={result.class} />
                               <div className="itemWord">{result.type}</div>
                             </div>
                             <div className="delivItem">{result.value}</div>
@@ -172,7 +172,7 @@ class Detail extends React.Component {
             <img
               src="http://drive.google.com/uc?export=view&id=12dmrUY0mEWOycoj9KbjQAAwtalS6Ts-d"
               alt="banner"
-              style={{ width: '22rem' }}
+              style={{ width: '23.5rem' }}
             />
           </div>
         </div>
