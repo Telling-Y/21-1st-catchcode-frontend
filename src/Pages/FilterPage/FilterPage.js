@@ -20,16 +20,34 @@ class FilterPage extends React.Component {
   handleFetch = newAddress => {
     fetch(`http://10.58.2.153:8000/products/search?${newAddress}`)
       .then(res => res.json())
-      .then(
-        data => {
-          return this.setState({
-            productListInfo: data.productListInfo,
-          });
-        },
-        () => {
-          console.log(newAddress);
-        }
-      );
+      .then(data => {
+        return this.setState({
+          productListInfo: data.productListInfo,
+        });
+      });
+  };
+
+  putInPrice = e => {
+    const { id, value } = e.target;
+
+    id
+      ? this.setState({
+          max: value,
+        })
+      : this.setState({
+          min: value,
+        });
+  };
+
+  putinColorValue = e => {
+    this.setState(
+      {
+        color: e.target.id.replace('#', '%23'),
+      },
+      () => {
+        console.log(this.state.color);
+      }
+    );
   };
 
   filterDetail = () => {
@@ -55,33 +73,18 @@ class FilterPage extends React.Component {
     this.handleFetch(newAdress);
   };
 
-  putInPrice = e => {
-    const { id, value } = e.target;
-
-    Number(id)
-      ? this.setState({
-          max: value,
-        })
-      : this.setState({
-          min: value,
-        });
-  };
-
-  putinColorValue = e => {
-    this.setState({
-      color: e.target.id.replace('#', '%23'),
-    });
-  };
-
   filterCatchBuy = e => {
     const { id } = e.target;
+
     Number(id)
       ? this.setState(
           {
             catchBuyAddress: `&catch=${id}`,
           },
           () => {
-            this.handleFetch(this.state.catchBuyAddress);
+            this.handleFetch(
+              `${this.state.catchBuyAddress}&${this.state.categoryAddress}`
+            );
           }
         )
       : this.setState(
@@ -89,7 +92,9 @@ class FilterPage extends React.Component {
             catchBuyAddress: '',
           },
           () => {
-            this.handleFetch(this.state.catchBuyAddress);
+            this.handleFetch(
+              `${this.state.catchBuyAddress}&${this.state.categoryAddress}`
+            );
           }
         );
   };
@@ -103,7 +108,9 @@ class FilterPage extends React.Component {
             categoryAddress: `&category=${id}`,
           },
           () => {
-            this.handleFetch(this.state.categoryAddress);
+            this.handleFetch(
+              `${this.state.catchBuyAddress}&${this.state.categoryAddress}`
+            );
           }
         )
       : this.setState(
@@ -111,9 +118,24 @@ class FilterPage extends React.Component {
             categoryAddress: ``,
           },
           () => {
-            this.handleFetch(this.state.categoryAddress);
+            this.handleFetch(
+              `${this.state.catchBuyAddress}&${this.state.categoryAddress}`
+            );
           }
         );
+  };
+
+  resetFilterData = e => {
+    const { id } = e.target;
+
+    Number(id)
+      ? this.setState({
+          color: '',
+        })
+      : this.setState({
+          min: '',
+          max: '',
+        });
   };
 
   componentDidMount() {
@@ -138,12 +160,16 @@ class FilterPage extends React.Component {
       <div className="filterPage">
         <div className="filterWrap">
           <FilterNav
+            min={this.state.min}
+            max={this.state.max}
+            color={this.state.color}
             categories={this.state.categories}
             putInPrice={this.putInPrice}
             putinColorValue={this.putinColorValue}
             filterDetail={this.filterDetail}
             filterCatchBuy={this.filterCatchBuy}
             filterCategory={this.filterCategory}
+            resetFilterData={this.resetFilterData}
           />
           <FilterProducts productListInfo={this.state.productListInfo} />
         </div>

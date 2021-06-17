@@ -27,7 +27,7 @@ class FilterProducts extends react.Component {
                   {this.removeTitleUnderBar(data.name)}
                 </div>
                 <div className="price">{this.changeDeciaml(data.price)}</div>
-                {!data.catchCode && <div className="detail">캐치구매</div>}
+                {data.catchCode ? <div className="detail">캐치구매</div> : null}
                 {!data.stock && <div className="soldout">SOLD OUT</div>}
               </div>
             </div>

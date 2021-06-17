@@ -7,9 +7,9 @@ class FilterNav extends react.Component {
     super();
     this.state = {
       select: 0,
-      isCatchSelect: 0,
-      isPriceSelect: false,
-      isColorSelect: false,
+      isCatchSelect: false,
+      isPriceBoxSelect: false,
+      isColorBoxSelect: false,
     };
   }
 
@@ -21,16 +21,19 @@ class FilterNav extends react.Component {
 
   handlePrice = () => {
     this.setState({
-      isColorSelect: false,
-      isPriceSelect: !this.state.isPriceSelect,
+      isColorBoxSelect: false,
+      isPriceBoxSelect: !this.state.isPriceBoxSelect,
     });
   };
+
   handleColor = () => {
     this.setState({
-      isPriceSelect: false,
-      isColorSelect: !this.state.isColorSelect,
+      isPriceBoxSelect: false,
+      isColorBoxSelect: !this.state.isColorBoxSelect,
     });
   };
+
+  selectColor = () => {};
 
   handleFilterMenu = idx => {
     this.setState({
@@ -39,13 +42,17 @@ class FilterNav extends react.Component {
   };
 
   render() {
-    const { isCatchSelect, isPriceSelect, isColorSelect } = this.state;
+    const { isCatchSelect, isPriceBoxSelect, isColorBoxSelect } = this.state;
     const {
+      min,
+      max,
+      color,
       filterCategory,
       filterCatchBuy,
       filterDetail,
       putInPrice,
       putinColorValue,
+      resetFilterData,
     } = this.props;
     return (
       <div className="filterNav">
@@ -79,12 +86,13 @@ class FilterNav extends react.Component {
           </div>
           <div className="filterButton">
             <div onClick={this.handlePrice}>가격</div>
-            {isPriceSelect && (
+            {isPriceBoxSelect && (
               <div className="filterModal">
                 <div className="priceInputBox">
                   <input
                     id="0"
                     className="priceInput"
+                    value={min}
                     type="number"
                     onChange={putInPrice}
                   />
@@ -94,6 +102,7 @@ class FilterNav extends react.Component {
                   <input
                     id="1"
                     className="priceInput"
+                    value={max}
                     type="number"
                     onChange={putInPrice}
                   />
@@ -101,7 +110,13 @@ class FilterNav extends react.Component {
                 </div>
                 <span className="grayLine"></span>
                 <div className="settingBox">
-                  <button className="priceReset">초기화</button>
+                  <button
+                    className="priceReset"
+                    id="0"
+                    onClick={resetFilterData}
+                  >
+                    초기화
+                  </button>
                   <button className="black" id="0" onClick={filterDetail}>
                     저장
                   </button>
@@ -112,7 +127,7 @@ class FilterNav extends react.Component {
 
           <div className="filterButton">
             <div onClick={this.handleColor}>색상</div>
-            {isColorSelect && (
+            {isColorBoxSelect && (
               <div className="filterModal">
                 <div className="colorBox">
                   {PRODUCTS_COLOR.map((data, idx) => {
@@ -120,16 +135,22 @@ class FilterNav extends react.Component {
                       <div
                         key={idx}
                         id={data.color}
-                        className="colorCircle"
+                        className={`colorCircle ${color}`}
                         style={{ backgroundColor: [data.color] }}
                         onClick={putinColorValue}
-                      ></div>
+                      />
                     );
                   })}
                 </div>
                 <span className="grayLine"></span>
                 <div className="settingBox">
-                  <button className="priceReset">초기화</button>
+                  <button
+                    className="priceReset"
+                    id="1"
+                    onClick={resetFilterData}
+                  >
+                    초기화
+                  </button>
                   <button className="black" id="1" onClick={filterDetail}>
                     저장
                   </button>
