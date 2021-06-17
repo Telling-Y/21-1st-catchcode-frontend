@@ -11,11 +11,11 @@ class Main extends React.Component {
     };
   }
   componentDidMount() {
-    fetch('http://10.58.3.58:8000/products')
+    fetch('http://10.58.2.153:8000/products')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          product: data.message,
+          product: data.productList,
         });
       });
   }

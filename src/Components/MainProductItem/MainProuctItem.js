@@ -22,9 +22,9 @@ class MainProductItem extends Component {
               </div>
               <div className="itemContext">
                 <div className="title">{data.name}</div>
-                <div className="price">{data.price}</div>
-                <div className="detail">캐치구매</div>
-                <div className="soldout">SOLD OUT</div>
+                <div className="price">{data.price.split(`.`)[0]}</div>
+                <div className="detail"> 캐치구매</div>
+                <div className="soldout">{data.stock < 1 && 'SOLD OUT'}</div>
               </div>
             </Link>
           );
