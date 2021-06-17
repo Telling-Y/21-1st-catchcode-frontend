@@ -110,10 +110,10 @@ class Banner extends Component {
           </div>
           <div className="bannerButton">
             <button className="prev" type="button" onClick={this.prevSlide}>
-              <i class="fas fa-arrow-left"></i>
+              <i class="fas fa-arrow-left" />
             </button>
             <button className="next" type="button" onClick={this.nextSlide}>
-              <i class="fas fa-arrow-right"></i>
+              <i class="fas fa-arrow-right" />
             </button>
           </div>
         </div>

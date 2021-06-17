@@ -1,0 +1,118 @@
+nav {
+  height: 98px;
+
+  a {
+    text-decoration: none;
+  }
+
+  .trickDiv {
+    border-bottom: #eaeaea solid 0.1rem;
+
+    .navContainer {
+      display: flex;
+      padding: 0 5rem;
+      justify-content: space-around;
+      align-items: center;
+
+      .navLeft {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .logo {
+          width: 8rem;
+          margin-right: 4rem;
+        }
+        .inputTrickDiv {
+          position: relative;
+          .realInput {
+            z-index: -1;
+            position: absolute;
+            .hideInput {
+              border: none;
+              width: 10rem;
+              font-size: 1rem;
+              background-color: #f9f9f9;
+              padding: 1rem 2.5rem;
+            }
+            .hideInput:focus {
+              outline: none;
+            }
+          }
+          .searchWrap {
+            display: flex;
+            width: 10rem;
+            margin-right: 5rem;
+            padding: 1rem 2.5rem;
+            background-color: #f9f9f9;
+            justify-content: center;
+            align-items: center;
+
+            button {
+              margin-left: 8px;
+              border: none;
+              background-color: unset;
+            }
+
+            button:hover {
+              cursor: text;
+            }
+          }
+        }
+      }
+
+      .linkTab {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-left: 0.5rem;
+
+        .linkItemsWrap {
+          display: flex;
+
+          justify-content: flex-end;
+
+          a {
+            display: flex;
+            margin: 0 0.5rem;
+            padding: 2rem 0;
+            color: #1e1e1e;
+            white-space: nowrap;
+          }
+          a:hover {
+            border-bottom: #1e1e1e 0.1rem solid;
+            margin-bottom: -0.1rem;
+          }
+        }
+      }
+
+      .userItems {
+        display: flex;
+        margin-left: auto;
+
+        i {
+          margin: 0 5px;
+          font-size: 18px;
+          color: black;
+        }
+
+        .icon {
+          position: relative;
+          display: flex;
+          width: 2rem;
+          height: 2rem;
+          margin: 5px;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .icon:hover {
+          height: 2rem;
+          width: 2rem;
+          background-color: #eaeaea;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
