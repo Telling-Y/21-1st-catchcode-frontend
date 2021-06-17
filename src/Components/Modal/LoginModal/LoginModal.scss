@@ -1,0 +1,24 @@
+.loginModal {
+  position: absolute;
+  display: flex;
+  width: 9rem;
+  height: 9rem;
+  top: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaeaea;
+  z-index: 10;
+  button {
+    width: 7rem;
+    height: 4rem;
+  }
+  .mvToSignin {
+    background-color: #eaeaea;
+    border: #1e1e1e solid 0.1rem;
+  }
+  .mvToSignup {
+    background-color: #1e1e1e;
+    color: #eaeaea;
+  }
+}

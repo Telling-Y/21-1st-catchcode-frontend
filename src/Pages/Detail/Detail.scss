@@ -4,16 +4,16 @@
 
   .detailContentsWrap {
     display: flex;
-    height: auto;
     justify-content: center;
+    padding-top: 2rem;
 
     .contentPage {
       display: flex;
       flex-direction: column;
 
       img {
-        width: 25rem;
-        height: 25rem;
+        width: 30rem;
+        height: 28rem;
         padding: 2rem 2rem 2rem 0;
       }
       .productDetail {
@@ -23,28 +23,35 @@
           font-size: 1.2rem;
         }
         .productDescription {
-          width: 25rem;
+          width: 29rem;
+          font-size: 0.9rem;
+          line-height: 1.7;
         }
       }
 
       .productContents {
         display: flex;
+        justify-content: space-between;
         width: 25rem;
         margin-top: 0.9rem;
-        justify-content: space-between;
 
         .contentName {
+          font-size: 0.8rem;
           font-weight: 700;
+          margin-bottom: 0.3rem;
+        }
+        .contentValue {
+          font-size: 0.8rem;
         }
       }
     }
 
     .sidePage {
-      height: 80rem;
-      width: 22rem;
+      width: 37.6em;
+      margin-left: 6rem;
 
       .rightDiv {
-        height: 87rem;
+        height: 83.2rem;
 
         .stickyDiv {
           position: -webkit-sticky;
@@ -78,14 +85,15 @@
 
             .noticePrice {
               display: flex;
-              width: 20rem;
-              padding: 1rem;
+              width: 100%;
+              height: 3.1rem;
               justify-content: space-between;
               align-self: flex-end;
               font-size: 1.2rem;
 
               .fixedWord {
                 align-self: flex-start;
+                padding: 1rem;
               }
             }
 
@@ -93,11 +101,14 @@
               display: flex;
               flex-direction: column;
               justify-content: center;
+              padding: 1.5rem 1rem;
               background-color: #eaeaea;
 
               .checkPayment {
                 display: flex;
                 justify-content: space-around;
+                font-size: 0.9rem;
+                font-weight: bold;
 
                 .deliv {
                   display: flex;
@@ -107,9 +118,10 @@
                   .itemIndex {
                     display: flex;
                     align-items: center;
+                    font-size: 0.5rem;
 
                     .itemWord {
-                      font-size: 0.5rem;
+                      font-size: 0.8rem;
                     }
                   }
 
@@ -122,9 +134,9 @@
               }
 
               .putBasket {
-                width: 80%;
+                width: 100%;
                 padding: 1rem 2rem;
-                margin: 1.5rem 0;
+                margin-top: 2.5rem;
                 color: #eaeaea;
                 background-color: #1e1e1e;
                 border: none;
@@ -145,8 +157,9 @@
 }
 .induceUser {
   display: flex;
-  width: 50rem;
+  width: 58rem;
   margin-top: 2rem;
+  padding: 2.4rem 2rem;
   background-color: #eaeaea;
   align-self: center;
   text-align: center;
@@ -162,7 +175,11 @@
     }
 
     .catchCopyright {
-      margin: 1rem;
+      width: 8rem;
+      margin-top: 2rem;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
     }
   }
 }

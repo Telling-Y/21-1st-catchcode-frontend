@@ -3,6 +3,8 @@ import React from 'react';
 import Main from './Pages/Main/Main';
 import Login from './Pages/Login/Login';
 import Sign from './Pages/Sign/Sign';
+import Detail from './Pages/Detail/Detail';
+import FilterPage from './Pages/FilterPage/FilterPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class Routes extends React.Component {
@@ -13,6 +15,11 @@ class Routes extends React.Component {
         <Switch>
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Sign" component={Sign} />
+<<<<<<< HEAD
+=======
+          <Route exact path="/products" component={FilterPage} />
+          <Route exact path="/products/:id" component={Detail} />
+>>>>>>> 44f91d0965fe16544040925bcd1fd0e7468ae7d2
           <Route exact path="/*" component={Main} />
         </Switch>
       </Router>

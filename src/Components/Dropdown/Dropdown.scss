@@ -1,0 +1,35 @@
+.dropDownWrap {
+  position: relative;
+  display: flex;
+  height: 15rem;
+  justify-content: stretch;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border-bottom: #eaeaea 0.1rem solid;
+  z-index: 10;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  ul {
+    display: flex;
+    padding: 0.5rem;
+    a {
+      text-decoration-line: none;
+    }
+    .categoriItems {
+      display: flex;
+      margin: 1rem;
+      flex-direction: column;
+      .categoriName {
+        display: flex;
+        margin-top: 0.5rem;
+        justify-content: center;
+        color: black;
+      }
+    }
+  }
+}
