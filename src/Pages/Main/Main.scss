@@ -1,0 +1,17 @@
+@import '../../Styles/variables.scss';
+
+.productArea {
+  display: flex;
+  margin-top: 5rem;
+  justify-content: center;
+  .pruducts {
+    @include flex-center(center, flex-start);
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    .filterWrap {
+      width: 1135px;
+      justify-self: center;
+    }
+  }
+}
