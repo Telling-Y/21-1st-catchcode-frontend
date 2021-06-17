@@ -4,7 +4,8 @@ import './MainProductItem.scss';
 
 class MainProductItem extends Component {
   goToDetail = event => {
-    this.props.history.push(`/product/Detail/${event}`);
+    console.log(event);
+    this.props.history.push(`/products/${event}`);
   };
   render() {
     const { product } = this.props;
