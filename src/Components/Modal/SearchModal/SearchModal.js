@@ -11,7 +11,7 @@ class SearchModal extends Component {
             className="closeButton"
             onClick={() => this.props.closeSearchModal()}
           >
-            x
+            <i class="far fa-times-circle" />
           </button>
         </div>
       </div>

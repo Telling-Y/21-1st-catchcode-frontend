@@ -18,6 +18,7 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
+    // fetch(`${GET_CATEGORIES_API}`);
     fetch('http://10.58.3.58:8000/products/categories')
       .then(res => res.json())
       .then(data => {
@@ -27,12 +28,14 @@ class Nav extends React.Component {
       });
   }
 
+  // mouse enter 이벤트 state 변경
   loginModalOn = () => {
     this.setState({
       loginModalValid: true,
     });
   };
 
+  //mouse leave 이벤트 state 변경
   loginModalOff = () => {
     this.setState({
       loginModalValid: false,
@@ -42,23 +45,7 @@ class Nav extends React.Component {
   searchModalOn = () => {
     this.setState({
       searchModalValid: !this.state.searchModalValid,
-    });
-    this.focusInputBox();
-  };
-
-  focusInputBox = () => {
-    this.setState({ inputZIndex: 1000 });
-  };
-
-  categoriDropDown = event => {
-    this.setState({
-      dropDownValid: true,
-    });
-  };
-
-  removeDropDown = () => {
-    this.setState({
-      dropDownValid: false,
+      inputZIndex: 1000,
     });
   };
 
@@ -66,6 +53,20 @@ class Nav extends React.Component {
     this.setState({
       searchModalValid: false,
       inputZIndex: -1,
+    });
+  };
+
+  //쇼핑하기 탭 mouse enter
+  categoriDropDown = event => {
+    this.setState({
+      dropDownValid: true,
+    });
+  };
+
+  //쇼핑하기 탭 mouse leave
+  removeDropDown = () => {
+    this.setState({
+      dropDownValid: false,
     });
   };
 
@@ -123,7 +124,7 @@ class Nav extends React.Component {
               </div>
               <div className="userItems">
                 <div className="icon">
-                  <Link to="/detail/">
+                  <Link to="#">
                     <i className="far fa-heart" />
                   </Link>
                 </div>

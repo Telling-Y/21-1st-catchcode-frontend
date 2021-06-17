@@ -13,10 +13,10 @@ class LoginModal extends Component {
   render() {
     return (
       <div className="loginModal">
-        <button className="mvToSignIn" onClick={() => this.moveToLoginPage()}>
+        <button className="mvToSignIn" onClick={this.moveToLoginPage}>
           로그인
         </button>
-        <button className="mvToSignup" onClick={() => this.moveToSignPage()}>
+        <button className="mvToSignup" onClick={this.moveToSignPage}>
           회원가입
         </button>
       </div>
