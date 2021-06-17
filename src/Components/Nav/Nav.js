@@ -18,7 +18,7 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.6.177:8000/products/categories')
+    fetch('http://10.58.3.58:8000/products/categories')
       .then(res => res.json())
       .then(data => {
         this.setState({
