@@ -3,19 +3,25 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  z-index: -3;
+
   .slideWrap {
     width: 80vw;
     height: 400px;
+
     .slideBox {
       width: 100%;
       margin: auto;
       overflow-x: hidden;
+
       .slideList {
         display: flex;
+
         .slide {
           width: 80vw;
           height: 400px;
           float: left;
+
           .slideItem {
             width: 80vw;
             height: 400px;
@@ -23,17 +29,16 @@
         }
       }
     }
-    .slideDot {
-      display: flex;
-      justify-content: center;
-    }
   }
+
   .bannerButton {
     position: absolute;
     display: flex;
     width: 80vw;
     top: 50%;
     justify-content: space-around;
+    // z-index: -2;
+
     .prev,
     .next {
       width: 2.5rem;
@@ -42,8 +47,9 @@
       opacity: 0.4;
       background-color: #eaeaea;
       border-radius: 50%;
-      z-index: 100;
+      // z-index: -2;
     }
+
     .prev:hover,
     .next:hover {
       opacity: 0.8;
