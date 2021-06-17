@@ -7,18 +7,10 @@ class Banner extends Component {
     this.state = {
       slideIndex: 1,
       speed: 300,
-      imageSrc: [
-        'https://media.catchfashion.com/images/h_l?id=7nyX_Ei95&t=bp',
-        'https://media.catchfashion.com/images/h_l?id=cNIggWKb-&t=bp',
-        'https://media.catchfashion.com/images/h_l?id=0WuFzWcj5&t=bp',
-        'https://media.catchfashion.com/images/h_l?id=7nyX_Ei95&t=bp',
-        'https://media.catchfashion.com/images/h_l?id=cNIggWKb-&t=bp',
-      ],
     };
   }
 
   prevSlide = () => {
-    console.log('2');
     this.state.slideIndex > 0
       ? this.setState({
           slideIndex: this.state.slideIndex - 1,
@@ -64,13 +56,8 @@ class Banner extends Component {
     this.prevSlideTrick();
   }
 
-  // slidesDot = event => {
-  //   this.setState({ slideIndex: event.target.id });
-  //   console.log(event.current.id);
-  // };
-
   render() {
-    const { imageSrc, speed, slideIndex } = this.state;
+    const { speed, slideIndex } = this.state;
 
     return (
       <div className="carouselContainer">
@@ -79,15 +66,15 @@ class Banner extends Component {
             <div
               className="slideList"
               style={{
-                width: imageSrc.length * 80 + 'vw',
+                width: IMGSRC.length * 80 + 'vw',
                 transition: speed + `ms`,
                 transform: `translate3d(
                     ${slideIndex * -80}vw, 0px, 0px`,
               }}
             >
-              {imageSrc.map((source, index) => {
+              {IMGSRC.map((source, index) => {
                 return (
-                  <div className="slide">
+                  <div className="slide" key={index}>
                     <img
                       src={source}
                       alt="슬라이드"
@@ -112,4 +99,11 @@ class Banner extends Component {
     );
   }
 }
+const IMGSRC = [
+  'https://media.catchfashion.com/images/h_l?id=7nyX_Ei95&t=bp',
+  'https://media.catchfashion.com/images/h_l?id=cNIggWKb-&t=bp',
+  'https://media.catchfashion.com/images/h_l?id=0WuFzWcj5&t=bp',
+  'https://media.catchfashion.com/images/h_l?id=7nyX_Ei95&t=bp',
+  'https://media.catchfashion.com/images/h_l?id=cNIggWKb-&t=bp',
+];
 export default Banner;
