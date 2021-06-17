@@ -9,47 +9,122 @@ class FilterPage extends React.Component {
     this.state = {
       categories: [],
       productListInfo: [],
-      address: '',
+      categoryAddress: '',
+      catchBuyAddress: '',
+      min: '',
+      max: '',
+      color: '',
     };
   }
 
-  handleFetch = () => {
-    fetch(`http://10.58.6.177:8000/products/search${this.state.address}`)
+  handleFetch = newAddress => {
+    fetch(`http://10.58.2.153:8000/products/search?${newAddress}`)
       .then(res => res.json())
-      .then(data => {
-        return this.setState({
-          productListInfo: data.productListInfo,
-        });
-      });
+      .then(
+        data => {
+          return this.setState({
+            productListInfo: data.productListInfo,
+          });
+        },
+        () => {
+          console.log(newAddress);
+        }
+      );
   };
 
-  // filterCategories = e => {
-  //   console.log(e.target.id);
-  //   let numId = Number(e.target.id);
-  //   let categoryAddress = '';
-  //   let catchBuyAddress = '';
-  //   let minMaxAddress = '';
-  //   let colorAddress = '';
+  filterDetail = () => {
+    const { min, max, color } = this.state;
+    let minMaxAddress = '';
+    let colorAddress = '';
+    let newAdress = `${this.state.categoryAddress} + ${this.state.catchBuyAddress}`;
 
-  //   numId
-  //     ? (categoryAddress = `?category=${e.target.id}`)
-  //     : (categoryAddress = ``);
+    if (max && min) {
+      minMaxAddress = `&priceMin=${min}&priceMax=${max}`;
+    } else if (min) {
+      minMaxAddress = `&priceMin=${min}`;
+    } else if (max) {
+      minMaxAddress = `&priceMax=${max}`;
+    } else {
+      minMaxAddress = '';
+    }
 
-  //   if (e.target.className === 'filterButton black' && e.target.id === 1) {
-  //     catchBuyAddress = `catch=${e.target.id}`;
-  //   }
-  //   console.log(catchBuyAddress);
-  // };
+    color ? (colorAddress = `&color=${color}`) : (colorAddress = '');
+
+    newAdress += minMaxAddress + colorAddress;
+
+    this.handleFetch(newAdress);
+  };
+
+  putInPrice = e => {
+    const { id, value } = e.target;
+
+    Number(id)
+      ? this.setState({
+          max: value,
+        })
+      : this.setState({
+          min: value,
+        });
+  };
+
+  putinColorValue = e => {
+    this.setState({
+      color: e.target.id.replace('#', '%23'),
+    });
+  };
+
+  filterCatchBuy = e => {
+    const { id } = e.target;
+    Number(id)
+      ? this.setState(
+          {
+            catchBuyAddress: `&catch=${id}`,
+          },
+          () => {
+            this.handleFetch(this.state.catchBuyAddress);
+          }
+        )
+      : this.setState(
+          {
+            catchBuyAddress: '',
+          },
+          () => {
+            this.handleFetch(this.state.catchBuyAddress);
+          }
+        );
+  };
+
+  filterCategory = e => {
+    const { id } = e.target;
+
+    Number(id)
+      ? this.setState(
+          {
+            categoryAddress: `&category=${id}`,
+          },
+          () => {
+            this.handleFetch(this.state.categoryAddress);
+          }
+        )
+      : this.setState(
+          {
+            categoryAddress: ``,
+          },
+          () => {
+            this.handleFetch(this.state.categoryAddress);
+          }
+        );
+  };
 
   componentDidMount() {
-    fetch('http://10.58.6.177:8000/products/categories')
+    fetch('http://10.58.2.153:8000/products/categories')
       .then(res => res.json())
       .then(data => {
         return this.setState({
           categories: data.productCategories.categories,
         });
       });
-    fetch('http://10.58.6.177:8000/products/search')
+    fetch('http://10.58.2.153:8000/products/search')
       .then(res => res.json())
       .then(data => {
         return this.setState({
@@ -64,7 +139,11 @@ class FilterPage extends React.Component {
         <div className="filterWrap">
           <FilterNav
             categories={this.state.categories}
-            filterCategories={this.filterCategories}
+            putInPrice={this.putInPrice}
+            putinColorValue={this.putinColorValue}
+            filterDetail={this.filterDetail}
+            filterCatchBuy={this.filterCatchBuy}
+            filterCategory={this.filterCategory}
           />
           <FilterProducts productListInfo={this.state.productListInfo} />
         </div>

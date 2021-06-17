@@ -12,14 +12,6 @@ class FilterProducts extends react.Component {
     return name.slice(name.indexOf('_') + 1, name.length);
   };
 
-  // componentDidMount() {
-  //   fetch(
-  //     `http://10.58.6.177:8000/products/search?${this.props.match.params.id}`
-  //   )
-  //     .then(res => res.json())
-  //     .then(res => console.log(res));
-  // }
-
   render() {
     const { productListInfo } = this.props;
     return (

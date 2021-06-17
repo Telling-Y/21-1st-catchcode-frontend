@@ -6,8 +6,6 @@ class FilterNav extends react.Component {
   constructor() {
     super();
     this.state = {
-      min: '',
-      max: '',
       select: 0,
       isCatchSelect: 0,
       isPriceSelect: false,
@@ -34,23 +32,6 @@ class FilterNav extends react.Component {
     });
   };
 
-  putinValue = e => {
-    const idNum = Number(e.target.id);
-    if (!idNum) {
-      this.setState({
-        min: e.target.value,
-      });
-    } else {
-      this.setState({
-        max: e.target.value,
-      });
-    }
-  };
-
-  putinColorValue = e => {
-    console.log(e);
-  };
-
   handleFilterMenu = idx => {
     this.setState({
       select: idx,
@@ -59,7 +40,13 @@ class FilterNav extends react.Component {
 
   render() {
     const { isCatchSelect, isPriceSelect, isColorSelect } = this.state;
-    const { filterCategories } = this.props;
+    const {
+      filterCategory,
+      filterCatchBuy,
+      filterDetail,
+      putInPrice,
+      putinColorValue,
+    } = this.props;
     return (
       <div className="filterNav">
         <div className="categoriesBox">
@@ -71,7 +58,7 @@ class FilterNav extends react.Component {
                 className={`category ${this.state.select === idx && 'select'}`}
                 onClick={e => {
                   this.handleFilterMenu(idx);
-                  filterCategories(e);
+                  filterCategory(e);
                 }}
               >
                 {category.name}
@@ -85,7 +72,7 @@ class FilterNav extends react.Component {
             className={`filterButton ${isCatchSelect && 'black'}`}
             onClick={e => {
               this.handleCatch();
-              filterCategories(e);
+              filterCatchBuy(e);
             }}
           >
             캐치구매
@@ -99,7 +86,7 @@ class FilterNav extends react.Component {
                     id="0"
                     className="priceInput"
                     type="number"
-                    onChange={this.putinValue}
+                    onChange={putInPrice}
                   />
                   <span className="won">원</span>
                 </div>
@@ -108,14 +95,16 @@ class FilterNav extends react.Component {
                     id="1"
                     className="priceInput"
                     type="number"
-                    onChange={this.putinValue}
+                    onChange={putInPrice}
                   />
                   <span className="won">원</span>
                 </div>
                 <span className="grayLine"></span>
                 <div className="settingBox">
                   <button className="priceReset">초기화</button>
-                  <button className="black">저장</button>
+                  <button className="black" id="0" onClick={filterDetail}>
+                    저장
+                  </button>
                 </div>
               </div>
             )}
@@ -130,9 +119,10 @@ class FilterNav extends react.Component {
                     return (
                       <div
                         key={idx}
+                        id={data.color}
                         className="colorCircle"
                         style={{ backgroundColor: [data.color] }}
-                        onClick={this.putinColorValue}
+                        onClick={putinColorValue}
                       ></div>
                     );
                   })}
@@ -140,7 +130,9 @@ class FilterNav extends react.Component {
                 <span className="grayLine"></span>
                 <div className="settingBox">
                   <button className="priceReset">초기화</button>
-                  <button className="black">저장</button>
+                  <button className="black" id="1" onClick={filterDetail}>
+                    저장
+                  </button>
                 </div>
               </div>
             )}
