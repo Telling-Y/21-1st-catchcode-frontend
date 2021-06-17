@@ -1,4 +1,5 @@
 import react from 'react';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import './FilterProducts.scss';
 
@@ -12,13 +13,22 @@ class FilterProducts extends react.Component {
     return name.slice(name.indexOf('_') + 1, name.length);
   };
 
+  goToDetail = id => {
+    this.props.history.push(`/products/${id}`);
+  };
+
   render() {
     const { productListInfo } = this.props;
     return (
       <div className="products">
         {productListInfo.map((data, idx) => {
           return (
-            <div className="item" key={idx}>
+            <div
+              onClick={() => this.goToDetail(data.id)}
+              className="item"
+              key={idx}
+              id={data.id}
+            >
               <div className="image">
                 <img alt="원단사진입니다" src={data.thumbNail} />
               </div>

@@ -12,7 +12,7 @@ class MainProductItem extends Component {
       <div className="products">
         {product.map(data => {
           return (
-            <Link
+            <div
               onClick={() => this.goToDetail(data.id)}
               className="item"
               key={data.id}
@@ -26,7 +26,7 @@ class MainProductItem extends Component {
                 <div className="detail"> 캐치구매</div>
                 <div className="soldout">{data.stock < 1 && 'SOLD OUT'}</div>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>

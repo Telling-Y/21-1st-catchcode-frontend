@@ -1,4 +1,5 @@
 import React from 'react';
+import { GET_FILTERPRODUCTS_API, GET_COTEGORIES_API } from '../../config';
 import FilterNav from '../../Components/FilterNav/FilterNav';
 import FilterProducts from '../../Components/FilterProducts/FilterProducts';
 import './FilterPage.scss';
@@ -14,11 +15,12 @@ class FilterPage extends React.Component {
       min: '',
       max: '',
       color: '',
+      close: true,
     };
   }
 
   handleFetch = newAddress => {
-    fetch(`http://10.58.2.153:8000/products/search?${newAddress}`)
+    fetch(`${GET_FILTERPRODUCTS_API}?${newAddress}`)
       .then(res => res.json())
       .then(data => {
         return this.setState({
@@ -30,7 +32,7 @@ class FilterPage extends React.Component {
   putInPrice = e => {
     const { id, value } = e.target;
 
-    id
+    Number(id)
       ? this.setState({
           max: value,
         })
@@ -67,10 +69,15 @@ class FilterPage extends React.Component {
     }
 
     color ? (colorAddress = `&color=${color}`) : (colorAddress = '');
+    console.log(colorAddress);
 
     newAdress += minMaxAddress + colorAddress;
 
     this.handleFetch(newAdress);
+
+    this.setState({
+      close: false,
+    });
   };
 
   filterCatchBuy = e => {
@@ -139,14 +146,14 @@ class FilterPage extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://10.58.2.153:8000/products/categories')
+    fetch(`${GET_COTEGORIES_API}`)
       .then(res => res.json())
       .then(data => {
         return this.setState({
           categories: data.productCategories.categories,
         });
       });
-    fetch('http://10.58.2.153:8000/products/search')
+    fetch(`${GET_FILTERPRODUCTS_API}`)
       .then(res => res.json())
       .then(data => {
         return this.setState({
@@ -164,6 +171,7 @@ class FilterPage extends React.Component {
             max={this.state.max}
             color={this.state.color}
             categories={this.state.categories}
+            close={this.state.close}
             putInPrice={this.putInPrice}
             putinColorValue={this.putinColorValue}
             filterDetail={this.filterDetail}

@@ -37,7 +37,7 @@ class SizeSelector extends Component {
           <button className="sizeSelector" onClick={this.changeListStyle}>
             <div className="setSize">
               {sizeLabelControl}
-              <i class="fas fa-arrow-down" />
+              <i className="fas fa-arrow-down" />
             </div>
           </button>
         </div>
@@ -46,7 +46,7 @@ class SizeSelector extends Component {
             return (
               <div
                 key={result.sizeId}
-                class="showList"
+                className="showList"
                 style={{ display: this.state.listStyle }}
               >
                 <button
