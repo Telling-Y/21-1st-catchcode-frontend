@@ -6,7 +6,8 @@
   top: 4.2rem;
   border: #1e1e1e solid 0.1rem;
   border-top: none;
-  z-index: -1;
+  background-color: white;
+  z-index: 10;
   .modalToggle {
     display: flex;
     justify-content: space-between;

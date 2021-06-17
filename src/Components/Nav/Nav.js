@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import SearchModal from '../Modal/SearchModal/SearchModal';
 import Dropdown from '../Dropdown/Dropdown';
 import LoginModal from '../Modal/LoginModal/LoginModal';
+import { GET_COTEGORIES_API } from '../../config';
 import './Nav.scss';
 
 class Nav extends React.Component {
@@ -18,8 +19,7 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    // fetch(`${GET_CATEGORIES_API}`);
-    fetch('http://10.58.3.58:8000/products/categories')
+    fetch(`${GET_COTEGORIES_API}`)
       .then(res => res.json())
       .then(data => {
         this.setState({

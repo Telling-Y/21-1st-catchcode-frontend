@@ -3,7 +3,6 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  z-index: -3;
 
   .slideWrap {
     width: 80vw;
@@ -37,7 +36,6 @@
     width: 80vw;
     top: 50%;
     justify-content: space-around;
-    // z-index: -2;
 
     .prev,
     .next {
@@ -47,7 +45,6 @@
       opacity: 0.4;
       background-color: #eaeaea;
       border-radius: 50%;
-      // z-index: -2;
     }
 
     .prev:hover,

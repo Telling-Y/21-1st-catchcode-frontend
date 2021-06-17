@@ -60,7 +60,7 @@ class Banner extends Component {
     const { speed, slideIndex } = this.state;
 
     return (
-      <div className="carouselContainer">
+      <div className="carouselContainer" onClick={() => console.log('haha')}>
         <div className="slideWrap">
           <div className="slideBox">
             <div
