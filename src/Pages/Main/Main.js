@@ -6,7 +6,7 @@ class Main extends React.Component {
     this.state = {};
   }
   render() {
-    return <></>;
+    return <>adsdasdasd</>;
   }
 }
 

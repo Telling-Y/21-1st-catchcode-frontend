@@ -16,7 +16,7 @@ class Detail extends React.Component {
 
   componentDidMount() {
     // fetch(`http://10.58.6.177:8000/products/${this.props.match.params.id}`);
-    fetch('http://10.58.6.177:8000/products/3')
+    fetch('http://10.58.2.153:8000/products/3')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -52,7 +52,7 @@ class Detail extends React.Component {
       },
       {
         class: 'fas fa-donate',
-        type: '예상 배송비',
+        type: '배송비',
         value: '무료',
       },
     ];
@@ -74,6 +74,18 @@ class Detail extends React.Component {
         word: `직구도 국내쇼핑처럼${(<br />)}간편한 '캐치구매'`,
       },
     ];
+
+    const opacityCondition = !this.state.btnDisabledValue
+      ? 0.3
+      : selectedProduct.stock > 0
+      ? 1
+      : 0.3;
+
+    const soldOutCondition = selectedProduct.price
+      ? selectedProduct.stock === 0
+        ? 'soldout'
+        : selectedProduct.price
+      : '';
 
     return (
       <div className="detailPageWrap">
@@ -113,8 +125,6 @@ class Detail extends React.Component {
                   <div className="productCategory">{result.category}</div>
                 </div>
 
-                <div className="forLine" />
-
                 <div className="sizeSelectorWrap">
                   <SizeSelector
                     result={result}
@@ -126,13 +136,7 @@ class Detail extends React.Component {
                 <div className="paymentArea">
                   <div className="noticePrice">
                     <span className="fixedWord">Price :</span>
-                    <span className="priceData">
-                      {selectedProduct.price
-                        ? selectedProduct.stock === 0
-                          ? 'soldout'
-                          : selectedProduct.price
-                        : ''}
-                    </span>
+                    <span className="priceData">{soldOutCondition}</span>
                   </div>
 
                   <div className="basketWrap">
@@ -155,11 +159,7 @@ class Detail extends React.Component {
                       onClick={this.checkBtn}
                       style={{
                         //soldOut 일 때 버튼 비활성화
-                        opacity: !this.state.btnDisabledValue
-                          ? 0.3
-                          : selectedProduct.stock > 0
-                          ? 1
-                          : 0.3,
+                        opacity: { opacityCondition },
                       }}
                     >
                       쇼핑백에 담기

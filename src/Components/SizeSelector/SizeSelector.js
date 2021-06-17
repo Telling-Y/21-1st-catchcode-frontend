@@ -6,23 +6,13 @@ class SizeSelector extends Component {
     super();
     this.state = {
       listStyle: 'none',
-      payPrice: 0,
-      btnValid: { buyBtnOpacity: 1, btnDisabledValue: true },
     };
   }
 
   //사이즈 선택 버튼 텍스트 변경, 선택한 가격 데이터 부모 컴포넌트로 송출
   chgSizeText = result => {
-    this.setState(
-      {
-        listStyle: '',
-        setSize: result.sizeName,
-      },
-      () => {
-        this.sendProductToParent(result);
-        this.changeListStyle();
-      }
-    );
+    this.sendProductToParent(result);
+    this.changeListStyle();
   };
 
   //사이즈 드랍다운 메뉴 스타일
@@ -38,14 +28,15 @@ class SizeSelector extends Component {
 
   render() {
     const { result } = this.props;
+    const sizeLabelControl = this.props.selectedProduct.size
+      ? this.props.selectedProduct.size
+      : '사이즈를 선택해주세요';
     return (
       <div className="sizeSelectorWrap">
         <div className="fixedLi">
           <button className="sizeSelector" onClick={this.changeListStyle}>
             <div className="setSize">
-              {this.props.selectedProduct.size
-                ? this.props.selectedProduct.size
-                : '사이즈를 선택해주세요'}
+              {sizeLabelControl}
               <i class="fas fa-arrow-down" />
             </div>
           </button>
