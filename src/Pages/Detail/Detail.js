@@ -15,7 +15,7 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    // fetch(`http://10.58.6.177:8000/products/${this.props.match.params.id}`);
+    // fetch(`${GET_DETAILPAGE_API} + ${this.props.match.params.id}`);
     fetch('http://10.58.2.153:8000/products/3')
       .then(res => res.json())
       .then(data => {
