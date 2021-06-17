@@ -1,0 +1,47 @@
+{
+  "result": {
+    "id": 1,
+    "categoryId": 1,
+    "categoryName": "면",
+    "name": "좋은면",
+    "description": "인견혼방의 무지원단입니다. 면 20수 정도의 적당한 두께감으로 터치감이 부드러우며 빛에 따라 인견 특유의 약간의 광택감이 있습니다",
+    "countryId": 1,
+    "country": "한국",
+    "color": "red",
+    "priceAndSize": [
+      {
+        "sizeId": 0,
+        "sizeName": "L",
+        "price": 10000,
+        "stock": 1
+      },
+      {
+        "sizeId": 1,
+        "sizeName": "M",
+        "price": 11000,
+        "stock": 1
+      },
+      {
+        "sizeId": 2,
+        "sizeName": "S",
+        "price": 10000,
+        "stock": 0
+      }
+    ],
+    "image": [
+      "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg",
+      "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg",
+      "https://cdn.pixabay.com/photo/2021/05/19/14/31/dandelion-6266230__340.jpg"
+    ],
+    "productContents": [
+      {
+        "name": "면",
+        "value": "60"
+      },
+      {
+        "name": "솜",
+        "value": "40"
+      }
+    ]
+  }
+}
