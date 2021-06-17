@@ -6,7 +6,6 @@ class CommonInput extends React.Component {
     const { id, name, category, type, text, placeholder, vaild, vaildText } =
       this.props.data;
     const { handleInput, isWarning } = this.props;
-
     return (
       <div className="inputBox">
         <label className="inputTitle">{text}</label>
@@ -23,14 +22,7 @@ class CommonInput extends React.Component {
           <div className="warning">{vaildText}</div>
         )}
 
-        {text === '비밀번호' && (
-          <button
-            className="passwordView"
-            style={{
-              backgroundImage: `url("/images/view.png")`,
-            }}
-          />
-        )}
+        {text === '비밀번호' && <button className="passwordView" />}
       </div>
     );
   }
