@@ -9,6 +9,19 @@
   border-bottom: #eaeaea 0.1rem solid;
   z-index: 10;
 
+  .dropDownBox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 1140px;
+
+    .categori span {
+      margin-left: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+
   img {
     width: 4rem;
     height: 4rem;
@@ -16,18 +29,17 @@
 
   ul {
     display: flex;
-    padding: 0.5rem;
     a {
       text-decoration-line: none;
     }
     .categoriItems {
-      display: flex;
       margin: 1rem;
-      flex-direction: column;
+
       .categoriName {
         display: flex;
-        margin-top: 0.5rem;
-        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 0.8rem;
         color: black;
       }
     }

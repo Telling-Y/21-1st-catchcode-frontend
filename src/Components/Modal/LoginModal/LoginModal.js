@@ -1,9 +1,10 @@
 import { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './LoginModal.scss';
 
 class LoginModal extends Component {
   moveToLoginPage = () => {
-    this.props.history && this.props.history.push('/Login');
+    this.props.history.push('/Login');
   };
 
   moveToSignPage = () => {
@@ -23,4 +24,4 @@ class LoginModal extends Component {
     );
   }
 }
-export default LoginModal;
+export default withRouter(LoginModal);

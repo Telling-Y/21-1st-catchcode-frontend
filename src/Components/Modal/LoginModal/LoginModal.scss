@@ -1,24 +1,30 @@
 .loginModal {
   position: absolute;
   display: flex;
-  width: 9rem;
-  height: 9rem;
-  top: 2rem;
+  width: 11rem;
+  height: 8rem;
+  top: 35px;
+  right: 5px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #eaeaea;
+  box-shadow: #0000001f 0px 0px 8px 0px;
+  background-color: #ffffff;
   z-index: 10;
+
   button {
-    width: 7rem;
-    height: 4rem;
-  }
-  .mvToSignin {
-    background-color: #eaeaea;
-    border: #1e1e1e solid 0.1rem;
-  }
-  .mvToSignup {
-    background-color: #1e1e1e;
-    color: #eaeaea;
+    width: 80%;
+    height: 2.2rem;
+    border: 0px;
+
+    &.mvToSignIn {
+      border: #eaeaea solid 0.1rem;
+      background-color: white;
+      margin-bottom: 1rem;
+    }
+    &.mvToSignup {
+      background-color: #1e1e1e;
+      color: #eaeaea;
+    }
   }
 }

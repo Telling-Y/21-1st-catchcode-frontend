@@ -160,9 +160,20 @@ class FilterPage extends React.Component {
           productListInfo: data.productListInfo,
         });
       });
+    // props.match.params.id가 공통되어 name이 안써지는 것 같음
+    fetch(`${GET_FILTERPRODUCTS_API}?${this.props.match.params.id}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(`data`, data);
+        // this.setState({
+        //   result: data.productDetails,
+        //   prodcutName: data.productDetails.name,
+        // });
+      });
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="filterPage">
         <div className="filterWrap">

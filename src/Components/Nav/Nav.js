@@ -81,7 +81,9 @@ class Nav extends React.Component {
           <div className="trickDiv">
             <div className="navContainer">
               <div className="navLeft">
-                <img src="/images/logo.jpg" alt="logo" className="logo" />
+                <Link to="/">
+                  <img src="/images/logo.jpg" alt="logo" className="logo" />
+                </Link>
                 <div className="inputTrickDiv">
                   <div
                     className="realInput"
@@ -110,7 +112,9 @@ class Nav extends React.Component {
               </div>
               <div className="linkTab">
                 <div className="linkItemsWrap">
-                  <Link to="#">홈</Link>
+                  <Link to="/" className="firstA">
+                    홈
+                  </Link>
                   <Link
                     onClick={() => this.moveToFilterPage()}
                     onMouseEnter={this.categoriDropDown}

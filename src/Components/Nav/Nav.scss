@@ -1,15 +1,19 @@
 nav {
-  height: 98px;
+  height: 115px;
 
   a {
+    width: 155px;
     text-decoration: none;
   }
 
   .trickDiv {
+    display: flex;
+    justify-content: center;
     border-bottom: #eaeaea solid 0.1rem;
 
     .navContainer {
       display: flex;
+      width: 1140px;
       padding: 0 5rem;
       justify-content: space-around;
       align-items: center;
@@ -41,9 +45,8 @@ nav {
           }
           .searchWrap {
             display: flex;
-            width: 10rem;
-            margin-right: 5rem;
-            padding: 1rem 2.5rem;
+            width: 15rem;
+            padding: 1rem 2rem;
             background-color: #f9f9f9;
             justify-content: center;
             align-items: center;
@@ -69,15 +72,21 @@ nav {
 
         .linkItemsWrap {
           display: flex;
-          width: 18rem;
           justify-content: flex-end;
+          width: 27rem;
           font-size: 1rem;
+          margin-left: 10px;
 
           a {
             display: flex;
             margin: 0 0.5rem;
-            padding: 2rem 0;
+            padding: 1.8rem 0;
             color: #1e1e1e;
+            flex: 2;
+
+            &.firstA {
+              flex: 1;
+            }
           }
           a:hover {
             border-bottom: #1e1e1e 0.1rem solid;
@@ -90,26 +99,26 @@ nav {
         display: flex;
         margin-left: auto;
 
-        i {
-          margin: 0 5px;
-          font-size: 18px;
-          color: black;
-        }
-
         .icon {
           position: relative;
           display: flex;
+          align-items: center;
           width: 2rem;
           height: 2rem;
           margin: 5px;
-          justify-content: center;
-          align-items: center;
+          padding: 0.1rem;
+
+          i {
+            display: flex;
+            justify-content: center;
+            margin: 0 5px;
+            font-size: 18px;
+            color: black;
+          }
         }
 
         .icon:hover {
-          height: 2rem;
-          width: 2rem;
-          background-color: #eaeaea;
+          background-color: #f6f6f6;
           border-radius: 50%;
         }
       }
