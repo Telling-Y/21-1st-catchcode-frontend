@@ -125,6 +125,8 @@ class Detail extends React.Component {
                   <div className="productCategory">{result.category}</div>
                 </div>
 
+                <div className="buyTitle">구매</div>
+
                 <div className="sizeSelectorWrap">
                   <SizeSelector
                     result={result}
@@ -132,6 +134,10 @@ class Detail extends React.Component {
                     selectProductData={this.selectProductData}
                     checkFinalBtnValid={this.checkFinalBtnValid}
                   />
+                </div>
+                <div className="updateWrap">
+                  <div className="update">최근 업데이트: 41분 전</div>
+                  <div className="sizeChart">사이즈 차트</div>
                 </div>
                 <div className="paymentArea">
                   <div className="noticePrice">

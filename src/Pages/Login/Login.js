@@ -69,7 +69,6 @@ class Login extends React.Component {
             <Link
               className={isLogin ? 'blackButton' : 'grayButton'}
               onClick={isLogin ? this.handleLogin : null}
-              to="/"
             >
               로그인
             </Link>

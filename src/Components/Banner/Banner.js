@@ -60,16 +60,16 @@ class Banner extends Component {
     const { speed, slideIndex } = this.state;
 
     return (
-      <div className="carouselContainer" onClick={() => console.log('haha')}>
+      <div className="carouselContainer">
         <div className="slideWrap">
           <div className="slideBox">
             <div
               className="slideList"
               style={{
-                width: IMGSRC.length * 80 + 'vw',
+                width: IMGSRC.length * 1140 + 'px',
                 transition: speed + `ms`,
                 transform: `translate3d(
-                    ${slideIndex * -80}vw, 0px, 0px`,
+                    ${slideIndex * -1140}px, 0px, 0px`,
               }}
             >
               {IMGSRC.map((source, index) => {
@@ -100,10 +100,10 @@ class Banner extends Component {
   }
 }
 const IMGSRC = [
-  'https://media.catchfashion.com/images/h_l?id=7nyX_Ei95&t=bp',
-  'https://media.catchfashion.com/images/h_l?id=cNIggWKb-&t=bp',
-  'https://media.catchfashion.com/images/h_l?id=0WuFzWcj5&t=bp',
-  'https://media.catchfashion.com/images/h_l?id=7nyX_Ei95&t=bp',
-  'https://media.catchfashion.com/images/h_l?id=cNIggWKb-&t=bp',
+  '/images/slider1.jpg',
+  '/images/slider2.jpg',
+  '/images/slider3.jpg',
+  '/images/slider1.jpg',
+  '/images/slider2.jpg',
 ];
 export default Banner;

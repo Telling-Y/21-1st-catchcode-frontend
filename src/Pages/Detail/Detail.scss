@@ -13,7 +13,7 @@
 
       img {
         width: 30rem;
-        height: 28rem;
+        height: 37rem;
         padding: 2rem 2rem 2rem 0;
       }
       .productDetail {
@@ -51,7 +51,7 @@
       margin-left: 6rem;
 
       .rightDiv {
-        height: 83.2rem;
+        height: 110rem;
 
         .stickyDiv {
           position: -webkit-sticky;
@@ -61,14 +61,14 @@
           margin-bottom: 2rem;
 
           .productName {
-            padding-bottom: 0.5rem;
-            font-size: 1.3rem;
+            padding-bottom: 0.8rem;
+            font-size: 27px;
           }
 
           .productCategory {
             padding-bottom: 1rem;
             margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: 14px;
           }
 
           .forLine {
@@ -80,8 +80,9 @@
           .paymentArea {
             display: flex;
             border: 0.1rem solid #eaeaea;
+            box-shadow: #00000014 0px 0px 4px 0px;
             flex-direction: column;
-            margin-top: 3rem;
+            margin-top: 1rem;
 
             .noticePrice {
               display: flex;
@@ -102,13 +103,11 @@
               flex-direction: column;
               justify-content: center;
               padding: 1.5rem 1rem;
-              background-color: #eaeaea;
+              background-color: rgb(246, 246, 246);
 
               .checkPayment {
                 display: flex;
                 justify-content: space-around;
-                font-size: 0.9rem;
-                font-weight: bold;
 
                 .deliv {
                   display: flex;
@@ -122,6 +121,7 @@
 
                     .itemWord {
                       font-size: 0.8rem;
+                      font-weight: 200;
                     }
                   }
 
@@ -135,8 +135,10 @@
 
               .putBasket {
                 width: 100%;
-                padding: 1rem 2rem;
+                padding: 0.9rem 2rem;
                 margin-top: 2.5rem;
+                font-size: 0.9rem;
+                font-weight: bold;
                 color: #eaeaea;
                 background-color: #1e1e1e;
                 border: none;
@@ -181,5 +183,39 @@
       font-weight: 700;
       line-height: 1.5;
     }
+  }
+}
+
+.buyTitle {
+  width: 96%;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
+.priceData {
+  padding: 1rem;
+}
+.delivItem {
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding-left: 0.8rem;
+}
+
+.updateWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0 2rem;
+  font-size: 0.8rem;
+
+  .update {
+    color: #888888;
+  }
+  .sizeChart {
+    text-decoration: underline;
   }
 }
