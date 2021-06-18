@@ -1,4 +1,5 @@
 import react from 'react';
+import { withRouter } from 'react-router-dom';
 import './FilterNav.scss';
 
 class FilterNav extends react.Component {
@@ -7,13 +8,12 @@ class FilterNav extends react.Component {
     this.state = {
       min: '',
       max: '',
+      select: -1,
       isCatchSelect: 0,
       isPriceSelect: false,
       isColorSelect: false,
-      arr: [false, true, false, false],
     };
   }
-  // 'http://localhost:3000/products/${className}/${id}?categoriesDatas.json' RESTfull API 예시
 
   handleCatch = () => {
     this.setState({
@@ -35,8 +35,9 @@ class FilterNav extends react.Component {
   };
 
   putinValue = e => {
-    console.log(typeof e.target.id);
-    if (!e.target.id) {
+    const idNum = Number(e.target.id);
+    console.log(typeof Number(e.target.id));
+    if (!idNum) {
       this.setState({
         max: e.target.value,
       });
@@ -48,38 +49,22 @@ class FilterNav extends react.Component {
   };
 
   hedleFilterMenu = idx => {
-    const { arr } = this.state;
-    console.log(arr.indexOf(true));
-    if (arr.indexOf(true) !== -1) {
-      this.setState(
-        {
-          arr: [
-            ...arr.slice(0, arr.indexOf(true)),
-            false,
-            ...arr.slice(arr.indexOf(true) + 1, arr.length),
-          ],
-        },
-        () => {
-          console.log(arr);
-        }
-      );
-    }
+    this.setState({
+      select: idx,
+    });
   };
 
-  componentDidUpdate() {
-    const { arr } = this.state;
-    this.hedleFilterMenu = idx => {
-      this.setState({
-        arr: [...arr.slice(0, idx), true, ...arr.slice(idx + 1, arr.lenght)],
-      });
-    };
-  }
+  filterCategories = idx => {
+    this.props.history.push(
+      `/products/search/${this.props.categories[idx].id}`
+    );
+  };
 
   render() {
+    console.log(this.props.categories);
     const { isCatchSelect, isPriceSelect, isColorSelect, min, max } =
       this.state;
     const { categories } = this.props;
-    console.log(min);
     return (
       <div className="filterNav">
         <div className="categoriesBox">
@@ -88,8 +73,11 @@ class FilterNav extends react.Component {
               <div
                 key={category.id}
                 id={category.id}
-                className={`category ${this.state.arr[idx] && 'select'}`}
-                onClick={() => this.hedleFilterMenu(idx)}
+                className={`category ${this.state.select === idx && 'select'}`}
+                onClick={
+                  (() => this.hedleFilterMenu(idx),
+                  () => this.filterCategories(idx))
+                }
               >
                 {category.name}
               </div>
@@ -109,20 +97,18 @@ class FilterNav extends react.Component {
               <div className="filterModal">
                 <div className="priceInputBox">
                   <input
-                    id={0}
+                    id="0"
                     className="priceInput"
                     type="number"
-                    value={this.state.min}
                     onChange={this.putinValue}
                   />
                   <span className="won">원</span>
                 </div>
                 <div className="priceInputBox">
                   <input
-                    id={1}
+                    id="1"
                     className="priceInput"
                     type="number"
-                    value={this.state.max}
                     onChange={this.putinValue}
                   />
                   <span className="won">원</span>
@@ -136,8 +122,8 @@ class FilterNav extends react.Component {
             )}
           </div>
 
-          <div className="filterButton" onClick={this.hadleColor}>
-            색상
+          <div className="filterButton">
+            <div onClick={this.hadleColor}>색상</div>
             {isColorSelect && (
               <div className="filterModal">
                 <div className="colorBox">
@@ -161,4 +147,4 @@ class FilterNav extends react.Component {
   }
 }
 
-export default FilterNav;
+export default withRouter(FilterNav);

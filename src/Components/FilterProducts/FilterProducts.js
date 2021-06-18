@@ -1,7 +1,7 @@
 import react from 'react';
-import './Products.scss';
+import './FilterProducts.scss';
 
-class Products extends react.Component {
+class FilterProducts extends react.Component {
   changeDeciaml = price => {
     const numPrice = Number(price);
     return Number(numPrice.toFixed()).toLocaleString('ko-KR');
@@ -11,8 +11,15 @@ class Products extends react.Component {
     return name.slice(name.indexOf('_') + 1, name.length);
   };
 
+  // componentDidMount() {
+  //   fetch(`http://localhost.8000/products/search/${this.props.match.params.id}`)
+  //     .then(res => res.json())
+  //     .then(res => console.log(res));
+  // }
+
   render() {
     const { productListInfo } = this.props;
+    console.log(this.props);
     return (
       <div className="products">
         {productListInfo.map(data => {
@@ -37,4 +44,4 @@ class Products extends react.Component {
   }
 }
 
-export default Products;
+export default FilterProducts;

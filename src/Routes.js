@@ -11,7 +11,8 @@ class Routes extends React.Component {
       <Router>
         <Switch>
           {/* <Route exact path="/Login" component={Login} /> */}
-          <Route exact path="/FilterPage" component={FilterPage} />
+          <Route exact path="/products/serach/" component={FilterPage} />
+          {/* 아직 백엔드에서 RESTfull API조건에 맞는 값을 받은게 아니라서 할 수 없음 */}
           <Route exact path="/" component={Main} />
         </Switch>
       </Router>

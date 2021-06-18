@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterNav from '../../Components/FilterNav/FilterNav';
-import Products from '../../Components/Products/Products';
+import FilterProducts from '../../Components/FilterProducts/FilterProducts';
 import './FilterPage.scss';
 
 class FilterPage extends React.Component {
@@ -32,7 +32,7 @@ class FilterPage extends React.Component {
       <div className="filterPage">
         <div className="filterWrap">
           <FilterNav categories={this.state.categories} />
-          <Products productListInfo={this.state.productListInfo} />
+          <FilterProducts productListInfo={this.state.productListInfo} />
         </div>
       </div>
     );
